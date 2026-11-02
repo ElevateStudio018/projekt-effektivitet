@@ -114,7 +114,7 @@ const FONTS_FOR = { landskap: ['Poppins'] };
 const inlineCss = (theme, asset) => {
   const fams = theme.fonts;
   const fonts = fs.readFileSync(path.join(SRC, 'styles/fonts.css'), 'utf8').split('\n')
-    .filter((l) => l.startsWith('@font-face') && fams.some((f) => l.includes(`'${f}'`))).join('\n');
+    .filter((l) => l.startsWith('@font-face') && fams.some((f) => l.includes(`'${f}'`) || l.includes(`'${f} Fallback'`))).join('\n');
   const css = fonts + '\n' + fs.readFileSync(path.join(SRC, 'styles/base.css'), 'utf8') + '\n' + fs.readFileSync(path.join(SRC, 'styles/themes', theme.id + '.css'), 'utf8');
   return css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '\n')
     .replace(/url\(\.\.\/fonts\//g, 'url(' + asset('fonts/')).replace(/url\(\.\.\/\.\.\/img\//g, 'url(' + asset('img/'));

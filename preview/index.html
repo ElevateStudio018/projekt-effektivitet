@@ -22,6 +22,7 @@
 @font-face { font-family: 'Poppins'; font-style: italic; font-weight: 400; font-display: swap; src: url(assets/fonts/poppins-400-italic.woff2) format('woff2'); }
 @font-face { font-family: 'Poppins'; font-style: normal; font-weight: 500; font-display: swap; src: url(assets/fonts/poppins-500.woff2) format('woff2'); }
 @font-face { font-family: 'Poppins'; font-style: normal; font-weight: 600; font-display: swap; src: url(assets/fonts/poppins-600.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Helvetica'); size-adjust: 112.16%; ascent-override: 93.62%; descent-override: 31.21%; line-gap-override: 8.92%; }
 :root {
 --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 --font-heading: var(--font-body);
@@ -488,8 +489,8 @@ font: 500 13px/1.2 system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spac
 .ss-all { padding: 9px 10px; border-left: 1px solid rgba(255,255,255,.18); margin-left: 4px; white-space: nowrap; border-radius: 0 5px 5px 0; }
 @media (max-width: 420px) { .ss-label span, .ss-all { display: none; } }
 :root {
---font-heading: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
---font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+--font-heading: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+--font-body: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
 --heading-weight: 500;
 --heading-ls: -0.025em;
 --heading-lh: 1.14;

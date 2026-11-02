@@ -4,8 +4,8 @@
    mjuka kort och varma stentoner. Poppins genomgående. */
 
 :root {
-  --font-heading: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heading: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --heading-weight: 500;
   --heading-ls: -0.025em;
   --heading-lh: 1.14;
