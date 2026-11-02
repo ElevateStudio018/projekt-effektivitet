@@ -1,0 +1,105 @@
+/* 2. Redaktion – som en fackpublikation.
+   Newsreader i rubriker, papperston, spalter och tunna linjer. */
+
+:root {
+  --font-heading: 'Newsreader', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --heading-weight: 500;
+  --heading-ls: -0.012em;
+  --heading-lh: 1.08;
+  --fs-h1: clamp(2.4rem, 1.4rem + 4vw, 4.9rem);
+  --fs-h2: clamp(1.9rem, 1.3rem + 2vw, 3rem);
+  --fs-body: 1.03rem;
+
+  --bg: #f7f6f1;
+  --bg-alt: #efece3;
+  --surface: #fbfaf6;
+  --text: #2c2b27;
+  --muted: #6b675d;
+  --heading: #161614;
+  --brand: #144069;
+  --link: #144069;
+  --accent: #c2551a;
+  --accent-ink: #a8461a;
+  --rule: #d9d4c5;
+  --rule-strong: #161614;
+  --label-color: #6b675d;
+  --label-ls: 0.14em;
+
+  --button-bg: #161614;
+  --button-bg-hover: #144069;
+  --header-bg: #f7f6f1;
+  --header-rule: #d9d4c5;
+  --logo-height: 58px;
+
+  --dark-bg: #efece3;
+  --dark-text: #2c2b27;
+  --dark-heading: #161614;
+  --dark-rule: #d9d4c5;
+
+  --footer-bg: #efece3;
+  --footer-text: #4c4a43;
+  --footer-heading: #161614;
+  --footer-link: #161614;
+  --footer-rule: #d9d4c5;
+}
+
+.site-nav a { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+[data-header="masthead"] .site-header { border-bottom: 3px double var(--rule-strong); }
+@media (min-width: 900px) { [data-header="masthead"] .site-nav { border-bottom: 0; } }
+
+.hero--editorial .hero-title { font-size: clamp(2.6rem, 1.4rem + 4.4vw, 5.4rem); max-width: 12em; font-weight: 500; }
+.hero--editorial .hero-lead { font-family: var(--font-heading); font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.55rem); line-height: 1.4; color: #3d3b35; }
+.ed-figure { margin-top: 2em; }
+.ed-figure img { aspect-ratio: 16 / 6.5; }
+.ed-aside h2 { font-family: var(--font-body); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; border-bottom: 2px solid var(--rule-strong); padding-bottom: 10px; margin-bottom: 0; }
+.ed-list li:first-child { border-top: 0; }
+.ed-list a { font-size: 1.3rem; }
+.ed-aside .text-link { margin-top: 12px; }
+
+.section + .section { border-top: 3px double var(--rule-strong); }
+.section > .wrap > .section-head, .news-head { border-bottom: 1px solid var(--rule); padding-bottom: 20px; }
+.news-head .section-head { border: 0; padding: 0; }
+.section-head { max-width: none; }
+.section-head h2 { max-width: 18em; }
+.section-lead { max-width: 40em; font-family: var(--font-heading); font-size: 1.3rem; line-height: 1.45; }
+
+/* Spalter med lodräta linjer */
+.situations { border-top: 0; }
+@media (min-width: 900px) {
+  .situations { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .situation { grid-template-columns: 1fr; border-bottom: 0; padding: 4px 28px 0; border-left: 1px solid var(--rule); align-content: start; }
+  .situation:first-child { border-left: 0; padding-left: 0; }
+  .situation h3 { font-size: 1.9rem; margin: 6px 0 10px; }
+  .service-list { gap: 0; }
+  .service-item { border-left: 1px solid var(--rule); padding: 0 28px; }
+  .service-item:first-child { border-left: 0; padding-left: 0; }
+}
+.situation .text-link { margin-top: 14px; }
+.service-link { border-top: 0; padding-top: 0; }
+.service-title { font-size: 2rem; }
+.service-num { color: var(--muted); }
+
+.feature-text .lead { font-family: var(--font-heading); font-size: 1.4rem; line-height: 1.4; }
+.loop-section .section-label { color: var(--muted); }
+.loop-section .loop-diagram { --diagram-line: #161614; --diagram-label: #161614; }
+.loop-section .text-link { color: var(--link); }
+.principle { border-top: 2px solid var(--rule-strong); }
+.principle h3 { font-size: 1.6rem; }
+
+.news-title { font-size: 1.55rem; }
+.news-cat { text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; }
+.cta-section { background: var(--bg); }
+.person-card { background: transparent; border-width: 1px 0; padding-inline: 0; }
+
+.page-head { background: var(--bg); border-bottom: 3px double var(--rule-strong); }
+.page-head h1 { font-size: clamp(2.4rem, 1.4rem + 4vw, 5rem); }
+.page-lead { font-family: var(--font-heading); font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.6rem); line-height: 1.4; }
+.prose { font-size: 1.08rem; }
+.page-article .prose > p:first-of-type::first-letter {
+  font-family: var(--font-heading); float: left; font-size: 4.2em; line-height: 0.8; padding: 0.06em 0.1em 0 0; color: var(--heading);
+}
+.aside-box { border-top: 2px solid var(--rule-strong); }
+
+.site-footer { border-top: 3px double var(--rule-strong); }
+.footer-col h2 { font-family: var(--font-body); }

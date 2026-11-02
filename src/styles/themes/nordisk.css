@@ -1,0 +1,104 @@
+/* 4. Nordisk – ljust, lugnt, skandinaviskt.
+   Varma stentoner, Manrope, mjuka former och gott om luft. */
+
+:root {
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-heading: var(--font-body);
+  --heading-weight: 650;
+  --heading-ls: -0.025em;
+  --heading-lh: 1.12;
+  --fs-body: 1.06rem;
+  --lh-body: 1.72;
+  --fs-h1: clamp(2.3rem, 1.4rem + 3.6vw, 4.2rem);
+
+  --bg: #f4f1ea;
+  --bg-alt: #ebe6db;
+  --surface: #fbfaf6;
+  --text: #2c3a45;
+  --muted: #5f6b73;
+  --heading: #1d2b36;
+  --brand: #144069;
+  --link: #144069;
+  --accent: #d9692a;
+  --accent-ink: #a14a17;
+  --rule: #ddd5c6;
+  --rule-strong: #b9ae9b;
+  --label-transform: none;
+  --label-ls: 0;
+  --label-weight: 600;
+  --fs-label: 0.9rem;
+  --label-color: #a14a17;
+
+  --radius: 16px;
+  --img-radius: 16px;
+  --button-radius: 999px;
+  --button-bg: #1d2b36;
+  --button-bg-hover: #144069;
+
+  --header-bg: #f4f1ea;
+  --header-rule: transparent;
+
+  --dark-bg: #1f2e39;
+  --dark-text: #c8d2d8;
+
+  --footer-bg: #ebe6db;
+  --footer-text: #4a565e;
+  --footer-heading: #1d2b36;
+  --footer-link: #1d2b36;
+  --footer-rule: #d5ccbb;
+}
+
+.button { padding-inline: 1.6em; }
+.nav-cta a { background: var(--button-bg); color: #fff !important; padding: 9px 20px !important; border-radius: 999px; border: 0 !important; }
+.nav-cta a:hover { background: var(--brand); }
+@media (max-width: 899px) { .nav-cta a { background: none; color: var(--heading) !important; padding: 14px 0 !important; } }
+
+.section + .section { border-top: 0; }
+.hero--split .hero-title { font-weight: 700; }
+.hero-figure img { aspect-ratio: 5 / 4; }
+.hero-kicker { display: none; }
+
+/* Mjuka kort */
+.situations { border-top: 0; gap: 16px; }
+@media (min-width: 900px) {
+  .situations { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .situation { grid-template-columns: 1fr; align-content: start; }
+}
+.situation { background: var(--surface); border: 0; border-radius: var(--radius); padding: 28px; gap: 8px; }
+.situation-kicker { color: var(--muted) !important; font-weight: 600; }
+.situation .text-link { margin-top: 10px; }
+
+.services-section { background: var(--bg-alt); }
+.service-link { border-top: 0; padding: 0; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
+.service-img { display: block; }
+.service-img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.service-num { padding: 22px 24px 0; }
+.service-title, .service-summary, .service-more { padding-inline: 24px; }
+.service-more { padding-bottom: 24px; }
+
+.checklist li { border: 0 !important; padding-block: 6px; }
+.checklist li::before { border-color: var(--accent); }
+
+.loop-section { background: transparent; }
+.loop-section > .wrap { background: var(--dark-bg); border-radius: 28px; padding-block: clamp(36px, 5vw, 80px); }
+@media (min-width: 700px) { .loop-section > .wrap { padding-inline: clamp(28px, 5vw, 72px); max-width: calc(var(--wrap) + 2 * var(--gutter)); width: calc(100% - 2 * var(--gutter)); } }
+.loop-section .section-label { color: #f0a77a; }
+.loop-step { border-top-color: rgba(255,255,255,.12); }
+
+.principles { gap: 16px; }
+.principle { border: 0; background: var(--surface); border-radius: var(--radius); padding: 28px; }
+
+.cta-section { background: transparent; }
+.cta-section > .wrap { background: var(--bg-alt); border-radius: 28px; padding-block: clamp(32px, 5vw, 72px); width: calc(100% - 2 * var(--gutter)); }
+@media (min-width: 700px) { .cta-section > .wrap { padding-inline: clamp(28px, 5vw, 72px); } }
+.person-card { border: 0; }
+
+.page-head { background: transparent; border: 0; padding-bottom: 0; }
+.aside-box { border-top: 0; background: var(--surface); border-radius: var(--radius); padding: 8px 24px 24px; }
+.contact-form { border: 0; }
+.field input, .field select, .field textarea { border-radius: 12px; border-color: var(--rule-strong); background: #fff; }
+.outcome { border-left: 0; background: var(--surface); border-radius: var(--radius); padding: 24px; }
+.process li { border-top: 0; background: var(--surface); border-radius: var(--radius); padding: 22px; }
+.news-featured { border-bottom: 0; }
+.prose ul li::before { border-radius: 50%; }
+.site-footer { border-top: 0; }

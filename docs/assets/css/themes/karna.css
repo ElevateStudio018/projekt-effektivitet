@@ -1,0 +1,41 @@
+/* 1. Kärna – varumärket som det är, städat.
+   Marinblått och orange från logotypen, Inter Tight i rubriker, fotografisk hero. */
+
+:root {
+  --font-heading: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --heading-ls: -0.028em;
+  --heading-weight: 600;
+  --bg-alt: #f3f5f7;
+  --heading: #0e2236;
+  --dark-bg: #0e2236;
+  --footer-bg: #0b1c2d;
+}
+
+.site-header { border-bottom-color: transparent; box-shadow: 0 1px 0 var(--rule); }
+.nav-cta a {
+  border: 1px solid var(--brand) !important; padding: 8px 16px !important; color: var(--brand);
+}
+.nav-cta a:hover, .nav-cta a[aria-current="page"] { background: var(--brand); color: #fff; }
+@media (max-width: 899px) { .nav-cta a { border: 0 !important; padding: 14px 0 !important; } }
+
+.hero--photo .button { background: var(--accent); border-color: var(--accent); color: #0e2236; }
+.hero--photo .button:hover { background: #ff8a45; border-color: #ff8a45; }
+.hero--photo .button--ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .7); }
+.hero--photo .hero-title { max-width: 11em; }
+
+.situations-section, .principles-section { background: var(--bg); }
+.services-section { background: var(--bg-alt); }
+.service-link { border-top-color: var(--brand); }
+.service-num, .situation-num { color: var(--accent-ink); }
+
+.principle { border-top: 3px solid var(--accent); }
+
+.page-head { background: var(--heading); border-bottom: 0; color: #d8e1e9; }
+.page-head h1 { color: #fff; }
+.page-head .page-lead { color: #d8e1e9; }
+.page-head .breadcrumbs { color: #a8b8c6; }
+.page-head .page-label { color: #ffb37f; }
+.page-head .news-meta { color: #a8b8c6; }
+.page-head .news-cat { color: #ffb37f; }
+.page-head .byline { color: #a8b8c6; }
+.page-head .link-list a { color: #fff; }

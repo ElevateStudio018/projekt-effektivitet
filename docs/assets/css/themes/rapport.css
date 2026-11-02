@@ -1,0 +1,99 @@
+/* 7. Rapport – som en genomarbetad rapport.
+   Fast sidomeny, rapportomslag, numrerade kapitel och brödtext i Source Serif 4. */
+
+:root {
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-heading: 'Source Serif 4', Georgia, serif;
+  --font-label: 'Inter', system-ui, sans-serif;
+  --heading-weight: 600;
+  --heading-ls: -0.012em;
+  --heading-lh: 1.12;
+  --fs-body: 1.125rem;
+  --lh-body: 1.7;
+  --fs-h1: clamp(2.3rem, 1.4rem + 3.4vw, 4.2rem);
+  --fs-h2: clamp(1.7rem, 1.25rem + 1.6vw, 2.5rem);
+  --wrap: 1040px;
+
+  --bg: #ffffff;
+  --bg-alt: #f4f6f8;
+  --text: #1d2833;
+  --muted: #56636f;
+  --heading: #10202f;
+  --brand: #144069;
+  --link: #144069;
+  --accent: #f37021;
+  --accent-ink: #b44c0c;
+  --rule: #e0e5ea;
+  --rule-strong: #10202f;
+
+  --header-bg: #f7f8fa;
+  --header-rule: #e0e5ea;
+
+  --dark-bg: #10263d;
+  --dark-text: #c8d4df;
+
+  --footer-bg: #f4f6f8;
+  --footer-text: #4a5763;
+  --footer-heading: #10202f;
+  --footer-link: #10202f;
+  --footer-rule: #dfe4e9;
+}
+
+.site-nav, .button, .text-link, .news-meta, .breadcrumbs, .site-footer, .person-contact, .facts, .field label, .form-note, .situation-kicker, .service-num, .service-more, .step-head, .hero-actions, .header-meta, .byline, .masthead-top { font-family: var(--font-label); }
+.site-nav a { font-size: 0.92rem; }
+.button { font-size: 0.92rem; }
+@media (min-width: 1100px) {
+  [data-header="side"] .site-nav a[aria-current="page"] { color: var(--brand); font-weight: 700; box-shadow: inset 3px 0 0 var(--accent); padding-left: 12px; }
+}
+
+/* Omslag */
+.hero--cover .hero-title { font-weight: 600; max-width: 12em; }
+.hero--cover .hero-kicker { color: #ffb37f; }
+.hero--cover .button { background: var(--accent); border-color: var(--accent); color: #10202f; }
+.hero--cover .button--ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+.cover-index { font-family: var(--font-label); }
+.cover-figure img { filter: saturate(.7); }
+
+/* Kapitelnumrering */
+.section-label { color: var(--muted); }
+.section-label[data-num]::before { content: 'Kapitel ' attr(data-num) '\2002·\2002'; color: var(--accent-ink); }
+.section-head h2 { font-size: var(--fs-h2); }
+.section + .section { border-top: 1px solid var(--rule); }
+
+.situation h3 { font-size: 1.35rem; }
+@media (min-width: 900px) { .situation { grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1.2fr) auto; } }
+.service-link { border-top: 1px solid var(--rule-strong); }
+.service-title { font-size: 1.45rem; }
+
+.feature-figure figcaption::before, .hero-diagram figcaption::before { content: 'Figur 1. '; font-weight: 700; }
+.feature-figure figcaption { font-family: var(--font-label); }
+
+.loop-section { --dark-bg: #f4f6f8; --dark-text: #1d2833; --dark-heading: #10202f; --dark-rule: #dfe4e9; }
+.loop-section .section-label { color: var(--muted); }
+.loop-section .text-link { color: var(--link); }
+.loop-section .loop-diagram { --diagram-line: #10202f; --diagram-label: #10202f; }
+.loop-diagram .ld-label, .loop-diagram .ld-note { font-family: 'Inter', sans-serif; }
+.loop-figure { background: #fff; border: 1px solid var(--rule); padding: 24px; }
+
+/* Nyheter som innehållsförteckning */
+.news-card-img { display: none; }
+.news-grid { gap: 0; }
+@media (min-width: 800px) { .news-grid { grid-template-columns: 1fr; } }
+.news-grid .news-card-link { padding: 18px 0; border-top: 1px solid var(--rule); }
+@media (min-width: 800px) {
+  .news-grid .news-card-body { display: grid; grid-template-columns: 180px minmax(0, 1fr); column-gap: 24px; }
+  .news-grid .news-meta { grid-row: 1 / span 2; flex-direction: column; gap: 2px; }
+  .news-grid .news-title, .news-grid .news-lead { grid-column: 2; }
+}
+.news-featured .news-card-img { display: block; }
+.news-title { font-size: 1.35rem; }
+
+.cta-section { background: var(--bg-alt); }
+.page-head { background: #fff; border-bottom: 1px solid var(--rule); }
+.page-label { color: var(--muted); }
+.prose > p:first-of-type { font-size: 1.15em; }
+.aside-box { border-top: 0; border-left: 3px solid var(--accent); padding: 0 0 0 18px; font-size: 0.95rem; }
+.aside-box .minor-heading { margin-top: 0; }
+.outcome h3, .principle h3 { font-size: 1.2rem; }
+.nav-toggle { font-family: var(--font-label); }
+@media (max-width: 559px) { .cover-index ol { columns: 1; } }

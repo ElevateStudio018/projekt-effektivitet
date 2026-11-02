@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designstilar – Projekteffektivitet</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<style>
+  :root { --ink:#14202b; --muted:#5a6773; --rule:#d9dee3; --bg:#f4f5f6; --navy:#144069; --orange:#F37021; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 'Inter', system-ui, sans-serif; }
+  a { color: var(--navy); }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+  header.top { background:#fff; border-bottom:1px solid var(--rule); }
+  header.top .wrap { display:flex; align-items:center; justify-content:space-between; gap:24px; padding-top:20px; padding-bottom:20px; }
+  header.top img { height:44px; width:auto; }
+  header.top p { margin:0; color:var(--muted); font-size:14px; text-align:right; }
+  .intro { padding: 56px 0 24px; max-width: 760px; }
+  .intro h1 { font: 600 clamp(2rem,4vw,2.75rem)/1.1 'Inter Tight', 'Inter', sans-serif; letter-spacing:-0.02em; margin:0 0 16px; }
+  .intro p { color: var(--muted); margin: 0 0 12px; }
+  .notes { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; margin: 8px 0 48px; }
+  .note { background:#fff; border:1px solid var(--rule); padding:16px 18px; font-size:14px; }
+  .note strong { display:block; margin-bottom:4px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 28px; padding-bottom: 80px; }
+  .card { background:#fff; border:1px solid var(--rule); display:flex; flex-direction:column; }
+  .shot { display:block; aspect-ratio: 16/10; overflow:hidden; border-bottom:1px solid var(--rule); background:#e9ecef; position:relative; }
+  .shot img { width:100%; height:100%; object-fit:cover; object-position: top; display:block; }
+  .shot .mob { position:absolute; right:12px; bottom:12px; width:22%; height:auto; aspect-ratio: 9/19; object-fit:cover; object-position:top; border:3px solid #14202b; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,.25); }
+  .body { padding: 20px 22px 22px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .num { font-size:13px; color:var(--muted); font-variant-numeric: tabular-nums; }
+  .card h2 { margin:0; font: 600 1.5rem/1.15 'Inter Tight','Inter',sans-serif; letter-spacing:-0.01em; }
+  .card p { margin:0; color: var(--muted); font-size: 15px; }
+  .meta { font-size:13px; color:var(--ink); }
+  .swatches { display:flex; gap:6px; }
+  .swatches span { width:28px; height:28px; border:1px solid rgba(0,0,0,.12); }
+  .actions { margin-top:auto; padding-top:8px; display:flex; gap:16px; flex-wrap:wrap; font-size:14px; }
+  .actions a { font-weight:600; }
+  .actions a.primary { background: var(--navy); color:#fff; padding:9px 14px; text-decoration:none; }
+  footer { border-top:1px solid var(--rule); background:#fff; padding:24px 0; font-size:14px; color:var(--muted); }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <img src="assets/logo/logo.svg" alt="Projekteffektivitet" width="574" height="206">
+    <p>Förhandsvisning – ny webbplats<br>Tio designstilar, samma innehåll</p>
+  </div>
+</header>
+<main class="wrap">
+  <section class="intro">
+    <h1>Tio designstilar för projekteffektivitet.se</h1>
+    <p>Varje stil är en komplett webbplats med samma innehåll: startsida, tre tjänstesidor, Loopingmodellen, Om oss, nyheter med 6 artiklar, kontakt, integritetspolicy och 404-sida.</p>
+    <p>Byt stil på vilken sida som helst med väljaren nere till vänster – du hamnar på samma sida i den andra stilen.</p>
+  </section>
+  <div class="notes">
+    <div class="note"><strong>Innehåll</strong>Texter från nuvarande sajt är oförändrade. Nya texter (tjänstesidor, Om oss, artiklar, integritetspolicy) är utkast att granska.</div>
+    <div class="note"><strong>Typsnitt</strong>Alla typsnitt är självhostade (SIL Open Font License) – inga anrop till Google eller andra tredje parter.</div>
+    <div class="note"><strong>Teknik</strong>Statisk HTML och CSS utan ramverk. Ingen cookie-banner behövs: sajten har inga cookies eller spårning.</div>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <a class="shot" href="karna/index.html" aria-label="Öppna stilen Kärna">
+        <img src="screenshots/karna-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/karna-mobile.jpg" alt="" loading="lazy">
+      </a>
+      <div class="body">
+        <span class="num">Stil 1 av 10</span>
+        <h2>Kärna</h2>
+        <p>Varumärket som det är – städat. Marinblått och orange, fotografisk startsida, raka linjer.</p>
+        <p class="meta">Typsnitt: Inter Tight + Inter</p>
+        <div class="swatches" aria-label="Färgpalett"><span style="background:#144069" title="#144069"></span><span style="background:#F37021" title="#F37021"></span><span style="background:#FFFFFF" title="#FFFFFF"></span><span style="background:#F3F5F7" title="#F3F5F7"></span><span style="background:#0E2236" title="#0E2236"></span></div>
+        <div class="actions">
+          <a class="primary" href="karna/index.html">Öppna Kärna</a>
+          <a href="karna/tjanster/projektanalys/index.html">Tjänstesida</a>
+          <a href="karna/nyheter/index.html">Nyheter</a>
+        </div>
+      </div>
+    </article><article class="card">
+      <a class="shot" href="redaktion/index.html" aria-label="Öppna stilen Redaktion">
+        <img src="screenshots/redaktion-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/redaktion-mobile.jpg" alt="" loading="lazy">
+      </a>
+      <div class="body">
+        <span class="num">Stil 2 av 10</span>
+        <h2>Redaktion</h2>
+        <p>Som en fackpublikation. Seriftypografi, spalter, tunna linjer och nyheterna i fokus redan på startsidan.</p>
+        <p class="meta">Typsnitt: Newsreader + Inter</p>
+        <div class="swatches" aria-label="Färgpalett"><span style="background:#1B1B1B" title="#1B1B1B"></span><span style="background:#F7F6F1" title="#F7F6F1"></span><span style="background:#144069" title="#144069"></span><span style="background:#C2551A" title="#C2551A"></span><span style="background:#D9D5C7" title="#D9D5C7"></span></div>
+        <div class="actions">
+          <a class="primary" href="redaktion/index.html">Öppna Redaktion</a>
+          <a href="redaktion/tjanster/projektanalys/index.html">Tjänstesida</a>
+          <a href="redaktion/nyheter/index.html">Nyheter</a>
+        </div>
+      </div>
+    </article><article class="card">
+      <a class="shot" href="rutnat/index.html" aria-label="Öppna stilen Rutnät">
+        <img src="screenshots/rutnat-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/rutnat-mobile.jpg" alt="" loading="lazy">
+      </a>
+      <div class="body">
+        <span class="num">Stil 3 av 10</span>
+        <h2>Rutnät</h2>
+        <p>Schweizisk typografi. Strikt rutnät, stor grotesk, svart och vitt med orange som enda signalfärg.</p>
+        <p class="meta">Typsnitt: Public Sans</p>
+        <div class="swatches" aria-label="Färgpalett"><span style="background:#111111" title="#111111"></span><span style="background:#FFFFFF" title="#FFFFFF"></span><span style="background:#F37021" title="#F37021"></span><span style="background:#EDEDED" title="#EDEDED"></span><span style="background:#144069" title="#144069"></span></div>
+        <div class="actions">
+          <a class="primary" href="rutnat/index.html">Öppna Rutnät</a>
+          <a href="rutnat/tjanster/projektanalys/index.html">Tjänstesida</a>
+          <a href="rutnat/nyheter/index.html">Nyheter</a>
+        </div>
+      </div>
+    </article><article class="card">
+      <a class="shot" href="nordisk/index.html" aria-label="Öppna stilen Nordisk">
+        <img src="screenshots/nordisk-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/nordisk-mobile.jpg" alt="" loading="lazy">
+      </a>
+      <div class="body">
+        <span class="num">Stil 4 av 10</span>
+        <h2>Nordisk</h2>
+        <p>Ljust och lugnt. Varma stentoner, mjuka former och gott om luft – utan att tappa allvaret.</p>
+        <p class="meta">Typsnitt: Manrope</p>
+        <div class="swatches" aria-label="Färgpalett"><span style="background:#F4F1EA" title="#F4F1EA"></span><span style="background:#22303C" title="#22303C"></span><span style="background:#144069" title="#144069"></span><span style="background:#D9692A" title="#D9692A"></span><span style="background:#E6E0D3" title="#E6E0D3"></span></div>
+        <div class="actions">
+          <a class="primary" href="nordisk/index.html">Öppna Nordisk</a>
+          <a href="nordisk/tjanster/projektanalys/index.html">Tjänstesida</a>
+          <a href="nordisk/nyheter/index.html">Nyheter</a>
+        </div>
+      </div>
+    </article><article class="card">
+      <a class="shot" href="natt/index.html" aria-label="Öppna stilen Natt">
+        <img src="screenshots/natt-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/natt-mobile.jpg" alt="" loading="lazy">
+      </a>
+      <div class="body">
+        <span class="num">Stil 5 av 10</span>
+        <h2>Natt</h2>
+        <p>Mörk och exekutiv. Djupt marinblått, IBM Plex och tekniska detaljer i monospace.</p>
+        <p class="meta">Typsnitt: IBM Plex Sans + IBM Plex Mono</p>
+        <div class="swatches" aria-label="Färgpalett"><span style="background:#0B1724" title="#0B1724"></span><span style="background:#13263A" title="#13263A"></span><span style="background:#E6ECF2" title="#E6ECF2"></span><span style="background:#FF9D61" title="#FF9D61"></span><span style="background:#9FB0BE" title="#9FB0BE"></span></div>
+        <div class="actions">
+          <a class="primary" href="natt/index.html">Öppna Natt</a>
+          <a href="natt/tjanster/projektanalys/index.html">Tjänstesida</a>
+          <a href="natt/nyheter/index.html">Nyheter</a>
+        </div>
+      </div>
+    </article><article class="card">
+      <a class="shot" href="ritning/index.html" aria-label="Öppna stilen Ritning">
+        <img src="screenshots/ritning-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/ritning-mobile.jpg" alt="" loading="lazy">
+      </a>
+      <div class="body">
+        <span class="num">Stil 6 av 10</span>
+        <h2>Ritning</h2>
+        <p>Teknisk ritning. Rutpapper, måttlinjer och numrerade avsnitt – projektledning som ingenjörskonst.</p>
+        <p class="meta">Typsnitt: IBM Plex Mono + Inter</p>
+        <div class="swatches" aria-label="Färgpalett"><span style="background:#F2F5F7" title="#F2F5F7"></span><span style="background:#123B60" title="#123B60"></span><span style="background:#F37021" title="#F37021"></span><span style="background:#C9D7E1" title="#C9D7E1"></span><span style="background:#FFFFFF" title="#FFFFFF"></span></div>
+        <div class="actions">
+          <a class="primary" href="ritning/index.html">Öppna Ritning</a>
+          <a href="ritning/tjanster/projektanalys/index.html">Tjänstesida</a>
+          <a href="ritning/nyheter/index.html">Nyheter</a>
+        </div>
+      </div>
+    </article><article class="card">
+      <a class="shot" href="rapport/index.html" aria-label="Öppna stilen Rapport">
+        <img src="screenshots/rapport-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/rapport-mobile.jpg" alt="" loading="lazy">
+      </a>
+      <div class="body">
+        <span class="num">Stil 7 av 10</span>
+        <h2>Rapport</h2>
+        <p>Som en genomarbetad rapport. Fast sidomeny, numrerade kapitel och lättläst brödtext i serif.</p>
+        <p class="meta">Typsnitt: Source Serif 4 + Inter</p>
+        <div class="swatches" aria-label="Färgpalett"><span style="background:#FFFFFF" title="#FFFFFF"></span><span style="background:#1D2833" title="#1D2833"></span><span style="background:#144069" title="#144069"></span><span style="background:#E8EDF1" title="#E8EDF1"></span><span style="background:#F37021" title="#F37021"></span></div>
+        <div class="actions">
+          <a class="primary" href="rapport/index.html">Öppna Rapport</a>
+          <a href="rapport/tjanster/projektanalys/index.html">Tjänstesida</a>
+          <a href="rapport/nyheter/index.html">Nyheter</a>
+        </div>
+      </div>
+    </article><article class="card">
+      <a class="shot" href="signal/index.html" aria-label="Öppna stilen Signal">
+        <img src="screenshots/signal-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/signal-mobile.jpg" alt="" loading="lazy">
+      </a>
+      <div class="body">
+        <span class="num">Stil 8 av 10</span>
+        <h2>Signal</h2>
+        <p>Stark och tydlig. Bred grotesk i versaler, stora färgfält och kraftiga linjer.</p>
+        <p class="meta">Typsnitt: Archivo</p>
+        <div class="swatches" aria-label="Färgpalett"><span style="background:#144069" title="#144069"></span><span style="background:#F37021" title="#F37021"></span><span style="background:#FFFFFF" title="#FFFFFF"></span><span style="background:#0A0F14" title="#0A0F14"></span><span style="background:#E9ECEF" title="#E9ECEF"></span></div>
+        <div class="actions">
+          <a class="primary" href="signal/index.html">Öppna Signal</a>
+          <a href="signal/tjanster/projektanalys/index.html">Tjänstesida</a>
+          <a href="signal/nyheter/index.html">Nyheter</a>
+        </div>
+      </div>
+    </article><article class="card">
+      <a class="shot" href="byra/index.html" aria-label="Öppna stilen Byrå">
+        <img src="screenshots/byra-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/byra-mobile.jpg" alt="" loading="lazy">
+      </a>
+      <div class="body">
+        <span class="num">Stil 9 av 10</span>
+        <h2>Byrå</h2>
+        <p>Den etablerade rådgivningsbyrån. Garamond, centrerad komposition, gräddvitt och marinblått.</p>
+        <p class="meta">Typsnitt: EB Garamond + Inter</p>
+        <div class="swatches" aria-label="Färgpalett"><span style="background:#FAF8F3" title="#FAF8F3"></span><span style="background:#102F4D" title="#102F4D"></span><span style="background:#B5531A" title="#B5531A"></span><span style="background:#E7E1D4" title="#E7E1D4"></span><span style="background:#2B2B2B" title="#2B2B2B"></span></div>
+        <div class="actions">
+          <a class="primary" href="byra/index.html">Öppna Byrå</a>
+          <a href="byra/tjanster/projektanalys/index.html">Tjänstesida</a>
+          <a href="byra/nyheter/index.html">Nyheter</a>
+        </div>
+      </div>
+    </article><article class="card">
+      <a class="shot" href="landskap/index.html" aria-label="Öppna stilen Landskap">
+        <img src="screenshots/landskap-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/landskap-mobile.jpg" alt="" loading="lazy">
+      </a>
+      <div class="body">
+        <span class="num">Stil 10 av 10</span>
+        <h2>Landskap</h2>
+        <p>Vägen som berättelse. Helsidesfotografier, transparent sidhuvud och Fraunces i stora grader.</p>
+        <p class="meta">Typsnitt: Fraunces + Inter</p>
+        <div class="swatches" aria-label="Färgpalett"><span style="background:#FFFFFF" title="#FFFFFF"></span><span style="background:#14202B" title="#14202B"></span><span style="background:#F37021" title="#F37021"></span><span style="background:#EEF0EE" title="#EEF0EE"></span><span style="background:#5B6B5A" title="#5B6B5A"></span></div>
+        <div class="actions">
+          <a class="primary" href="landskap/index.html">Öppna Landskap</a>
+          <a href="landskap/tjanster/projektanalys/index.html">Tjänstesida</a>
+          <a href="landskap/nyheter/index.html">Nyheter</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</main>
+<footer><div class="wrap">© 2026 Projekteffektivitet AB · Förhandsvisning, ej indexerad</div></footer>
+</body>
+</html>

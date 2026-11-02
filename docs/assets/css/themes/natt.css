@@ -1,0 +1,97 @@
+/* 5. Natt – mörk och exekutiv.
+   Djupt marinblått, IBM Plex Sans och tekniska detaljer i Plex Mono. */
+
+:root {
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-heading: var(--font-body);
+  --font-label: 'IBM Plex Mono', ui-monospace, monospace;
+  --heading-weight: 500;
+  --heading-ls: -0.015em;
+  --label-ls: 0.06em;
+  --label-weight: 500;
+  --fs-h1: clamp(2.3rem, 1.4rem + 3.6vw, 4.4rem);
+
+  --bg: #0b1724;
+  --bg-alt: #0f1f30;
+  --surface: #13263a;
+  --text: #c5d1dc;
+  --muted: #8ea0b1;
+  --heading: #f2f6fa;
+  --brand: #9fc4e8;
+  --link: #ffb784;
+  --accent: #ff9d61;
+  --accent-ink: #ff9d61;
+  --rule: rgba(255, 255, 255, .12);
+  --rule-strong: rgba(255, 255, 255, .45);
+  --label-color: #ff9d61;
+
+  --button-bg: #ff9d61;
+  --button-text: #0b1724;
+  --button-bg-hover: #ffb784;
+  --button-radius: 3px;
+  --radius: 4px;
+  --img-radius: 4px;
+
+  --header-bg: #0b1724;
+  --header-text: #e6edf3;
+  --header-rule: rgba(255, 255, 255, .1);
+
+  --dark-bg: #0f1f30;
+  --dark-text: #c5d1dc;
+  --dark-heading: #f2f6fa;
+  --dark-rule: rgba(255, 255, 255, .12);
+
+  --footer-bg: #07111b;
+  --footer-text: #8ea0b1;
+  --footer-rule: rgba(255, 255, 255, .1);
+}
+
+.site-nav a { font-weight: 400; }
+.nav-cta a { font-family: var(--font-label); font-size: 0.85rem; color: #ff9d61; }
+.button { font-family: var(--font-label); font-weight: 500; font-size: 0.9rem; }
+.button--ghost { color: #e6edf3; border-color: rgba(255,255,255,.4); }
+
+.hero--split { padding-block: clamp(56px, 8vw, 120px); }
+.hero-figure { background: #144069; border-radius: var(--img-radius); overflow: hidden; }
+.hero-figure img { mix-blend-mode: luminosity; opacity: .8; aspect-ratio: 4 / 3; }
+.hero-kicker::before { content: '// '; opacity: .6; }
+.section-label::before { content: '// '; opacity: .6; }
+.section-label[data-num]::before { content: '0' attr(data-num) ' // '; }
+
+.situations { border-top-color: rgba(255,255,255,.2); }
+.situation-kicker { font-family: var(--font-label); font-size: 0.8rem; color: var(--muted) !important; font-weight: 400; }
+.situation-num, .service-num, .step-num { font-family: var(--font-label); }
+
+.services-section { background: var(--bg-alt); }
+.service-link { background: var(--surface); border: 1px solid var(--rule); border-top: 2px solid var(--accent); padding: 24px; border-radius: var(--radius); }
+.service-more { color: var(--link); }
+
+.feature-figure img, .news-card-img img, .service-row-img img, .prose-figure img { filter: saturate(.6) brightness(.9); }
+.feature-figure figcaption, .news-meta, .breadcrumbs, .read-time, .byline { font-family: var(--font-label); font-size: 0.8rem; }
+.checklist li { border-color: var(--rule); }
+
+.loop-section { background: var(--bg-alt); border-block: 1px solid var(--rule); }
+.loop-section .section-label { color: #ff9d61; }
+.loop-diagram .ld-label, .loop-diagram .ld-note { font-family: 'IBM Plex Mono', monospace; font-weight: 500; }
+.loop-diagram .ld-node text { fill: #0b1724; }
+
+.principle { border-top-color: rgba(255,255,255,.3); }
+.news-card-link { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+.news-card-img { margin: 0; border-radius: 0; }
+.news-card-body { padding: 20px 22px 24px; }
+.news-featured .news-card-link { background: transparent; border: 0; }
+.news-featured .news-card-body { padding: 0; }
+.news-featured .news-card-img { border-radius: var(--img-radius); }
+
+.cta-section { background: linear-gradient(180deg, var(--bg) 0%, #0f2236 100%); }
+.person-card { background: var(--surface); border-color: var(--rule); }
+.person-contact dt { font-family: var(--font-label); font-size: 0.8rem; }
+
+.page-head { background: var(--bg-alt); border-bottom-color: var(--rule); }
+.aside-box { border-top: 2px solid var(--accent); }
+.contact-form { background: var(--surface); border-color: var(--rule); }
+.field label { color: var(--heading); }
+.field input, .field select, .field textarea { background: #0b1724; border-color: rgba(255,255,255,.25); color: #e6edf3; }
+.form-error { color: #ff8f8f; }
+.outcome { border-left-color: var(--accent); }
+.footer-col h2 { font-family: var(--font-label); }
