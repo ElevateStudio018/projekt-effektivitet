@@ -9,7 +9,7 @@ import { layout } from './layout.mjs';
 const WIDE = /^road_00[123]\.jpg$/;
 const WEBP = { 'bild_projektanalys2_low.jpg': 800, 'bild_projektspecialist_low.jpg': 800, 'bild_projekteffekt_low.jpg': 800,
   'per_mattsson.jpg': 520, 'pjmp-elevate-paraply.jpg': 1600, 'loopingmodellen_overgripande.jpg': 1000 };
-const img = (ctx, file, alt, attrs = '', sizes = '(min-width: 1000px) 600px, 100vw') => {
+const img = (ctx, file, alt, attrs = '', sizes = '(min-width: 800px) 400px, 100vw') => {
   const base = file.replace(/\.jpg$/, '');
   const a = (f) => ctx.asset('img/' + f);
   if (WIDE.test(file)) {
@@ -17,7 +17,7 @@ const img = (ctx, file, alt, attrs = '', sizes = '(min-width: 1000px) 600px, 100
   }
   if (WEBP[file]) {
     const w = WEBP[file];
-    const set = w > 600 ? `${a(base + '-560.webp')} 560w, ${a(base + '.webp')} ${w}w` : `${a(base + '.webp')} ${w}w`;
+    const set = w > 600 ? `${a(base + '-400.webp')} 400w, ${a(base + '-560.webp')} 560w, ${a(base + '.webp')} ${w}w` : `${a(base + '.webp')} ${w}w`;
     return `<img src="${a(base + '.webp')}" srcset="${set}" sizes="${sizes}" alt="${esc(alt)}" ${attrs}>`;
   }
   return `<img src="${a(file)}" alt="${esc(alt)}" ${attrs}>`;
@@ -332,7 +332,7 @@ ${pageHead(ctx, {
     <div class="service-rows">
       ${services.map(
         (s) => html`<article class="service-row" id="${s.id}">
-        <figure class="service-row-img">${img(ctx, s.image, s.imageAlt, 'loading="lazy" width="800" height="533"')}</figure>
+        <figure class="service-row-img">${img(ctx, s.image, s.imageAlt, 'loading="lazy" width="800" height="533"', '(min-width: 900px) 560px, 100vw')}</figure>
         <div class="service-row-body">
           <p class="service-num">${s.number} / 0${services.length}</p>
           <h2>${s.title}</h2>
@@ -370,7 +370,7 @@ ${pageHead(ctx, {
 <section class="section article-section">
   <div class="wrap article-grid">
     <div class="prose">
-      <figure class="prose-figure">${img(ctx, s.image, s.imageAlt, 'width="800" height="533"')}</figure>
+      <figure class="prose-figure">${img(ctx, s.image, s.imageAlt, 'width="800" height="533"', '(min-width: 1000px) 720px, 100vw')}</figure>
       ${s.body.map((p) => html`<p>${p}</p>`)}
     </div>
     <aside class="article-aside">
@@ -538,7 +538,7 @@ export function articlePage(ctx, a) {
   <div class="section article-section">
     <div class="wrap article-grid">
       <div class="prose">
-        ${a.image ? html`<figure class="prose-figure${a.image === a.headImage ? ' is-head-image' : ''}">${img(ctx, a.image, a.imageAlt || '', 'width="1200" height="600"')}</figure>` : ''}
+        ${a.image ? html`<figure class="prose-figure${a.image === a.headImage ? ' is-head-image' : ''}">${img(ctx, a.image, a.imageAlt || '', 'width="1200" height="600"', '(min-width: 1000px) 720px, 100vw')}</figure>` : ''}
         ${a.html(ctx.link)}
       </div>
       <aside class="article-aside">
