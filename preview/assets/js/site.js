@@ -4,7 +4,8 @@
   // Fast sidhuvud: får bakgrund när man har skrollat.
   var hdr = document.querySelector('.site-header');
   var onScroll = function () { if (hdr) hdr.classList.toggle('is-scrolled', window.scrollY > 40); };
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  window.addEventListener('scroll', function () { requestAnimationFrame(onScroll); }, { passive: true });
+  requestAnimationFrame(onScroll);
   var toggle = document.querySelector('.nav-toggle');
   var header = document.querySelector('.site-header');
   if (toggle && header) {
