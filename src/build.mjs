@@ -11,6 +11,7 @@
 // absoluta länkar, canonical-URL:er, sitemap.xml och robots.txt.
 
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { themes } from './themes.mjs';
@@ -83,7 +84,7 @@ function makeContext(theme, pagePath, meta = {}) {
     articles,
     page: { path: pagePath === '404.html' ? '404' : pagePath, ...meta },
     link: (to, query = '') => (relative ? up + to + 'index.html' + query : '/' + to + query),
-    asset: (f) => (preview ? up + '../assets/' + f : single ? up + 'assets/' + f : '/assets/' + f),
+    asset: (f) => (preview ? up + '../assets/' : single ? up + 'assets/' : '/assets/') + (hashed[f] || f),
     themeLink: (id) => up + '../' + id + '/' + file,
     galleryLink: up + '../index.html',
   };
@@ -104,12 +105,23 @@ const ASSETS = path.join(OUT, 'assets');
 copyDir(path.join(SRC, 'assets/img'), path.join(ASSETS, 'img'));
 copyDir(path.join(SRC, 'assets/logo'), path.join(ASSETS, 'logo'));
 copyDir(path.join(SRC, 'assets/fonts'), path.join(ASSETS, 'fonts'));
-copyDir(path.join(SRC, 'scripts'), path.join(ASSETS, 'js'));
-for (const f of ['fonts.css', 'base.css']) write(path.join(ASSETS, 'css', f), fs.readFileSync(path.join(SRC, 'styles', f)));
+// CSS och JS skrivs både med vanligt namn och med innehållshash i filnamnet
+// (t.ex. css/base.3f9a1c2e.css). Sidorna länkar till hash-versionen, så en
+// ändring aldrig serveras från en gammal cache (githack, webbläsare, CDN).
+const hashed = {};
+const emit = (logical, content) => {
+  write(path.join(ASSETS, logical), content);
+  const h = crypto.createHash('sha1').update(content).digest('hex').slice(0, 8);
+  const out = logical.replace(/(\.[a-z]+)$/, `.${h}$1`);
+  write(path.join(ASSETS, out), content);
+  hashed[logical] = out;
+};
+emit('js/site.js', fs.readFileSync(path.join(SRC, 'scripts/site.js')));
+for (const f of ['fonts.css', 'base.css']) emit('css/' + f, fs.readFileSync(path.join(SRC, 'styles', f)));
 const themeList = preview ? themes : themes.filter((t) => t.id === onlyTheme);
 for (const t of themeList) {
   const css = path.join(SRC, 'styles/themes', t.id + '.css');
-  write(path.join(ASSETS, 'css/themes', t.id + '.css'), fs.readFileSync(css));
+  emit('css/themes/' + t.id + '.css', fs.readFileSync(css));
 }
 
 let count = 0;

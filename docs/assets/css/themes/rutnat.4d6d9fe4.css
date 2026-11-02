@@ -1,0 +1,125 @@
+/* 3. Rutnät – schweizisk typografi.
+   Strikt tolvkolumnsrutnät, Public Sans, svart/vitt med orange som signalfärg. */
+
+:root {
+  --font-body: 'Public Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: var(--font-body);
+  --heading-weight: 700;
+  --heading-ls: -0.035em;
+  --heading-lh: 1;
+  --fs-h1: clamp(2.6rem, 0.8rem + 7.2vw, 7.6rem);
+  --fs-h2: clamp(1.9rem, 1.1rem + 3vw, 3.8rem);
+  --fs-body: 1.0625rem;
+
+  --bg: #ffffff;
+  --bg-alt: #f2f2f2;
+  --text: #111111;
+  --muted: #555555;
+  --heading: #111111;
+  --brand: #111111;
+  --link: #111111;
+  --accent: #f37021;
+  --accent-ink: #111111;
+  --rule: #cfcfcf;
+  --rule-strong: #111111;
+  --label-transform: none;
+  --label-ls: 0;
+  --label-weight: 700;
+  --label-color: #111111;
+  --fs-label: 0.9rem;
+
+  --button-bg: #111111;
+  --button-bg-hover: #f37021;
+  --header-rule: #111111;
+
+  --dark-bg: #f37021;
+  --dark-text: #111111;
+  --dark-heading: #111111;
+  --dark-rule: rgba(0, 0, 0, .35);
+
+  --footer-bg: #ffffff;
+  --footer-text: #333333;
+  --footer-heading: #111111;
+  --footer-link: #111111;
+  --footer-rule: #cfcfcf;
+}
+
+.site-header { border-bottom-width: 2px; }
+.site-nav a { font-weight: 600; }
+.site-nav a[aria-current="page"] { border-bottom-color: #111; }
+.button:hover { color: #111; }
+
+/* Sektioner: linje överst, etikett i vänsterkolumn */
+.section { padding-top: clamp(40px, 5vw, 72px); }
+.section + .section { border-top: 0; }
+.section > .wrap { border-top: 2px solid var(--rule-strong); padding-top: 18px; }
+.section-label[data-num]::before { content: attr(data-num) '\2003'; }
+@media (min-width: 900px) {
+  .section-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); max-width: none; }
+  .section-head .section-label { grid-column: 1 / span 3; grid-row: 1 / span 2; }
+  .section-head h2 { grid-column: 4 / -1; max-width: 13em; }
+  .section-head .section-lead { grid-column: 4 / span 6; }
+  .news-head { display: block; }
+  .news-head .text-link { margin-left: calc(25% + var(--gap) / 4); }
+}
+.section-lead { color: #111; }
+
+/* Hero */
+.hero--type { padding-top: clamp(40px, 6vw, 88px); }
+.hero--type .hero-kicker { border-top: 2px solid #111; padding-top: 14px; }
+.hero--type .hero-title { max-width: none; }
+.hero--type .hero-lead { font-size: 1.15rem; }
+.hero-strip { margin-top: clamp(40px, 5vw, 72px); }
+.hero-strip img { filter: grayscale(1) contrast(1.08); height: clamp(200px, 30vw, 460px); }
+
+/* Utgångslägen som tre kolumner med stora siffror */
+.situations { border-top: 0; }
+@media (min-width: 900px) {
+  .situations { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gap); margin-left: calc(25% + var(--gap) / 4); }
+  .situation { grid-template-columns: 1fr; align-content: start; border-bottom: 0; border-top: 1px solid #111; }
+}
+.situation-num { display: block; font-size: 3.2rem; font-weight: 300; line-height: 1; letter-spacing: -0.04em; color: #111; margin-bottom: 18px; }
+.situation-kicker { font-weight: 700; }
+.situation h3 { font-size: 1.6rem; margin: 6px 0 8px; }
+.situation .text-link { margin-top: 12px; }
+
+@media (min-width: 900px) {
+  .service-list, .principles, .news-grid, .outcomes { margin-left: calc(25% + var(--gap) / 4); }
+  .services-section .service-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.service-link { border-top: 1px solid #111; }
+.service-num { font-size: 3.2rem; font-weight: 300; letter-spacing: -0.04em; line-height: 1; color: #111; }
+.service-title { font-size: 1.75rem; margin-top: 16px; }
+.service-more { color: #111; }
+.service-link:hover .service-title { color: var(--accent); text-decoration: none; }
+
+.feature-figure img, .news-card-img img, .service-row-img img, .prose-figure img, .person-img { filter: grayscale(1) contrast(1.05); }
+.news-card-link:hover .news-card-img img { filter: none; }
+.checklist li::before { width: 10px; height: 10px; border: 0; background: var(--accent); transform: none; top: 1.05em; }
+.prose ul li::before { background: #111; }
+
+/* Loopingmodellen på orange fält */
+.loop-section .section-label { color: #111; }
+.loop-section > .wrap { border-top-color: #111; }
+.loop-section .loop-diagram { --diagram-line: #111; --diagram-label: #111; --diagram-accent: #111; }
+.loop-section .step-num { color: #111; }
+.loop-section .text-link { color: #111; }
+
+.principle { border-top: 1px solid #111; }
+.principle h3 { font-size: 1.4rem; }
+.cta-section { background: #fff; }
+.person-card { border: 2px solid #111; }
+
+.page-head { background: #fff; border-bottom: 2px solid #111; }
+.page-head h1 { letter-spacing: -0.04em; font-size: clamp(2.2rem, 1rem + 5vw, 6rem); }
+.page-label { font-weight: 700; }
+.aside-box { border-top: 2px solid #111; }
+.outcome { border-left: 0; border-top: 1px solid #111; padding: 16px 0 0; }
+
+.site-footer { border-top: 2px solid #111; }
+.footer-col h2 { text-transform: none; letter-spacing: 0; font-size: 0.95rem; }
+
+/* Halvbred kolumn: ingen tolvkolumnsrubrik */
+.feature-text .section-head { display: block; }
+.feature-text .section-head h2 { font-size: clamp(1.9rem, 1.2rem + 2.2vw, 3.2rem); }
+.page-head + .section > .wrap, .article-head + .section > .wrap { border-top: 0; padding-top: 0; }

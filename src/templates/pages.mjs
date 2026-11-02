@@ -90,7 +90,7 @@ const heroActions = (ctx) => html`
 // Exempelsamtal i heron. Dekorativt (aria-hidden): samma innehåll finns i
 // sidans vanliga text. Fylls och animeras av site.js.
 const heroChatPanel = (ctx) => html`
-<div class="hero-chat" aria-hidden="true">
+<div class="hero-chat" aria-hidden="true" hidden>
   <div class="hc-head">
     <span class="hc-avatar"><img src="${ctx.asset('logo/mark.svg')}" alt="" width="211" height="206"></span>
     <div><p class="hc-title">${heroChat.title}</p><p class="hc-sub">${heroChat.sub}</p></div>

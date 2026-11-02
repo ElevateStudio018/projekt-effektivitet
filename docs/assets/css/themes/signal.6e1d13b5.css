@@ -1,0 +1,110 @@
+/* 8. Signal – stark och tydlig.
+   Bred Archivo i versaler, stora färgfält och kraftiga linjer. */
+
+:root {
+  --font-body: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: var(--font-body);
+  --heading-weight: 800;
+  --heading-ls: -0.01em;
+  --heading-lh: 0.98;
+  --fs-h1: clamp(2.3rem, 0.9rem + 5.6vw, 6.4rem);
+  --fs-h2: clamp(1.7rem, 1rem + 2.6vw, 3.4rem);
+  --fs-body: 1.0625rem;
+  --label-ls: 0.1em;
+  --label-weight: 800;
+
+  --bg: #ffffff;
+  --bg-alt: #e9ecef;
+  --text: #0a0f14;
+  --muted: #3c4651;
+  --heading: #0a0f14;
+  --brand: #144069;
+  --link: #144069;
+  --accent: #f37021;
+  --accent-ink: #0a0f14;
+  --rule: #0a0f14;
+  --rule-strong: #0a0f14;
+  --label-color: #0a0f14;
+
+  --button-bg: #f37021;
+  --button-text: #0a0f14;
+  --button-bg-hover: #ff8a45;
+  --header-rule: #0a0f14;
+
+  --dark-bg: #f37021;
+  --dark-text: #0a0f14;
+  --dark-heading: #0a0f14;
+  --dark-rule: rgba(10, 15, 20, .35);
+
+  --footer-bg: #144069;
+  --footer-text: #cfdbe6;
+}
+
+h1, h2, .service-title, .hero-title { text-transform: uppercase; font-stretch: 125%; }
+h3 { font-stretch: 112%; font-weight: 750; }
+@media (max-width: 599px) { h1, h2, .service-title, .hero-title { font-stretch: 100%; } }
+.button { text-transform: uppercase; font-weight: 800; letter-spacing: 0.04em; font-stretch: 112%; border-width: 2px; }
+.button--ghost { border-width: 2px; }
+.site-header { border-bottom-width: 4px; }
+.site-nav a { text-transform: uppercase; font-weight: 800; font-size: 0.85rem; letter-spacing: 0.06em; font-stretch: 112%; }
+.site-nav a[aria-current="page"] { border-bottom-color: var(--accent); border-bottom-width: 4px; }
+.section-label::before, .hero-kicker::before { content: ''; display: inline-block; width: 0.8em; height: 0.8em; background: var(--accent); margin-right: 0.6em; vertical-align: -0.05em; }
+
+/* Hero i marinblått fält */
+.hero--type { background: var(--brand); color: #fff; padding-bottom: 0; }
+.hero--type .hero-title { color: #fff; max-width: none; }
+.hero--type .hero-kicker { color: #fff; }
+.hero--type .hero-lead { color: #dfe8f0; }
+.hero--type .button--ghost { color: #fff; }
+.hero--type .button--ghost:hover { background: #fff; color: var(--brand); border-color: #fff; }
+.hero-strip { margin-top: clamp(48px, 6vw, 88px); border-top: 4px solid var(--accent); }
+.hero-strip img { height: clamp(180px, 24vw, 360px); }
+
+.section + .section { border-top: 0; }
+.situations { border-top: 4px solid var(--rule-strong); }
+.situation { border-bottom: 2px solid var(--rule-strong); }
+.situation h3 { font-size: 1.6rem; }
+.situation-num { color: var(--accent); font-weight: 800; }
+
+.services-section { background: var(--bg-alt); }
+.service-link { border-top: 6px solid var(--rule-strong); }
+.service-num { font-size: 2.4rem; font-weight: 800; line-height: 1; color: var(--accent); font-stretch: 125%; }
+.service-title { font-size: 1.5rem; }
+.service-more { color: var(--heading); text-transform: uppercase; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.05em; }
+
+.checklist li { border-color: var(--rule-strong); border-width: 2px; }
+.checklist li::before { width: 12px; height: 12px; border: 0; background: var(--accent); transform: none; top: 1em; }
+
+.loop-section .section-label { color: #0a0f14; }
+.loop-section .section-label::before { background: #0a0f14; }
+.loop-section .loop-diagram { --diagram-line: #0a0f14; --diagram-label: #0a0f14; --diagram-accent: #0a0f14; }
+.loop-section .loop-diagram .ld-loop { stroke-width: 10; }
+.loop-section .step-num { color: #0a0f14; }
+.loop-section .text-link { color: #0a0f14; text-transform: uppercase; }
+.loop-step { border-top: 2px solid #0a0f14; }
+.loop-diagram .ld-label { font-weight: 800; text-transform: uppercase; }
+
+.principles-section { background: var(--brand); color: #dfe8f0; }
+.principles-section h2, .principles-section h3 { color: #fff; }
+.principles-section .section-label { color: #fff; }
+.principle { border-top: 4px solid var(--accent); }
+.principles-section .principle p { color: #dfe8f0; }
+
+.news-title { font-stretch: 112%; font-weight: 800; }
+.news-cat { color: var(--heading); text-transform: uppercase; letter-spacing: 0.06em; }
+
+.cta-section { background: #0a0f14; color: #d3d9df; }
+.cta-section h2 { color: #fff; }
+.person-card { border: 0; border-top: 6px solid var(--accent); }
+
+.page-head { background: var(--brand); color: #dfe8f0; border: 0; }
+.page-head h1 { color: #fff; font-size: clamp(1.75rem, 0.8rem + 4.4vw, 5rem); }
+.page-head .page-lead, .page-head .breadcrumbs, .page-head .news-meta, .page-head .byline { color: #dfe8f0; }
+.page-head .page-label, .page-head .news-cat { color: #fff; }
+.page-head .breadcrumbs a, .page-head .link-list a { color: #fff; }
+.page-label::before { content: ''; display: inline-block; width: 0.8em; height: 0.8em; background: var(--accent); margin-right: 0.6em; }
+.aside-box { border-top: 6px solid var(--rule-strong); }
+.outcome { border-left-width: 6px; }
+.process li { border-top-width: 4px; }
+.field input, .field select, .field textarea { border-width: 2px; }
+.prose h2 { font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.9rem); }

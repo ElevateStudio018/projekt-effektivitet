@@ -1,0 +1,115 @@
+/* 9. Byrå – den etablerade rådgivningsbyrån.
+   EB Garamond, centrerad komposition, gräddvitt och marinblått. */
+
+:root {
+  --font-heading: 'EB Garamond', Garamond, Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --heading-weight: 500;
+  --heading-ls: 0;
+  --heading-lh: 1.12;
+  --fs-h1: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  --fs-h2: clamp(2rem, 1.4rem + 2vw, 3.1rem);
+  --fs-h3: 1.4rem;
+  --fs-body: 1rem;
+  --lh-body: 1.7;
+  --label-transform: none;
+  --label-ls: 0;
+  --label-weight: 400;
+  --fs-label: 1.15rem;
+
+  --bg: #faf8f3;
+  --bg-alt: #f2eee4;
+  --surface: #fffdf8;
+  --text: #2b2b2b;
+  --muted: #625d54;
+  --heading: #102f4d;
+  --brand: #102f4d;
+  --link: #102f4d;
+  --accent: #b5531a;
+  --accent-ink: #a34914;
+  --rule: #e2dbcb;
+  --rule-strong: #102f4d;
+  --label-color: #a34914;
+  --font-label: 'EB Garamond', Georgia, serif;
+
+  --button-bg: #102f4d;
+  --button-bg-hover: #1b4670;
+  --header-bg: #faf8f3;
+  --header-rule: #e2dbcb;
+  --logo-height: 56px;
+
+  --dark-bg: #102f4d;
+  --dark-text: #d8d2c4;
+
+  --footer-bg: #102f4d;
+  --footer-text: #cfc8b8;
+  --footer-rule: rgba(255, 255, 255, .15);
+}
+
+.section-label, .page-label, .hero-kicker { font-style: italic; }
+.site-nav a { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 500; }
+.button { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem; font-weight: 500; padding-inline: 1.8em; }
+.text-link { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 500; font-style: italic; }
+
+.hero--banner .hero-title { font-weight: 400; max-width: 13em; }
+.hero--banner .hero-lead { font-family: var(--font-heading); font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem); line-height: 1.45; color: var(--muted); }
+.hero-banner img { filter: sepia(.15) saturate(.85); }
+
+/* Centrerade sektionsrubriker med ornament */
+.section-head { margin-inline: auto; text-align: center; }
+.section-head h2 { font-weight: 400; }
+.section-head h2::after { content: ''; display: block; width: 56px; height: 1px; background: var(--accent); margin: 22px auto 0; }
+.section-lead { font-family: var(--font-heading); font-size: 1.3rem; line-height: 1.45; }
+.news-head { justify-content: center; text-align: center; flex-direction: column; align-items: center; }
+.section-more { text-align: center; }
+.section + .section { border-top: 3px double var(--rule); }
+
+.situations { border-top: 0; }
+@media (min-width: 900px) {
+  .situations { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .situation { grid-template-columns: 1fr; text-align: center; border-bottom: 0; border-left: 1px solid var(--rule); padding: 8px 32px; justify-items: center; align-content: start; }
+  .situation:first-child { border-left: 0; }
+}
+.situation h3 { font-size: 1.8rem; font-weight: 500; margin: 6px 0; }
+.situation-kicker { font-family: var(--font-heading); font-style: italic; font-weight: 400; font-size: 1.1rem; color: var(--accent-ink) !important; }
+.situation-num { display: none; }
+
+.services-section { background: var(--bg-alt); }
+.service-list { counter-reset: svc; }
+.service-item { counter-increment: svc; }
+.service-link { border-top: 0; text-align: center; align-items: center; padding: 0 12px; }
+.service-num { font-size: 0; }
+.service-num::before { content: counter(svc, upper-roman); font-family: var(--font-heading); font-size: 1.3rem; color: var(--accent-ink); letter-spacing: .1em; }
+.service-title { font-size: 2.1rem; font-weight: 500; }
+.service-more { font-family: var(--font-heading); font-style: italic; font-size: 1.1rem; font-weight: 500; }
+
+.feature-text .lead { font-family: var(--font-heading); font-size: 1.45rem; line-height: 1.4; }
+.feature-figure img { filter: sepia(.15) saturate(.85); }
+.checklist li::before { border-color: var(--accent); }
+
+.loop-section .section-label { color: #e0b48f; }
+.loop-diagram .ld-label, .loop-diagram .ld-note { font-family: 'EB Garamond', serif; font-size: 24px; font-weight: 500; }
+.loop-step h3 { font-size: 1.4rem; font-weight: 500; }
+
+.principle { text-align: center; border-top: 0; }
+.principle h3 { font-size: 1.7rem; font-weight: 500; }
+.principle h3::after { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); margin: 14px auto 0; }
+
+.news-title { font-size: 1.65rem; font-weight: 500; }
+.news-card-img img { filter: sepia(.12) saturate(.85); }
+.cta-section { background: var(--bg-alt); text-align: left; }
+.cta-text h2 { font-weight: 400; }
+.person-card { background: var(--surface); }
+.person-name { font-size: 1.6rem; font-weight: 500; }
+
+.page-head { background: var(--bg); text-align: center; border-bottom: 3px double var(--rule); }
+.page-head h1 { margin-inline: auto; font-weight: 400; }
+.page-head .page-lead { margin-inline: auto; font-family: var(--font-heading); font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.55rem); line-height: 1.45; }
+.breadcrumbs ol, .page-head .news-meta, .link-list { justify-content: center; }
+.prose { font-size: 1.04rem; }
+.prose h2 { font-weight: 500; font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem); }
+.aside-box { border-top: 1px solid var(--rule-strong); }
+.outcome { border-left: 0; text-align: center; }
+.outcome h3 { font-size: 1.6rem; font-weight: 500; }
+.footer-col h2 { font-family: var(--font-body); }
+.site-footer .footer-bottom { justify-content: center; text-align: center; }

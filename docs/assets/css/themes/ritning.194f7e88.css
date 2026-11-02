@@ -1,0 +1,127 @@
+/* 6. Ritning – teknisk ritning.
+   Rutpapper, IBM Plex Mono i rubriker, numrerade avsnitt och ritningshuvud i sidfoten. */
+
+:root {
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-heading: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-label: 'IBM Plex Mono', ui-monospace, monospace;
+  --heading-weight: 500;
+  --heading-ls: -0.03em;
+  --heading-lh: 1.12;
+  --fs-h1: clamp(2rem, 1.2rem + 3.2vw, 3.7rem);
+  --fs-h2: clamp(1.55rem, 1.1rem + 1.6vw, 2.3rem);
+  --fs-body: 1rem;
+  --label-ls: 0.08em;
+  --label-weight: 500;
+
+  --bg: #f2f5f7;
+  --bg-alt: #ffffff;
+  --surface: #ffffff;
+  --text: #1f3347;
+  --muted: #4d6478;
+  --heading: #123b60;
+  --brand: #123b60;
+  --link: #123b60;
+  --accent: #f37021;
+  --accent-ink: #b44c0c;
+  --rule: #c9d7e1;
+  --rule-strong: #123b60;
+  --label-color: #b44c0c;
+
+  --button-bg: #123b60;
+  --button-bg-hover: #0b2a47;
+  --header-bg: #ffffff;
+  --header-rule: #123b60;
+
+  --dark-bg: #123b60;
+  --dark-text: #d2e0eb;
+  --dark-heading: #ffffff;
+  --dark-rule: rgba(255, 255, 255, .25);
+
+  --footer-bg: #ffffff;
+  --footer-text: #1f3347;
+  --footer-heading: #123b60;
+  --footer-link: #123b60;
+  --footer-rule: #123b60;
+  --grid: rgba(18, 59, 96, .07);
+}
+
+body {
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.site-nav a, .button, .text-link, .news-meta, .breadcrumbs, .service-more, .step-head, .minor-heading { font-family: var(--font-label); }
+.site-nav a { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.button { text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.82rem; font-weight: 500; }
+.text-link { font-size: 0.9rem; font-weight: 500; }
+
+.section-label[data-num]::before { content: '§ ' attr(data-num) '\2002'; color: var(--heading); }
+.section + .section { border-top: 1px dashed var(--rule-strong); }
+
+.hero--diagram { border-bottom: 1px solid var(--rule-strong); }
+.hero-diagram { background: #fff; border: 1px solid var(--rule-strong); padding: 24px; position: relative; }
+.hero-diagram::before, .hero-diagram::after { content: ''; position: absolute; width: 14px; height: 14px; border: 2px solid var(--accent); }
+.hero-diagram::before { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+.hero-diagram::after { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+.hero-diagram figcaption { font-family: var(--font-label); border-top: 1px solid var(--rule); padding-top: 10px; margin-top: 16px; }
+.loop-diagram .ld-road, .loop-diagram .ld-loop { stroke-width: 3; }
+.loop-diagram .ld-loop--next { stroke-dasharray: 8 6; opacity: 1; }
+.loop-diagram { --diagram-line: #123b60; --diagram-label: #123b60; }
+.loop-diagram .ld-label, .loop-diagram .ld-note { font-family: 'IBM Plex Mono', monospace; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+.loop-diagram .ld-node circle { fill: #fff; stroke: var(--accent); stroke-width: 3; }
+.loop-diagram .ld-node text { fill: #123b60; font-family: 'IBM Plex Mono', monospace; }
+
+/* Paneler med ram */
+.situations { border-top: 0; gap: 16px; }
+@media (min-width: 900px) {
+  .situations { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .situation { grid-template-columns: 1fr; align-content: start; }
+}
+.situation { background: #fff; border: 1px solid var(--rule-strong); padding: 24px; gap: 8px; }
+.situation h3 { font-size: 1.3rem; }
+.situation-kicker { font-family: var(--font-label); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: .06em; }
+.service-link { background: #fff; border: 1px solid var(--rule-strong); border-top-width: 4px; padding: 24px; }
+.service-title { font-size: 1.4rem; }
+.service-num, .situation-num { font-family: var(--font-label); }
+.feature-figure, .news-card-img, .service-row-img, .prose-figure { border: 1px solid var(--rule-strong); padding: 6px; background: #fff; }
+.feature-figure img, .news-card-img img, .service-row-img img, .prose-figure img { filter: saturate(.55); }
+.feature-figure figcaption { font-family: var(--font-label); }
+.feature-figure figcaption::before { content: 'Fig. 2 – '; }
+
+.loop-section {
+  background-color: var(--dark-bg);
+  background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.loop-section .section-label { color: #ffb37f; }
+.loop-section .section-label[data-num]::before { color: #fff; }
+.loop-section .loop-diagram { --diagram-line: #fff; --diagram-label: #fff; }
+.loop-section .loop-diagram .ld-node circle { fill: #123b60; }
+.loop-section .loop-diagram .ld-node text { fill: #fff; }
+
+.principle { background: #fff; border: 1px solid var(--rule-strong); padding: 20px 22px; }
+.news-card-link { background: #fff; border: 1px solid var(--rule-strong); padding: 10px 10px 20px; }
+.news-card-body { padding: 0 8px; }
+.news-title { font-size: 1.15rem; }
+.cta-section { background: transparent; }
+.person-card { border-color: var(--rule-strong); }
+.person-img { filter: saturate(.6); }
+
+.page-head { background: #fff; border-bottom: 1px solid var(--rule-strong); }
+.page-label { font-family: var(--font-label); }
+.aside-box { background: #fff; border: 1px solid var(--rule-strong); padding: 4px 20px 20px; }
+.contact-form { border-color: var(--rule-strong); }
+.outcome { background: #fff; border: 1px solid var(--rule-strong); border-left-width: 4px; border-left-color: var(--accent); padding: 18px 20px; }
+.process li { background: #fff; border: 1px solid var(--rule-strong); padding: 18px; }
+.prose ul li::before { width: 10px; height: 2px; top: 0.8em; }
+
+/* Sidfot som ritningshuvud */
+.site-footer { border-top: 2px solid var(--rule-strong); background: #fff; }
+@media (min-width: 1000px) {
+  .footer-grid { gap: 0; padding-bottom: 0; }
+  .footer-grid > * { border: 1px solid var(--rule-strong); border-right: 0; padding: 20px 22px; }
+  .footer-grid > :last-child { border-right: 1px solid var(--rule-strong); }
+}
+.footer-col h2 { font-family: var(--font-label); }
+.footer-bottom { font-family: var(--font-label); border-top: 0; }
