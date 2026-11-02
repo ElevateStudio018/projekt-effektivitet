@@ -59,7 +59,7 @@ const personCard = (ctx, { heading = false } = {}) => html`
 </div>`;
 
 // Stilar med footerFilm visar filmen (med samma text och knapp) ovanför sidfoten i stället.
-const ctaBlock = (ctx) => ctx.theme.footerFilm ? '' : html`
+const ctaBlock = (ctx) => ctx.theme.footerFilm && ctx.page.path === '' ? '' : html`
 <section class="section cta-section" id="kontakt" aria-labelledby="cta-title">
   <div class="wrap cta-grid cta-grid--solo">
     <div class="cta-text">
@@ -182,9 +182,7 @@ const heroes = {
       <ol>
         <li><a href="#utgangslagen">Utgångslägen</a></li>
         <li><a href="#tjanster">Tjänster</a></li>
-        <li><a href="#projektanalys">Projektanalys</a></li>
         <li><a href="#loopingmodellen">Loopingmodellen</a></li>
-        <li><a href="#principer">Principer</a></li>
         <li><a href="#nyheter">Nyheter</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ol>
@@ -246,22 +244,6 @@ ${heroes[ctx.theme.hero](ctx)}
   </div>
 </section>
 
-<section class="section feature-section" id="projektanalys">
-  <div class="wrap feature-grid">
-    <figure class="feature-figure">
-      ${img(ctx, home.feature.image, home.feature.imageAlt, 'loading="lazy" width="800" height="533"')}
-      <figcaption>${home.feature.caption}</figcaption>
-    </figure>
-    <div class="feature-text">
-      ${sectionHead({ label: home.feature.kicker, title: home.feature.title, num: 3 })}
-      <p class="lead">${home.feature.lead}</p>
-      <p>${home.feature.text}</p>
-      <ul class="checklist">${home.feature.points.map((p) => html`<li>${p}</li>`)}</ul>
-      ${textLink(ctx.link('tjanster/projektanalys/'), 'Läs om projektanalys')}
-    </div>
-  </div>
-</section>
-
 <section class="section loop-section" id="loopingmodellen">
   <div class="wrap">
     ${sectionHead({ label: 'Loopingmodellen', title: home.loopTitle, lead: home.loopLead, num: 4 })}
@@ -278,15 +260,6 @@ ${heroes[ctx.theme.hero](ctx)}
       </ol>
     </div>
     <p class="section-more">${textLink(ctx.link('loopingmodellen/'), 'Fördjupa dig i modellen')}</p>
-  </div>
-</section>
-
-<section class="section principles-section" id="principer">
-  <div class="wrap">
-    ${sectionHead({ label: 'Varför Projekteffektivitet', title: home.principlesTitle, num: 5 })}
-    <ul class="principles">
-      ${principles.map((p) => html`<li class="principle"><h3>${p.title}</h3><p>${p.text}</p></li>`)}
-    </ul>
   </div>
 </section>
 
@@ -354,22 +327,6 @@ ${pageHead(ctx, {
   </div>
 </section>
 
-<section class="section process-section">
-  <div class="wrap">
-    ${sectionHead({
-      label: 'Arbetssätt',
-      title: 'Så börjar ett uppdrag',
-      lead: 'Varje uppdrag utgår från projektets nuläge och den effekt det ska ge i verksamheten.',
-    })}
-    <ol class="process">
-      <li><h3>Första samtal</h3><p>Vi ringar in behovet, möjliga vägval och ett klokt nästa steg.</p></li>
-      <li><h3>Avgränsning</h3><p>Uppdragets mål, omfattning och förväntad effekt formuleras och beslutas.</p></li>
-      <li><h3>Genomförande</h3><p>Arbetet genomförs med tydligt ansvar och löpande avstämning.</p></li>
-      <li><h3>Uppföljning</h3><p>Resultatet följs upp mot den effekt som var målet.</p></li>
-    </ol>
-  </div>
-</section>
-
 ${ctaBlock(ctx)}`;
   return layout(ctx, {
     title: 'Tjänster',
@@ -408,15 +365,6 @@ ${pageHead(ctx, {
         <p><a class="button" href="${ctx.link('kontakt/', '?amne=' + s.id)}">Kontakta oss</a></p>
       </div>
     </aside>
-  </div>
-</section>
-
-<section class="section outcomes-section">
-  <div class="wrap">
-    ${sectionHead({ label: 'Resultat', title: 'Vad insatsen leder till' })}
-    <ul class="outcomes">
-      ${s.outcomes.map(([t, d]) => html`<li class="outcome"><h3>${t}</h3><p>${d}</p></li>`)}
-    </ul>
   </div>
 </section>
 
@@ -622,13 +570,14 @@ ${pageHead(ctx, { trail: [['Kontakt', 'kontakt/']], label: 'Kontakta oss', title
         <div><dt>Webb</dt><dd>${site.web}</dd></div>
       </dl>
     </div>
-    <form class="contact-form" data-mailto="${site.email}" novalidate>
+    <form class="contact-form" action="https://formsubmit.co/${site.email}" method="POST" data-ajax="https://formsubmit.co/ajax/${site.email}" data-mailto="${site.email}" novalidate>
       <h2>Skriv till oss</h2>
-      <p class="form-note">Formuläret öppnar ditt e-postprogram med meddelandet ifyllt. Inget skickas förrän du själv skickar e-postmeddelandet.</p>
+      <p class="form-note">Meddelandet skickas direkt till oss. Vi svarar så snart vi kan.</p>
+      <input type="hidden" name="_subject" value="Förfrågan via projekteffektivitet.se"><input type="hidden" name="_template" value="table"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="field"><label for="f-name">Namn</label><input id="f-name" name="namn" autocomplete="name" required></div>
       <div class="field"><label for="f-org">Organisation</label><input id="f-org" name="organisation" autocomplete="organization"></div>
       <div class="field-row">
-        <div class="field"><label for="f-email">E-post</label><input id="f-email" name="epost" type="email" autocomplete="email"></div>
+        <div class="field"><label for="f-email">E-post</label><input id="f-email" name="epost" type="email" autocomplete="email" required></div>
         <div class="field"><label for="f-phone">Telefon</label><input id="f-phone" name="telefon" type="tel" autocomplete="tel"></div>
       </div>
       <div class="field"><label for="f-topic">Ämne</label>
@@ -637,8 +586,9 @@ ${pageHead(ctx, { trail: [['Kontakt', 'kontakt/']], label: 'Kontakta oss', title
         </select>
       </div>
       <div class="field"><label for="f-msg">Beskriv kort projektet och läget</label><textarea id="f-msg" name="meddelande" rows="6" required></textarea></div>
-      <p class="form-error" role="alert" hidden>Fyll i namn och meddelande.</p>
-      <p><button class="button" type="submit">Skapa e-postmeddelande</button></p>
+      <p class="form-error" role="alert" hidden>Fyll i namn, e-post och meddelande.</p>
+      <p class="form-ok" role="status" hidden>Tack! Ditt meddelande är skickat – vi hör av oss.</p>
+      <p><button class="button" type="submit">Skicka meddelande</button></p>
     </form>
   </div>
 </section>`;

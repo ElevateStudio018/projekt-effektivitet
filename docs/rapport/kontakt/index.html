@@ -16,7 +16,7 @@
 <link rel="icon" type="image/png" href="../../assets/logo/favicon.png">
 <link rel="preload" href="../../assets/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/css/fonts.a2335c1b.css">
-<link rel="stylesheet" href="../../assets/css/base.cde13a9b.css">
+<link rel="stylesheet" href="../../assets/css/base.db55d869.css">
 <link rel="stylesheet" href="../../assets/css/themes/rapport.76230eed.css">
 <script>document.documentElement.classList.replace('no-js','js')</script>
 
@@ -88,13 +88,14 @@
         <div><dt>Webb</dt><dd>www.projekteffektivitet.se</dd></div>
       </dl>
     </div>
-    <form class="contact-form" data-mailto="per.mattsson@projekteffektivitet.se" novalidate>
+    <form class="contact-form" action="https://formsubmit.co/per.mattsson@projekteffektivitet.se" method="POST" data-ajax="https://formsubmit.co/ajax/per.mattsson@projekteffektivitet.se" data-mailto="per.mattsson@projekteffektivitet.se" novalidate>
       <h2>Skriv till oss</h2>
-      <p class="form-note">Formuläret öppnar ditt e-postprogram med meddelandet ifyllt. Inget skickas förrän du själv skickar e-postmeddelandet.</p>
+      <p class="form-note">Meddelandet skickas direkt till oss. Vi svarar så snart vi kan.</p>
+      <input type="hidden" name="_subject" value="Förfrågan via projekteffektivitet.se"><input type="hidden" name="_template" value="table"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="field"><label for="f-name">Namn</label><input id="f-name" name="namn" autocomplete="name" required></div>
       <div class="field"><label for="f-org">Organisation</label><input id="f-org" name="organisation" autocomplete="organization"></div>
       <div class="field-row">
-        <div class="field"><label for="f-email">E-post</label><input id="f-email" name="epost" type="email" autocomplete="email"></div>
+        <div class="field"><label for="f-email">E-post</label><input id="f-email" name="epost" type="email" autocomplete="email" required></div>
         <div class="field"><label for="f-phone">Telefon</label><input id="f-phone" name="telefon" type="tel" autocomplete="tel"></div>
       </div>
       <div class="field"><label for="f-topic">Ämne</label>
@@ -103,8 +104,9 @@
         </select>
       </div>
       <div class="field"><label for="f-msg">Beskriv kort projektet och läget</label><textarea id="f-msg" name="meddelande" rows="6" required></textarea></div>
-      <p class="form-error" role="alert" hidden>Fyll i namn och meddelande.</p>
-      <p><button class="button" type="submit">Skapa e-postmeddelande</button></p>
+      <p class="form-error" role="alert" hidden>Fyll i namn, e-post och meddelande.</p>
+      <p class="form-ok" role="status" hidden>Tack! Ditt meddelande är skickat – vi hör av oss.</p>
+      <p><button class="button" type="submit">Skicka meddelande</button></p>
     </form>
   </div>
 </section>
@@ -159,6 +161,6 @@
   <a class="ss-step" href="../../signal/kontakt/index.html" title="Nästa: Signal" aria-label="Nästa stil: Signal">›</a>
   <a class="ss-all" href="../../index.html">Alla stilar</a>
 </div>
-<script src="../../assets/js/site.e46baaac.js" defer></script>
+<script src="../../assets/js/site.e8589a2e.js" defer></script>
 </body>
 </html>

@@ -30,29 +30,30 @@
   var select = form.querySelector('[name="amne"]');
   if (topic && select && select.querySelector('option[value="' + topic + '"]')) select.value = topic;
 
+  // Skickar via FormSubmit (fungerar på alla statiska webbhotell). Om det
+  // misslyckas öppnas e-postprogrammet med meddelandet ifyllt i stället.
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var get = function (n) { return (form.elements[n] && form.elements[n].value || '').trim(); };
     var error = form.querySelector('.form-error');
-    if (!get('namn') || !get('meddelande')) {
-      error.hidden = false;
-      return;
-    }
+    var ok = form.querySelector('.form-ok');
+    var button = form.querySelector('button[type="submit"]');
+    if (!get('namn') || !get('meddelande') || !/.+@.+\..+/.test(get('epost'))) { error.hidden = false; return; }
     error.hidden = true;
-    var topicLabel = select.value ? select.options[select.selectedIndex].text : '';
-    var subject = 'Förfrågan' + (topicLabel ? ': ' + topicLabel : '') + (get('organisation') ? ' – ' + get('organisation') : '');
-    var lines = [
-      get('meddelande'),
-      '',
-      '--',
-      get('namn'),
-      get('organisation'),
-      get('epost'),
-      get('telefon'),
-    ].filter(function (l, i) { return i < 3 || l; });
-    location.href = 'mailto:' + form.getAttribute('data-mailto') +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(lines.join('\n'));
+    var topicLabel = select.value ? select.options[select.selectedIndex].text : 'Allmän förfrågan';
+    var subject = 'Förfrågan: ' + topicLabel + (get('organisation') ? ' – ' + get('organisation') : '');
+    var mailto = function () {
+      var body = [get('meddelande'), '', '--', get('namn'), get('organisation'), get('epost'), get('telefon')].join('\n');
+      location.href = 'mailto:' + form.getAttribute('data-mailto') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    };
+    var data = new FormData(form);
+    data.set('_subject', subject);
+    data.set('amne', topicLabel);
+    button.disabled = true; button.textContent = 'Skickar …';
+    fetch(form.getAttribute('data-ajax'), { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function () { form.reset(); ok.hidden = false; button.textContent = 'Skickat'; })
+      .catch(function () { button.disabled = false; button.textContent = 'Skicka meddelande'; mailto(); });
   });
 })();
 

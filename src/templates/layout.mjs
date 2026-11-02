@@ -47,7 +47,7 @@ function header(ctx) {
 </header>`;
 }
 
-// Reklamfilmen ovanför sidfoten (stilar med footerFilm). Ersätter kontaktpanelen.
+// Reklamfilmen ovanför sidfoten på startsidan (stilar med footerFilm). Ersätter kontaktpanelen där.
 // Filmen laddas först när besökaren närmar sig den och spelas tyst en gång
 // medan den syns (se site.js). Stående version på smal skärm.
 export function filmBlock(ctx) {
@@ -174,7 +174,7 @@ ${header(ctx)}
 <main id="main">
 ${body}
 </main>
-${ctx.theme.footerFilm && ctx.page.path !== '404' ? filmBlock(ctx) : ''}
+${ctx.theme.footerFilm && ctx.page.path === '' ? filmBlock(ctx) : ''}
 ${footer(ctx)}
 </div>
 ${styleSwitcher(ctx)}

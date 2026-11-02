@@ -240,7 +240,7 @@ export const privacy = {
   sections: [
     ['Personuppgiftsansvarig', 'Projekteffektivitet AB, Uppsala, är personuppgiftsansvarig för de uppgifter som beskrivs här. Frågor skickas till per.mattsson@projekteffektivitet.se.'],
     ['När du kontaktar oss', 'När du mejlar eller ringer oss behandlar vi de uppgifter du själv lämnar – till exempel namn, organisation, e-postadress, telefonnummer och innehållet i ditt meddelande – för att kunna besvara din förfrågan. Den rättsliga grunden är vårt berättigade intresse av att hantera förfrågningar. Uppgifterna sparas så länge dialogen pågår och därefter så länge det krävs enligt lag, till exempel bokföringslagen om ett uppdrag blir av.'],
-    ['Kontaktformuläret', 'Kontaktformuläret på webbplatsen skickar inga uppgifter till någon server. Det öppnar ditt eget e-postprogram med meddelandet ifyllt, och ingenting skickas förrän du själv skickar e-postmeddelandet.'],
+    ['Kontaktformuläret', 'Det du skriver i kontaktformuläret – namn, organisation, e-post, telefon och meddelande – skickas via tjänsten FormSubmit (formsubmit.co) till vår e-post. FormSubmit vidarebefordrar meddelandet och sparar det inte längre än nödvändigt för leveransen. Vi använder uppgifterna bara för att svara dig.'],
     ['Cookies och statistik', 'Webbplatsen använder inga cookies och ingen besöksstatistik eller spårning. Typsnitt och bilder levereras från webbplatsen själv, inte från tredje part.'],
     ['Dina rättigheter', 'Du har rätt att begära information om, rättelse av och radering av dina personuppgifter, samt att invända mot behandlingen. Du kan också lämna klagomål till Integritetsskyddsmyndigheten (IMY).'],
   ],
