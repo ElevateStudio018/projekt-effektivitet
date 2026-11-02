@@ -194,6 +194,36 @@ export const loop = {
   ],
 };
 
+// ------------------------------------------------- Chatt i startsidans hero
+// Animerat exempelsamtal bredvid rubriken (stilar med heroChat: true).
+// Alla svar är webbplatsens egna formuleringar.
+export const heroChat = {
+  title: 'Fråga Projekteffektivitet',
+  sub: 'Projektledning, projektanalys och projekteffekt',
+  greeting: 'Hej! Vad behöver ert projekt just nu?',
+  chips: ['Projektet har stannat av', 'Vi behöver en projektledare', 'Vi vill bli bättre på projekt'],
+  scenarios: [
+    {
+      chip: 0,
+      answer: 'Då börjar vi med en oberoende projektanalys. Den ger er:',
+      list: ['Tydlig bild av nuläge och orsaker', 'Prioriterade åtgärder och beslut', 'En genomförbar väg framåt'],
+    },
+    {
+      chip: 1,
+      answer: 'Då kan en projektspecialist skapa struktur, tempo och fokus i ert projekt:',
+      list: ['Tydliga mål, roller och beslutsvägar', 'En plan som går att följa – och följa upp', 'Prioriteringar som utgår från effekten'],
+    },
+    {
+      chip: 2,
+      answer: 'Loopingmodellen gör förbättringen greppbar – en loop i taget:',
+      list: ['Besluta', 'Genomföra', 'Kontrollera', 'Slutföra'],
+    },
+  ],
+  question: 'Hur kommer vi igång?',
+  reply: 'Ett första samtal räcker för att ringa in behovet, möjliga vägval och ett klokt nästa steg.',
+  cta: 'Boka ett första samtal',
+};
+
 // ----------------------------------------------------------------- Om oss
 // UTKAST – nyskriven sida. Bygger enbart på uppgifter från nuvarande sajt.
 export const about = {

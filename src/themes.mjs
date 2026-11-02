@@ -120,6 +120,7 @@ export const themes = [
     id: 'landskap',
     name: 'Landskap',
     chosen: true,
+    heroChat: true,
     summary: 'Vägen som berättelse. Helsidesfotografier och transparent sidhuvud, med Nordisks rundade hörn, pillerknappar och mjuka kort. Poppins genomgående.',
     fonts: ['Poppins'],
     palette: ['#F4F1EA', '#1D2B36', '#F37021', '#FBFAF6', '#1F2E39'],

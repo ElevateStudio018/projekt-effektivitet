@@ -1,5 +1,5 @@
 import { html, esc, formatDate, arrow } from '../lib/html.mjs';
-import { site, services, home, principles, loop, about, contact, privacy } from '../content/site.mjs';
+import { site, services, home, principles, loop, about, contact, privacy, heroChat } from '../content/site.mjs';
 import { loopDiagram } from './diagram.mjs';
 import { layout } from './layout.mjs';
 
@@ -87,17 +87,35 @@ const heroActions = (ctx) => html`
   <a class="button button--ghost" href="${ctx.link('tjanster/')}">Våra tjänster</a>
 </p>`;
 
+// Exempelsamtal i heron. Dekorativt (aria-hidden): samma innehåll finns i
+// sidans vanliga text. Fylls och animeras av site.js.
+const heroChatPanel = (ctx) => html`
+<div class="hero-chat" aria-hidden="true">
+  <div class="hc-head">
+    <span class="hc-avatar"><img src="${ctx.asset('logo/mark.svg')}" alt="" width="211" height="206"></span>
+    <div><p class="hc-title">${heroChat.title}</p><p class="hc-sub">${heroChat.sub}</p></div>
+    <span class="hc-online"><i></i>${site.city}</span>
+  </div>
+  <div class="hc-log"></div>
+  <div class="hc-chips"></div>
+  <div class="hc-input"><span class="hc-field"><span class="hc-ph">Skriv en fråga …</span><span class="hc-typed"></span></span><span class="hc-send"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></div>
+  <script type="application/json" class="hc-data">${JSON.stringify({ ...heroChat, avatar: ctx.asset('logo/mark.svg') }).replace(/</g, '\\u003c')}</script>
+</div>`;
+
 // ------------------------------------------------------------ Hero-varianter
 
 const heroes = {
   photo: (ctx) => html`
-<section class="hero hero--photo">
+<section class="hero hero--photo${ctx.theme.heroChat ? ' has-chat' : ''}">
   ${img(ctx, ctx.theme.heroImage, '', 'class="hero-media" width="1923" height="600" fetchpriority="high"')}
   <div class="wrap hero-inner">
-    <p class="hero-kicker">${site.name}</p>
-    <h1 class="hero-title">${home.heroTitle}</h1>
-    <p class="hero-lead">${home.heroLead}</p>
-    ${heroActions(ctx)}
+    <div class="hero-copy">
+      <p class="hero-kicker">${site.name}</p>
+      <h1 class="hero-title">${home.heroTitle}</h1>
+      <p class="hero-lead">${home.heroLead}</p>
+      ${heroActions(ctx)}
+    </div>
+    ${ctx.theme.heroChat ? heroChatPanel(ctx) : ''}
   </div>
 </section>`,
 
