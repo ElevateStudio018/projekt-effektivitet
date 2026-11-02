@@ -86,6 +86,16 @@ npm run screenshots
 
 `check` letar trasiga länkar och bilder, horisontell scroll på fem skärmbredder och JavaScript-fel.
 
+## Reklamfilm
+
+`film/` innehåller en 22 sekunder lång reklamfilm i webbplatsens stil, berättad som ett
+chattsamtal, i två format: `projekteffektivitet-reklamfilm-16x9.mp4` (1920×1080) och
+`projekteffektivitet-reklamfilm-9x16.mp4` (1080×1920). Visa dem i `film/index.html`.
+
+Filmen är en HTML-animation (`film/kalla/film.html`) som renderas bildruta för bildruta.
+Ändra texter eller tider där och rendera om med `node film/render.mjs` (kräver Playwright och ffmpeg).
+Öppnad direkt i webbläsaren spelas animationen upp i realtid.
+
 ## Struktur
 
 ```

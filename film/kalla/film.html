@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<title>Projekteffektivitet – reklamfilm</title>
+<!--
+  Reklamfilm i webbplatsens stil (Landskap + Poppins), berättad som ett chattsamtal.
+  Animationen styrs helt av window.render(t) där t är tid i sekunder, så att
+  film/render.mjs kan rendera bildruta för bildruta.
+  Format väljs med ?format=16x9 (1920×1080) eller ?format=9x16 (1080×1920).
+  Öppnad direkt i webbläsaren spelas filmen upp i realtid.
+-->
+<style>
+  @font-face { font-family: Poppins; font-weight: 400; src: url(../../src/assets/fonts/poppins-400.woff2) format('woff2'); }
+  @font-face { font-family: Poppins; font-weight: 500; src: url(../../src/assets/fonts/poppins-500.woff2) format('woff2'); }
+  @font-face { font-family: Poppins; font-weight: 600; src: url(../../src/assets/fonts/poppins-600.woff2) format('woff2'); }
+  :root { --navy: #1d2b36; --orange: #f37021; --stone: #f4f1ea; --surface: #fbfaf6; --muted: #5f6b73; --rule: #e4ddcf; --peach: #ffc29a; --shade: 10, 18, 26; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow: hidden; background: #0e1821; }
+  body { font-family: Poppins, system-ui, sans-serif; color: var(--navy); position: relative; -webkit-font-smoothing: antialiased; }
+  body.f169 { width: 1920px; height: 1080px; }
+  body.f916 { width: 1080px; height: 1920px; }
+
+  /* ---------- Bakgrund */
+  .bg { position: absolute; inset: 0; overflow: hidden; }
+  .bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 60% 50%; }
+  .f169 .bg img { filter: blur(1.5px); }
+  .bg .shade { position: absolute; inset: 0; }
+  .f169 .bg .shade { background: linear-gradient(90deg, rgba(var(--shade), .88) 0%, rgba(var(--shade), .62) 48%, rgba(var(--shade), .35) 100%); }
+  .f916 .bg { height: 780px; }
+  .f916 .bg .shade { background: linear-gradient(0deg, rgba(var(--shade), .82) 0%, rgba(var(--shade), .45) 60%, rgba(var(--shade), .55) 100%); }
+  .f916 .stone { position: absolute; left: 0; right: 0; top: 780px; bottom: 0; background: var(--stone); }
+  .endshade { position: absolute; inset: 0; background: #121c25; opacity: 0; }
+  .endbg { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+  .endbg img { width: 100%; height: 100%; object-fit: cover; filter: blur(2px); }
+  .endbg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(70% 70% at 50% 45%, rgba(var(--shade), .7), rgba(var(--shade), .92)); }
+
+  /* ---------- Logotyp och rubriker */
+  .logo { position: absolute; height: 64px; width: auto; }
+  .f169 .logo { left: 96px; top: 72px; }
+  .f916 .logo { left: 64px; top: 72px; height: 58px; }
+  .heads { position: absolute; color: #fff; }
+  .f169 .heads { left: 96px; top: 330px; width: 860px; }
+  .f916 .heads { left: 64px; top: 300px; width: 950px; }
+  .head { position: absolute; left: 0; top: 0; width: 100%; }
+  .kicker { color: var(--peach); font-weight: 500; font-size: 26px; letter-spacing: .01em; margin-bottom: 24px; }
+  .head h1 { font-weight: 500; letter-spacing: -0.03em; line-height: 1.06; }
+  .f169 .head h1 { font-size: 92px; }
+  .f916 .head h1 { font-size: 88px; }
+  .head p { margin-top: 28px; font-size: 30px; line-height: 1.5; color: #dbe3e8; max-width: 26em; }
+  .f916 .head p { font-size: 32px; }
+
+  /* ---------- Chattfönster */
+  .chat { position: absolute; background: var(--surface); border-radius: 30px; box-shadow: 0 40px 90px rgba(0, 0, 0, .35); display: flex; flex-direction: column; overflow: hidden; }
+  .f169 .chat { left: 1090px; top: 120px; width: 734px; height: 840px; }
+  .f916 .chat { left: 48px; top: 640px; width: 984px; height: 1160px; }
+  .chat-head { display: flex; align-items: center; gap: 18px; padding: 26px 30px; border-bottom: 1px solid var(--rule); background: #fff; }
+  .avatar { width: 58px; height: 58px; border-radius: 50%; background: var(--stone); display: grid; place-items: center; flex: none; }
+  .avatar img { width: 36px; height: auto; }
+  .chat-title { font-weight: 600; font-size: 25px; line-height: 1.2; }
+  .chat-sub { color: var(--muted); font-size: 18px; margin-top: 2px; }
+  .online { margin-left: auto; display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 17px; }
+  .online i { width: 11px; height: 11px; border-radius: 50%; background: #3aa76d; }
+  .f916 .chat-title { font-size: 30px; } .f916 .chat-sub { font-size: 21px; } .f916 .avatar { width: 68px; height: 68px; } .f916 .avatar img { width: 42px; }
+
+  .log { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 30px 18px; overflow: hidden;
+         -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 70px); mask-image: linear-gradient(180deg, transparent 0, #000 70px); }
+  .item { overflow: hidden; flex: none; }
+  .row { display: flex; gap: 14px; align-items: flex-end; padding-top: 18px; }
+  .row.me { justify-content: flex-end; }
+  .row .avatar { width: 44px; height: 44px; } .row .avatar img { width: 27px; }
+  .bubble { max-width: 78%; padding: 18px 24px; border-radius: 24px; font-size: 24px; line-height: 1.45; }
+  .bot .bubble { background: #fff; border: 1px solid var(--rule); border-bottom-left-radius: 8px; }
+  .me .bubble { background: var(--navy); color: #fff; border-bottom-right-radius: 8px; }
+  .f916 .bubble { font-size: 30px; padding: 22px 28px; }
+  .bubble ul { list-style: none; margin-top: 10px; }
+  .bubble li { position: relative; padding: 10px 0 10px 40px; border-top: 1px solid var(--rule); }
+  .bubble li:first-child { border-top: 0; }
+  .bubble li::before { content: ''; position: absolute; left: 6px; top: 22px; width: 15px; height: 8px; border-left: 3px solid var(--orange); border-bottom: 3px solid var(--orange); transform: rotate(-45deg); }
+  .f916 .bubble li::before { top: 26px; }
+  .cta-bubble { display: inline-flex; align-items: center; gap: 14px; background: var(--orange); color: var(--navy); font-weight: 500; font-size: 24px; padding: 18px 30px; border-radius: 999px; }
+  .f916 .cta-bubble { font-size: 30px; padding: 22px 36px; }
+  .cta-bubble svg, .send svg { width: 22px; height: 22px; }
+  .dots { display: inline-flex; gap: 8px; padding: 22px 26px; }
+  .dots i { width: 11px; height: 11px; border-radius: 50%; background: var(--muted); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; padding: 0 30px 18px; overflow: hidden; }
+  .chip { border: 1px solid #cfc6b5; border-radius: 999px; padding: 12px 22px; font-size: 21px; background: #fff; white-space: nowrap; }
+  .f916 .chip { font-size: 26px; padding: 16px 26px; }
+  .chip.pressed { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+  .input { display: flex; gap: 14px; align-items: center; padding: 18px 24px 24px; border-top: 1px solid var(--rule); background: #fff; }
+  .field { flex: 1; height: 66px; border: 2px solid #cfc6b5; border-radius: 999px; display: flex; align-items: center; padding: 0 26px; font-size: 23px; color: var(--navy); }
+  .field .ph { color: #9aa3a9; }
+  .field .caret { display: inline-block; width: 2px; height: 30px; background: var(--navy); margin-left: 2px; }
+  .send { width: 66px; height: 66px; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; flex: none; }
+  .f916 .field { height: 84px; font-size: 29px; } .f916 .send { width: 84px; height: 84px; }
+
+  /* ---------- Slutbild */
+  .end { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; }
+  .end > * { opacity: 0; }
+  .end .elogo { height: 120px; width: auto; }
+  .end h2 { font-weight: 500; letter-spacing: -0.03em; line-height: 1.08; margin-top: 56px; }
+  .f169 .end h2 { font-size: 84px; max-width: 15em; }
+  .f916 .end h2 { font-size: 86px; max-width: 10em; }
+  .end .btn { margin-top: 52px; display: inline-flex; align-items: center; gap: 16px; background: var(--orange); color: var(--navy); font-weight: 500; font-size: 32px; padding: 24px 44px; border-radius: 999px; }
+  .end .btn svg { width: 28px; height: 28px; }
+  .end .url { margin-top: 40px; font-size: 28px; letter-spacing: .04em; color: #dbe3e8; }
+  .end .tag { margin-top: 12px; font-size: 22px; color: #9fb0be; }
+  .f916 .end .btn { font-size: 36px; }
+</style>
+</head>
+<body>
+<div class="bg"><img id="bgimg" src="../../src/assets/img/road_003.jpg" alt=""><div class="shade"></div></div>
+<div class="stone"></div>
+<div class="endbg" id="endbg"><img src="../../src/assets/img/road_001.jpg" alt=""></div>
+
+<img class="logo" id="logo" src="../../src/assets/logo/logo-light.svg" alt="Projekteffektivitet">
+
+<div class="heads">
+  <div class="head" id="h1"><p class="kicker">Projekteffektivitet</p><h1>Har projektet<br>tappat fart?</h1></div>
+  <div class="head" id="h2"><p class="kicker">Projektanalys</p><h1>Se hindren.<br>Återställ riktningen.</h1></div>
+  <div class="head" id="h3"><p class="kicker">Ett första steg</p><h1>Ett samtal räcker<br>för att börja.</h1></div>
+</div>
+
+<section class="chat" id="chat">
+  <header class="chat-head">
+    <span class="avatar"><img src="../../src/assets/logo/mark.svg" alt=""></span>
+    <div><p class="chat-title">Fråga Projekteffektivitet</p><p class="chat-sub">Projektledning, projektanalys och projekteffekt</p></div>
+    <span class="online"><i></i>Uppsala</span>
+  </header>
+  <div class="log" id="log">
+    <div class="item" data-in="2.9"><div class="row bot"><span class="avatar"><img src="../../src/assets/logo/mark.svg" alt=""></span><div class="bubble">Hej! Vad behöver ert projekt just nu?</div></div></div>
+    <div class="item" data-in="5.7"><div class="row me"><div class="bubble">Projektet har stannat av</div></div></div>
+    <div class="item" data-in="6.1" data-out="7.2"><div class="row bot"><span class="avatar"><img src="../../src/assets/logo/mark.svg" alt=""></span><div class="bubble dots"><i></i><i></i><i></i></div></div></div>
+    <div class="item" data-in="7.2"><div class="row bot"><span class="avatar"><img src="../../src/assets/logo/mark.svg" alt=""></span><div class="bubble">Då börjar vi med en oberoende projektanalys. Den ger er:
+      <ul><li data-in="7.9">Tydlig bild av nuläge och orsaker</li><li data-in="8.4">Prioriterade åtgärder och beslut</li><li data-in="8.9">En genomförbar väg framåt</li></ul></div></div></div>
+    <div class="item" data-in="11.7"><div class="row me"><div class="bubble">Hur kommer vi igång?</div></div></div>
+    <div class="item" data-in="12.1" data-out="13.1"><div class="row bot"><span class="avatar"><img src="../../src/assets/logo/mark.svg" alt=""></span><div class="bubble dots"><i></i><i></i><i></i></div></div></div>
+    <div class="item" data-in="13.1"><div class="row bot"><span class="avatar"><img src="../../src/assets/logo/mark.svg" alt=""></span><div class="bubble">Ett första samtal räcker för att ringa in behovet, möjliga vägval och ett klokt nästa steg.</div></div></div>
+    <div class="item" data-in="13.9"><div class="row bot"><span class="avatar" style="visibility:hidden"></span><span class="cta-bubble" id="ctab">Boka ett första samtal <svg viewBox="0 0 16 16"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></div></div>
+  </div>
+  <div class="chips" id="chips">
+    <span class="chip" data-in="3.5" id="chip1">Projektet har stannat av</span>
+    <span class="chip" data-in="3.75">Vi behöver en projektledare</span>
+    <span class="chip" data-in="4.0">Vi vill bli bättre på projekt</span>
+  </div>
+  <div class="input">
+    <div class="field" id="field"><span class="ph" id="ph">Skriv en fråga …</span><span id="typed"></span><span class="caret" id="caret"></span></div>
+    <span class="send" id="send"><svg viewBox="0 0 16 16"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+  </div>
+</section>
+
+<div class="end" id="end">
+  <img class="elogo" src="../../src/assets/logo/logo-light.svg" alt="Projekteffektivitet">
+  <h2>Vi skapar bättre effekt i projekt.</h2>
+  <span class="btn">Boka ett första samtal <svg viewBox="0 0 16 16"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+  <p class="url">projekteffektivitet.se</p>
+  <p class="tag">Bättre effekt. Ett projekt i taget.</p>
+</div>
+
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var fmt = params.get('format') === '9x16' ? 'f916' : 'f169';
+  document.body.classList.add(fmt);
+  window.DURATION = 22;
+
+  var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
+  var ease = function (p) { return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; };
+  var prog = function (t, a, d) { return ease(clamp((t - a) / d)); };
+  var $ = function (id) { return document.getElementById(id); };
+
+  // Mät naturlig höjd för varje chattrad en gång (vid första renderingen,
+  // när typsnitten har laddats).
+  var items = [].slice.call(document.querySelectorAll('.log .item'));
+  var chipsBox = $('chips');
+  var heights = null, chipsH = 0;
+  function measure() {
+    heights = items.map(function (el) { return el.scrollHeight; });
+    chipsH = chipsBox.scrollHeight;
+  }
+  var chips = [].slice.call(chipsBox.querySelectorAll('.chip'));
+  var lis = [].slice.call(document.querySelectorAll('.bubble li'));
+  var endKids = [].slice.call($('end').children);
+  var question = 'Hur kommer vi igång?';
+
+  function show(el, p, dy) {
+    el.style.opacity = p;
+    el.style.transform = 'translateY(' + ((1 - p) * (dy || 24)) + 'px)';
+  }
+
+  window.render = function (t) {
+    if (!heights) measure();
+    // Bakgrund: långsam zoom
+    $('bgimg').style.transform = 'scale(' + (1.04 + 0.08 * t / window.DURATION) + ')';
+    show($('logo'), prog(t, 0.2, 0.8), 0);
+
+    // Rubriker: in och ut
+    var heads = [['h1', 0.5, 5.8], ['h2', 6.2, 11.8], ['h3', 12.2, 15.8]];
+    heads.forEach(function (h) {
+      var p = prog(t, h[1], 0.8) * (1 - prog(t, h[2], 0.6));
+      var el = $(h[0]); el.style.opacity = p;
+      el.style.transform = 'translateY(' + ((1 - prog(t, h[1], 0.8)) * 40 - prog(t, h[2], 0.6) * 30) + 'px)';
+    });
+
+    // Chattfönstret
+    var cin = prog(t, 1.8, 0.8), cout = prog(t, 15.8, 0.8);
+    var chat = $('chat');
+    chat.style.opacity = cin * (1 - cout);
+    chat.style.transform = 'translateY(' + ((1 - cin) * 60 + cout * 40) + 'px) scale(' + (0.97 + 0.03 * cin) + ')';
+
+    items.forEach(function (el, i) {
+      var a = parseFloat(el.dataset.in), b = el.dataset.out ? parseFloat(el.dataset.out) : 1e9;
+      var p = prog(t, a, 0.45) * (1 - prog(t, b, 0.25));
+      el.style.display = p > 0.001 ? '' : 'none';
+      el.style.height = (p * heights[i]) + 'px';
+      el.style.opacity = p;
+    });
+    lis.forEach(function (li) { show(li, prog(t, parseFloat(li.dataset.in), 0.4), 10); });
+
+    // Skrivprickar
+    document.querySelectorAll('.dots i').forEach(function (d, i) {
+      d.style.opacity = 0.35 + 0.65 * Math.max(0, Math.sin((t * 6) - i * 0.9));
+    });
+
+    // Snabbval
+    var chipsOut = prog(t, 5.6, 0.35);
+    chipsBox.style.height = (chipsH * (1 - chipsOut)) + 'px';
+    chipsBox.style.paddingBottom = (18 * (1 - chipsOut)) + 'px';
+    chips.forEach(function (c) { show(c, prog(t, parseFloat(c.dataset.in), 0.35) * (1 - chipsOut), 12); });
+    var press = t > 5.0 && t < 5.7;
+    $('chip1').classList.toggle('pressed', press);
+    $('chip1').style.transform += press ? ' scale(.96)' : '';
+
+    // Inmatningsfältet skriver frågan
+    var n = Math.floor(clamp((t - 9.9) / 1.5) * question.length);
+    var typing = t >= 9.9 && t < 11.7;
+    $('typed').textContent = typing ? question.slice(0, n) : '';
+    $('ph').style.display = typing && n > 0 ? 'none' : '';
+    $('caret').style.opacity = typing && Math.floor(t * 2.5) % 2 === 0 ? 1 : 0;
+    var sendPulse = t > 11.4 && t < 11.75 ? 0.9 : 1;
+    $('send').style.transform = 'scale(' + sendPulse + ')';
+    $('send').style.background = t > 11.4 && t < 11.75 ? '#f37021' : '';
+
+    // Boka-knappen trycks
+    var ctab = $('ctab');
+    var cp = t > 15.0 && t < 15.4;
+    ctab.style.transform = cp ? 'scale(.95)' : '';
+    ctab.style.boxShadow = cp ? '0 0 0 8px rgba(243,112,33,.25)' : '';
+
+    // Slutbild
+    var e = prog(t, 15.9, 0.9);
+    $('endbg').style.opacity = e;
+    $('logo').style.opacity = prog(t, 0.2, 0.8) * (1 - e);
+    var starts = [16.4, 16.9, 17.5, 18.0, 18.3];
+    endKids.forEach(function (k, i) { show(k, prog(t, starts[i], 0.7), 30); });
+  };
+
+  // Uppspelning i realtid när filen öppnas direkt (inte vid rendering).
+  if (!params.has('render')) {
+    var t0 = null;
+    var loop = function (ts) {
+      if (t0 === null) t0 = ts;
+      var t = ((ts - t0) / 1000) % (window.DURATION + 1);
+      window.render(t);
+      requestAnimationFrame(loop);
+    };
+    document.fonts.ready.then(function () { requestAnimationFrame(loop); });
+  }
+})();
+</script>
+</body>
+</html>

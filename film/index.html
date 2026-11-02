@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Reklamfilm – Projekteffektivitet</title>
+<style>
+  @font-face { font-family: Poppins; font-weight: 400; src: url(../src/assets/fonts/poppins-400.woff2) format('woff2'); }
+  @font-face { font-family: Poppins; font-weight: 500; src: url(../src/assets/fonts/poppins-500.woff2) format('woff2'); }
+  :root { --ink:#1d2b36; --muted:#5f6b73; --bg:#f4f1ea; --card:#fbfaf6; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 Poppins, system-ui, sans-serif; }
+  main { max-width: 1240px; margin: 0 auto; padding: 48px clamp(16px, 4vw, 40px) 80px; }
+  h1 { font-weight:500; font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem); line-height:1.15; margin: 0 0 12px; letter-spacing:-0.02em; }
+  .intro { color: var(--muted); max-width: 48em; margin: 0 0 36px; }
+  .grid { display:grid; gap: 28px; align-items:start; }
+  @media (min-width: 900px) { .grid { grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); } }
+  figure { margin:0; background:var(--card); border-radius:18px; overflow:hidden; }
+  video { display:block; width:100%; height:auto; background:#0e1821; }
+  figcaption { padding: 16px 20px 20px; }
+  figcaption b { display:block; font-weight:500; }
+  figcaption a { color: var(--ink); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Reklamfilm – Projekteffektivitet</h1>
+  <p class="intro">Ett kort chattsamtal i webbplatsens stil: en besökare vars projekt har stannat av får svar om projektanalys och bokar ett första samtal. 22 sekunder, utan ljud. Två format: liggande 16:9 för webb och presentationer, stående 9:16 för sociala medier.</p>
+  <div class="grid">
+    <figure>
+      <video src="projekteffektivitet-reklamfilm-16x9.mp4" poster="affisch-16x9.jpg" controls muted playsinline loop preload="metadata" width="1920" height="1080"></video>
+      <figcaption><b>Liggande 16:9 · 1920 × 1080</b><a href="projekteffektivitet-reklamfilm-16x9.mp4" download>Ladda ner MP4</a></figcaption>
+    </figure>
+    <figure>
+      <video src="projekteffektivitet-reklamfilm-9x16.mp4" poster="affisch-9x16.jpg" controls muted playsinline loop preload="metadata" width="1080" height="1920"></video>
+      <figcaption><b>Stående 9:16 · 1080 × 1920</b><a href="projekteffektivitet-reklamfilm-9x16.mp4" download>Ladda ner MP4</a></figcaption>
+    </figure>
+  </div>
+</main>
+</body>
+</html>
