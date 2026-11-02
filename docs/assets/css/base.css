@@ -418,14 +418,14 @@ a:hover .icon-arrow { transform: translateX(3px); }
 .byline { margin: 1.25em 0 0; font-size: var(--fs-small); color: var(--muted); }
 .read-time::before { content: '·'; margin-right: 14px; }
 
-.article-grid { display: grid; gap: var(--gap) calc(var(--gap) * 1.5); }
+.article-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gap) calc(var(--gap) * 1.5); }
 @media (min-width: 1000px) { .article-grid { grid-template-columns: minmax(0, 1fr) 320px; } }
 .article-aside { display: grid; gap: 24px; align-content: start; }
 .aside-box { border-top: 3px solid var(--heading); padding-top: 4px; }
 .aside-box .minor-heading { margin-top: 12px; }
 .aside-box .news-card-link { padding-top: 4px; }
 
-.prose { max-width: 42em; }
+.prose { max-width: 42em; overflow-wrap: break-word; }
 .prose > p:first-of-type { font-size: 1.12em; }
 .prose h2 { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.85rem); margin: 1.8em 0 0.6em; }
 .prose h2:first-child { margin-top: 0; }
