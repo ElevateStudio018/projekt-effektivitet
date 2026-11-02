@@ -37,7 +37,7 @@ samma sida.
 | 7 | **Rapport** | Fast sidomeny, rapportomslag, kapitelnumrering. | Source Serif 4 + Inter |
 | 8 | **Signal** | Bred grotesk i versaler, stora färgfält. | Archivo |
 | 9 | **Byrå** | Etablerad rådgivningsbyrå, centrerad, Garamond. | EB Garamond + Inter |
-| 10 | **Landskap** ✔ vald | Helsidesfoton och transparent sidhuvud på varje sida, genvägar till tjänsterna i startsidans bild. | Fraunces + Inter |
+| 10 | **Landskap** ✔ vald | Helsidesfoton och transparent sidhuvud på varje sida. | Poppins |
 
 Alla stilar använder logotypens färger (marinblå `#144069`, orange `#F37021`) i någon form.
 Typsnitten är självhostade (SIL Open Font License, se `src/assets/fonts/licenses/`).

@@ -13,6 +13,7 @@ const FONT_FILES = {
   Fraunces: 'fraunces.woff2',
   'IBM Plex Sans': 'ibm-plex-sans-400.woff2',
   'IBM Plex Mono': 'ibm-plex-mono-400.woff2',
+  Poppins: ['poppins-400.woff2', 'poppins-500.woff2'],
 };
 
 function header(ctx) {
@@ -110,7 +111,7 @@ export function layout(ctx, { title, description, body, bodyClass = '', jsonLd =
   const { theme, page } = ctx;
   const fullTitle = page.path === '' ? title : `${title} – ${site.name}`;
   const desc = description || site.metaDescription;
-  const preload = [...new Set(theme.fonts)].map((f) => FONT_FILES[f]).filter(Boolean);
+  const preload = [...new Set(theme.fonts)].flatMap((f) => FONT_FILES[f] || []);
   const canonical = ctx.preview ? '' : site.url + '/' + page.path;
   return html`<!doctype html>
 <html lang="sv" class="no-js">

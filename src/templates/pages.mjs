@@ -100,13 +100,6 @@ const heroes = {
     <p class="hero-lead">${home.heroLead}</p>
     ${heroActions(ctx)}
   </div>
-  <nav class="hero-services" aria-label="Tjänster">
-    <ul class="wrap">
-      ${services.map(
-        (s) => html`<li><a href="${ctx.link('tjanster/' + s.id + '/')}"><span class="hs-num">${s.number}</span> <span class="hs-title">${s.title}</span> <span class="hs-text">${s.summary}</span></a></li>`
-      )}
-    </ul>
-  </nav>
 </section>`,
 
   type: (ctx) => html`

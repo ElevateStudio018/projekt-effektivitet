@@ -405,7 +405,7 @@ a:hover .icon-arrow { transform: translateX(3px); }
 @media (max-width: 479px) { .person-card { grid-template-columns: 1fr; } .person-img { width: 100%; height: auto; aspect-ratio: 3 / 2; } }
 
 /* Element som bara vissa stilar visar */
-.page-head-media, .hero-services { display: none; }
+.page-head-media { display: none; }
 
 /* --------------------------------------------------------------- Undersidor */
 .page-head { padding-block: clamp(40px, 6vw, 88px) clamp(40px, 5vw, 72px); background: var(--bg-alt); border-bottom: 1px solid var(--rule); }

@@ -1,18 +1,20 @@
 /* 10. Landskap – vägen som berättelse.
    Helsidesfotografier, transparent sidhuvud över foto på varje sida och
-   Fraunces i stora grader. */
+   Poppins genomgående. */
 
 :root {
-  --font-heading: 'Fraunces', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --heading-weight: 420;
-  --heading-ls: -0.02em;
-  --heading-lh: 1.04;
-  --fs-h1: clamp(2.6rem, 1.4rem + 4.8vw, 6rem);
-  --fs-h2: clamp(2rem, 1.3rem + 2.6vw, 3.6rem);
-  --fs-body: 1.0625rem;
+  --font-heading: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --heading-weight: 500;
+  --heading-ls: -0.025em;
+  --heading-lh: 1.14;
+  --fs-h1: clamp(2.1rem, 1.2rem + 3.8vw, 4.6rem);
+  --fs-h2: clamp(1.7rem, 1.2rem + 2vw, 2.9rem);
+  --fs-body: 1rem;
+  --lh-body: 1.72;
   --label-transform: none;
-  --label-ls: 0.02em;
+  --label-ls: 0.01em;
+  --label-weight: 500;
   --fs-label: 0.9rem;
 
   --bg: #ffffff;
@@ -54,35 +56,13 @@
 .hero--photo::before {
   background: linear-gradient(0deg, rgba(var(--photo-shade), .9) 0%, rgba(var(--photo-shade), .5) 45%, rgba(var(--photo-shade), .3) 85%, rgba(var(--photo-shade), .55) 100%);
 }
-.hero--photo .hero-inner { padding-block: calc(var(--header-height) + 64px) clamp(40px, 6vw, 72px); }
-.hero--photo .hero-title { font-weight: 360; max-width: 12em; font-size: clamp(2.8rem, 1.4rem + 5.6vw, 7rem); }
+.hero--photo .hero-inner { padding-block: calc(var(--header-height) + 64px) clamp(56px, 9vw, 120px); }
+.hero--photo .hero-title { font-weight: 500; letter-spacing: -0.03em; max-width: 13em; font-size: clamp(2.3rem, 1.2rem + 4.4vw, 5.4rem); }
 .hero--photo .hero-kicker { color: #fff; opacity: .85; }
 .hero--photo .button { background: var(--accent); border-color: var(--accent); color: #14202b; }
 .hero--photo .button:hover { background: #ff8a45; border-color: #ff8a45; }
 .hero--photo .button--ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .7); }
 .hero--photo .button--ghost:hover { background: #fff; color: #14202b; }
-
-/* Genvägar till tjänsterna längst ned i bilden */
-.hero-services {
-  display: block; position: relative; z-index: 2;
-  border-top: 1px solid rgba(255, 255, 255, .22);
-  background: rgba(var(--photo-shade), .35);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-}
-.hero-services ul { display: grid; }
-.hero-services li + li { border-top: 1px solid rgba(255, 255, 255, .18); }
-.hero-services a { display: block; padding: 16px 0; color: #fff; text-decoration: none; }
-.hs-num { font-size: 0.8rem; color: var(--photo-accent); margin-right: 0.5em; font-variant-numeric: tabular-nums; }
-.hs-title { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 420; }
-.hs-text { display: none; }
-.hero-services a:hover .hs-title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
-@media (min-width: 800px) {
-  .hero-services ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .hero-services li + li { border-top: 0; border-left: 1px solid rgba(255, 255, 255, .22); }
-  .hero-services a { padding: 24px 28px 26px; height: 100%; }
-  .hero-services li:first-child a { padding-left: 0; }
-  .hs-text { display: block; color: rgba(255, 255, 255, .78); font-size: 0.9rem; line-height: 1.5; margin-top: 6px; max-width: 30em; }
-}
 
 /* ---------------------------------------------------- Undersidornas sidhuvud */
 .page-head {
@@ -96,12 +76,11 @@
   content: ''; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(0deg, rgba(var(--photo-shade), .9) 0%, rgba(var(--photo-shade), .6) 55%, rgba(var(--photo-shade), .5) 100%);
 }
-.page-head h1 { color: #fff; font-weight: 380; }
+.page-head h1 { color: #fff; font-size: clamp(1.75rem, 0.9rem + 4.2vw, 4.4rem); }
 .page-head .page-lead, .page-head .byline, .page-head .news-meta { color: #dbe3e8; }
 .page-head .breadcrumbs { color: #c2ccd3; }
 .page-head .page-label, .page-head .news-cat { color: var(--photo-accent); }
 .page-head .link-list a { color: #fff; }
-.page-head .page-label { font-family: var(--font-heading); font-style: italic; font-size: 1.15rem; }
 .page-head--404 { min-height: 80vh; display: flex; align-items: flex-end; }
 .article-head .page-lead { max-width: 34em; }
 
@@ -109,18 +88,17 @@
 .prose-figure.is-head-image { display: none; }
 
 /* ------------------------------------------------------------- Sektioner */
-.section-label { font-family: var(--font-heading); font-style: italic; font-size: 1.15rem; font-weight: 400; }
-.section-head h2 { font-weight: 380; }
+
 .section + .section { border-top: 0; }
 
 .situations { border-top: 1px solid var(--rule-strong); }
-.situation h3 { font-size: 1.9rem; font-weight: 400; }
+.situation h3 { font-size: 1.45rem; }
 
 .service-link { border-top: 0; padding-top: 0; }
 .service-img { display: block; overflow: hidden; margin-bottom: 20px; border-radius: var(--img-radius); }
 .service-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .5s; }
 .service-link:hover .service-img img { transform: scale(1.04); }
-.service-title { font-size: 2rem; font-weight: 400; }
+.service-title { font-size: 1.5rem; }
 
 .feature-section { background: var(--bg-alt); }
 @media (min-width: 900px) { .feature-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); } }
@@ -133,27 +111,28 @@
 .loop-section--page { background: var(--dark-bg); }
 
 .principle { border-top: 1px solid var(--rule-strong); }
-.principle h3 { font-size: 1.7rem; font-weight: 400; }
-.news-title { font-size: 1.6rem; font-weight: 400; }
+.principle h3 { font-size: 1.3rem; }
+.news-title { font-size: 1.25rem; }
 .news-card-img img { aspect-ratio: 4 / 3; }
-.news-featured .news-title { font-weight: 380; }
 
 .cta-section {
   background: linear-gradient(90deg, rgba(var(--photo-shade), .92) 0%, rgba(var(--photo-shade), .72) 60%, rgba(var(--photo-shade), .5) 100%), url(../../img/road_002.jpg) center / cover;
   color: #dbe3e8;
 }
-.cta-section h2 { color: #fff; font-weight: 380; }
+.cta-section h2 { color: #fff; }
 .cta-section .button { background: var(--accent); border-color: var(--accent); color: #14202b; }
 .cta-section .button:hover { background: #ff8a45; border-color: #ff8a45; }
 .person-card { border: 0; }
 
-.service-row h2, .prose h2 { font-weight: 420; }
-.outcome h3 { font-weight: 420; font-size: 1.5rem; }
-.process h3 { font-family: var(--font-heading); font-weight: 420; font-size: 1.35rem; }
+.outcome h3 { font-size: 1.25rem; }
+.process h3 { font-size: 1.15rem; }
 .aside-box .minor-heading, .minor-heading { color: var(--muted); }
-.person-section .person-name { font-size: 2rem; font-weight: 400; }
-.contact-direct h2, .contact-form h2 { font-weight: 420; font-size: 1.9rem; }
+.person-section .person-name { font-size: 1.6rem; }
+.contact-direct h2, .contact-form h2 { font-size: 1.5rem; }
 
 /* Läsbredd och textstorlek för längre texter */
-.prose { font-size: 1.125rem; line-height: 1.72; }
+.prose { font-size: 1.0625rem; line-height: 1.75; }
 .prose > p:first-of-type { font-size: 1.15em; color: var(--heading); }
+
+/* Poppins laddas i 300–600: håll fetstil på 600 så webbläsaren inte syntetiserar */
+strong, b, .prose ol li::before, .loop-diagram .ld-node text { font-weight: 600; }
