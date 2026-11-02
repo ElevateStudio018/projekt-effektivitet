@@ -1,6 +1,7 @@
 /* 10. Landskap – vägen som berättelse.
-   Helsidesfotografier, transparent sidhuvud över foto på varje sida och
-   Poppins genomgående. */
+   Helsidesfotografier och transparent sidhuvud över foto på varje sida,
+   kombinerat med Nordisks mjuka formspråk: rundade hörn, pillerknappar,
+   mjuka kort och varma stentoner. Poppins genomgående. */
 
 :root {
   --font-heading: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -17,39 +18,49 @@
   --label-weight: 500;
   --fs-label: 0.9rem;
 
-  --bg: #ffffff;
-  --bg-alt: #eef0ee;
-  --text: #2a3530;
-  --muted: #5b6862;
-  --heading: #14202b;
-  --brand: #14202b;
-  --link: #14202b;
+  /* Varma stentoner från Nordisk */
+  --bg: #f4f1ea;
+  --bg-alt: #ebe6db;
+  --surface: #fbfaf6;
+  --text: #2c3a45;
+  --muted: #5f6b73;
+  --heading: #1d2b36;
+  --brand: #144069;
+  --link: #144069;
   --accent: #f37021;
-  --accent-ink: #b44c0c;
-  --rule: #dfe3df;
-  --rule-strong: #14202b;
+  --accent-ink: #a14a17;
+  --label-color: #a14a17;
+  --rule: #ddd5c6;
+  --rule-strong: #b9ae9b;
 
-  --button-bg: #14202b;
-  --button-bg-hover: #23394d;
-  --button-radius: 2px;
-  --img-radius: 2px;
+  /* Rundade former */
+  --radius: 18px;
+  --img-radius: 16px;
+  --panel-radius: 28px;
+  --button-radius: 999px;
+  --button-bg: #1d2b36;
+  --button-bg-hover: #144069;
 
-  --dark-bg: #14202b;
-  --dark-text: #d3dbe0;
+  --dark-bg: #1f2e39;
+  --dark-text: #c8d2d8;
 
-  --footer-bg: #0f1820;
+  --footer-bg: #16222c;
   --footer-text: #aab6bf;
 
   --photo-shade: 10, 18, 26;
   --photo-accent: #ffc29a;
 }
 
+.section + .section { border-top: 0; }
+.button { padding-inline: 1.7em; font-weight: 500; }
+
 /* ---------------------------------------------------------------- Sidhuvud */
 @media (min-width: 900px) {
-  .nav-cta a { border: 1px solid rgba(255, 255, 255, .6) !important; padding: 8px 18px !important; border-radius: 2px; }
+  .nav-cta a { border: 1px solid rgba(255, 255, 255, .6) !important; padding: 8px 20px !important; border-radius: 999px; }
   .nav-cta a:hover, .nav-cta a[aria-current="page"] { background: #fff; color: var(--heading); border-color: #fff !important; }
 }
 .site-nav a[aria-current="page"] { border-bottom-color: var(--accent); }
+.js .nav-toggle { border-radius: 999px; padding-inline: 16px; }
 
 /* ------------------------------------------------------------------ Hero */
 .hero--photo { min-height: 100svh; flex-direction: column; justify-content: flex-end; align-items: stretch; }
@@ -59,10 +70,10 @@
 .hero--photo .hero-inner { padding-block: calc(var(--header-height) + 64px) clamp(56px, 9vw, 120px); }
 .hero--photo .hero-title { font-weight: 500; letter-spacing: -0.03em; max-width: 13em; font-size: clamp(2.3rem, 1.2rem + 4.4vw, 5.4rem); }
 .hero--photo .hero-kicker { color: #fff; opacity: .85; }
-.hero--photo .button { background: var(--accent); border-color: var(--accent); color: #14202b; }
-.hero--photo .button:hover { background: #ff8a45; border-color: #ff8a45; }
+.hero--photo .button, .cta-section .button { background: var(--accent); border-color: var(--accent); color: #1d2b36; }
+.hero--photo .button:hover, .cta-section .button:hover { background: #ff8a45; border-color: #ff8a45; }
 .hero--photo .button--ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .7); }
-.hero--photo .button--ghost:hover { background: #fff; color: #14202b; }
+.hero--photo .button--ghost:hover { background: #fff; color: #1d2b36; }
 
 /* ---------------------------------------------------- Undersidornas sidhuvud */
 .page-head {
@@ -87,48 +98,82 @@
 /* Artikelns foto visas redan i sidhuvudet */
 .prose-figure.is-head-image { display: none; }
 
-/* ------------------------------------------------------------- Sektioner */
+/* --------------------------------------------- Mjuka kort (från Nordisk) */
+.situations { border-top: 0; gap: 16px; }
+@media (min-width: 900px) {
+  .situations { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .situation { grid-template-columns: 1fr; align-content: start; }
+}
+.situation { background: var(--surface); border: 0; border-radius: var(--radius); padding: 28px; gap: 8px; }
+.situation h3 { font-size: 1.4rem; }
+.situation-kicker { color: var(--muted) !important; font-weight: 500; }
+.situation .text-link { margin-top: 10px; }
 
-.section + .section { border-top: 0; }
-
-.situations { border-top: 1px solid var(--rule-strong); }
-.situation h3 { font-size: 1.45rem; }
-
-.service-link { border-top: 0; padding-top: 0; }
-.service-img { display: block; overflow: hidden; margin-bottom: 20px; border-radius: var(--img-radius); }
-.service-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .5s; }
+.services-section { background: var(--bg-alt); }
+.service-link { border-top: 0; padding: 0; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
+.service-img { display: block; overflow: hidden; }
+.service-img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: transform .5s; }
 .service-link:hover .service-img img { transform: scale(1.04); }
-.service-title { font-size: 1.5rem; }
+.service-num { padding: 22px 24px 0; }
+.service-title { font-size: 1.45rem; padding-inline: 24px; }
+.service-summary, .service-more { padding-inline: 24px; }
+.service-more { padding-bottom: 24px; }
 
-.feature-section { background: var(--bg-alt); }
-@media (min-width: 900px) { .feature-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); } }
 .feature-figure img { aspect-ratio: 4 / 3; }
+@media (min-width: 900px) { .feature-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); } }
+.checklist li { border: 0 !important; padding-block: 6px; }
 
-.loop-section {
-  background: linear-gradient(rgba(16, 26, 36, .9), rgba(16, 26, 36, .9)), url(../../img/road_001.jpg) center / cover;
+/* Loopingmodellen: rundad panel med foto */
+.loop-section { background: transparent; }
+.loop-section > .wrap {
+  background: linear-gradient(rgba(22, 34, 44, .9), rgba(22, 34, 44, .9)), url(../../img/road_001.jpg) center / cover;
+  border-radius: var(--panel-radius); padding-block: clamp(36px, 5vw, 80px);
+  width: calc(100% - 2 * var(--gutter));
 }
+@media (min-width: 700px) { .loop-section > .wrap { padding-inline: clamp(28px, 5vw, 72px); } }
 .loop-section .section-label { color: var(--photo-accent); }
-.loop-section--page { background: var(--dark-bg); }
+.loop-step { border-top-color: rgba(255, 255, 255, .14); }
+.loop-section--page > .wrap { background: var(--dark-bg); }
 
-.principle { border-top: 1px solid var(--rule-strong); }
-.principle h3 { font-size: 1.3rem; }
-.news-title { font-size: 1.25rem; }
-.news-card-img img { aspect-ratio: 4 / 3; }
+.principles { gap: 16px; }
+.principle { border: 0; background: var(--surface); border-radius: var(--radius); padding: 28px; }
+.principle h3 { font-size: 1.25rem; }
 
-.cta-section {
-  background: linear-gradient(90deg, rgba(var(--photo-shade), .92) 0%, rgba(var(--photo-shade), .72) 60%, rgba(var(--photo-shade), .5) 100%), url(../../img/road_002.jpg) center / cover;
-  color: #dbe3e8;
+.news-card-link { background: var(--surface); border-radius: var(--radius); overflow: hidden; }
+.news-card-img { margin: 0; border-radius: 0; }
+.news-card-img img { aspect-ratio: 16 / 10; }
+.news-card-body { padding: 20px 22px 24px; }
+.news-title { font-size: 1.2rem; }
+.news-featured { border-bottom: 0; }
+@media (min-width: 900px) {
+  .news-featured .news-card-link { gap: 0; }
+  .news-featured .news-card-body { padding: 32px 40px; }
+  .news-featured .news-card-img img { height: 100%; }
 }
+
+/* Kontakt-CTA: rundad panel med foto */
+.cta-section { background: transparent; }
+.cta-section > .wrap {
+  background: linear-gradient(90deg, rgba(var(--photo-shade), .92) 0%, rgba(var(--photo-shade), .74) 60%, rgba(var(--photo-shade), .55) 100%), url(../../img/road_002.jpg) center / cover;
+  color: #dbe3e8; border-radius: var(--panel-radius); padding-block: clamp(32px, 5vw, 72px);
+  width: calc(100% - 2 * var(--gutter));
+}
+@media (min-width: 700px) { .cta-section > .wrap { padding-inline: clamp(28px, 5vw, 72px); } }
 .cta-section h2 { color: #fff; }
-.cta-section .button { background: var(--accent); border-color: var(--accent); color: #14202b; }
-.cta-section .button:hover { background: #ff8a45; border-color: #ff8a45; }
 .person-card { border: 0; }
 
-.outcome h3 { font-size: 1.25rem; }
-.process h3 { font-size: 1.15rem; }
-.aside-box .minor-heading, .minor-heading { color: var(--muted); }
+/* Undersidor */
+.aside-box { border-top: 0; background: var(--surface); border-radius: var(--radius); padding: 8px 24px 24px; }
+.outcome { border-left: 0; background: var(--surface); border-radius: var(--radius); padding: 24px; }
+.outcome h3 { font-size: 1.2rem; }
+.process li { border-top: 0; background: var(--surface); border-radius: var(--radius); padding: 22px; }
+.process h3 { font-size: 1.1rem; }
+.contact-form { border: 0; background: var(--surface); }
+.field input, .field select, .field textarea { border-radius: 12px; border-color: var(--rule-strong); background: #fff; }
+.minor-heading { color: var(--muted); }
 .person-section .person-name { font-size: 1.6rem; }
 .contact-direct h2, .contact-form h2 { font-size: 1.5rem; }
+.prose ul li::before { border-radius: 50%; }
 
 /* Läsbredd och textstorlek för längre texter */
 .prose { font-size: 1.0625rem; line-height: 1.75; }

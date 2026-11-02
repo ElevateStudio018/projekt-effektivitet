@@ -2,6 +2,7 @@
 // Bygger webbplatsen.
 //
 //   node src/build.mjs                       Förhandsvisning av alla tio stilar i docs/
+//   node src/build.mjs --single              Förhandsvisning av endast vald stil i preview/
 //   node src/build.mjs --site                Produktionsbygge av vald stil till dist/
 //   node src/build.mjs --theme karna --out dist   Produktionsbygge av valfri stil
 //
@@ -27,10 +28,12 @@ const arg = (name) => {
   const i = args.indexOf('--' + name);
   return i >= 0 ? args[i + 1] : undefined;
 };
-// --site bygger den valda stilen (chosen: true i themes.mjs) om --theme saknas.
-const onlyTheme = arg('theme') || (args.includes('--site') ? themes.find((t) => t.chosen)?.id : undefined);
-const preview = !onlyTheme;
-const OUT = path.resolve(ROOT, arg('out') || (preview ? 'docs' : 'dist'));
+// --site och --single bygger den valda stilen (chosen: true i themes.mjs) om --theme saknas.
+const single = args.includes('--single');
+const onlyTheme = arg('theme') || (args.includes('--site') || single ? themes.find((t) => t.chosen)?.id : undefined);
+const preview = !onlyTheme;            // alla stilar, med stilväljare
+const relative = preview || single;    // relativa länkar + noindex
+const OUT = path.resolve(ROOT, arg('out') || (preview ? 'docs' : single ? 'preview' : 'dist'));
 
 if (onlyTheme && !themes.some((t) => t.id === onlyTheme)) {
   console.error(`Okänd stil "${onlyTheme}". Välj bland: ${themes.map((t) => t.id).join(', ')}`);
@@ -75,10 +78,12 @@ function makeContext(theme, pagePath, meta = {}) {
     theme,
     themes,
     preview,
+    switcher: preview,
+    noindex: relative,
     articles,
     page: { path: pagePath === '404.html' ? '404' : pagePath, ...meta },
-    link: (to, query = '') => (preview ? up + to + 'index.html' + query : '/' + to + query),
-    asset: (f) => (preview ? up + '../assets/' + f : '/assets/' + f),
+    link: (to, query = '') => (relative ? up + to + 'index.html' + query : '/' + to + query),
+    asset: (f) => (preview ? up + '../assets/' + f : single ? up + 'assets/' + f : '/assets/' + f),
     themeLink: (id) => up + '../' + id + '/' + file,
     galleryLink: up + '../index.html',
   };
@@ -121,6 +126,8 @@ for (const theme of themeList) {
 if (preview) {
   const hasShots = fs.existsSync(path.join(OUT, 'screenshots', themes[0].id + '-desktop.jpg'));
   write(path.join(OUT, 'index.html'), galleryPage({ themes, articles, hasShots }));
+  write(path.join(OUT, '.nojekyll'), '');
+} else if (single) {
   write(path.join(OUT, '.nojekyll'), '');
 } else {
   const urls = pages.filter(([p]) => p !== '404.html').map(([p]) => `  <url><loc>${site.url}/${p}</loc></url>`);

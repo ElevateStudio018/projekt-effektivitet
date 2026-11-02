@@ -3,8 +3,12 @@
 Ny version av [projekteffektivitet.se](https://projekteffektivitet.se) i **tio designstilar**
 med samma innehåll. Statisk HTML och CSS, inga ramverk, inga cookies, inga tredjepartsanrop.
 
-**Vald stil: Landskap.** `npm run build:site` bygger den skarpa sajten i Landskap till `dist/`.
-Övriga nio stilar finns kvar i förhandsvisningen för jämförelse.
+**Vald stil: Landskap** (med Nordisks rundade hörn, pillerknappar och mjuka kort, typsnitt Poppins).
+
+- **Förhandsvisning av endast vald stil:** [`preview/index.html`](preview/index.html) –
+  via githack: https://raw.githack.com/ElevateStudio018/projekt-effektivitet/claude/loving-davinci-n3pz3g/preview/index.html
+- **Skarp sajt:** `npm run build:site` bygger Landskap till `dist/`.
+- **Alla tio stilar** finns kvar i [`docs/index.html`](docs/index.html) för jämförelse.
 
 **Förhandsvisning:** öppna [`docs/index.html`](docs/index.html) – en översikt över alla tio
 stilar. På varje sida finns en stilväljare nere till vänster som byter stil men stannar på
@@ -37,7 +41,7 @@ samma sida.
 | 7 | **Rapport** | Fast sidomeny, rapportomslag, kapitelnumrering. | Source Serif 4 + Inter |
 | 8 | **Signal** | Bred grotesk i versaler, stora färgfält. | Archivo |
 | 9 | **Byrå** | Etablerad rådgivningsbyrå, centrerad, Garamond. | EB Garamond + Inter |
-| 10 | **Landskap** ✔ vald | Helsidesfoton och transparent sidhuvud på varje sida. | Poppins |
+| 10 | **Landskap** ✔ vald | Helsidesfoton och transparent sidhuvud på varje sida, rundade hörn, pillerknappar och mjuka kort från Nordisk. | Poppins |
 
 Alla stilar använder logotypens färger (marinblå `#144069`, orange `#F37021`) i någon form.
 Typsnitten är självhostade (SIL Open Font License, se `src/assets/fonts/licenses/`).
@@ -52,6 +56,12 @@ npm run build
 
 Bygger förhandsvisningen av alla tio stilar till `docs/` (relativa länkar, `noindex`,
 stilväljare).
+
+```bash
+npm run build:preview
+```
+
+Bygger både `docs/` och `preview/` – den senare innehåller bara vald stil, utan stilväljare.
 
 ```bash
 npm run build:site

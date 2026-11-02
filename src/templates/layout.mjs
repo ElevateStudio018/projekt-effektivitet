@@ -89,7 +89,7 @@ function footer(ctx) {
 }
 
 function styleSwitcher(ctx) {
-  if (!ctx.preview) return '';
+  if (!ctx.switcher) return '';
   const { themes, theme } = ctx;
   const i = themes.findIndex((t) => t.id === theme.id);
   const prev = themes[(i + themes.length - 1) % themes.length];
@@ -112,7 +112,7 @@ export function layout(ctx, { title, description, body, bodyClass = '', jsonLd =
   const fullTitle = page.path === '' ? title : `${title} – ${site.name}`;
   const desc = description || site.metaDescription;
   const preload = [...new Set(theme.fonts)].flatMap((f) => FONT_FILES[f] || []);
-  const canonical = ctx.preview ? '' : site.url + '/' + page.path;
+  const canonical = ctx.noindex ? '' : site.url + '/' + page.path;
   return html`<!doctype html>
 <html lang="sv" class="no-js">
 <head>
@@ -121,7 +121,7 @@ export function layout(ctx, { title, description, body, bodyClass = '', jsonLd =
 <title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(desc)}">
 <meta name="theme-color" content="${theme.palette[0]}">
-${ctx.preview ? '<meta name="robots" content="noindex">' : html`<link rel="canonical" href="${canonical}">`}
+${ctx.noindex ? '<meta name="robots" content="noindex">' : html`<link rel="canonical" href="${canonical}">`}
 <meta property="og:locale" content="sv_SE">
 <meta property="og:type" content="${page.type === 'article' ? 'article' : 'website'}">
 <meta property="og:site_name" content="${site.name}">
@@ -136,7 +136,7 @@ ${preload.map((f) => html`<link rel="preload" href="${ctx.asset('fonts/' + f)}" 
 <script>document.documentElement.classList.replace('no-js','js')</script>
 ${jsonLd ? html`<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
 </head>
-<body class="theme-${theme.id} ${bodyClass}${ctx.preview ? ' is-preview' : ''}" data-header="${theme.header}" data-hero="${theme.hero}">
+<body class="theme-${theme.id} ${bodyClass}${ctx.switcher ? ' is-preview' : ''}" data-header="${theme.header}" data-hero="${theme.hero}">
 <a class="skip-link" href="#main">Hoppa till innehållet</a>
 <div class="page-frame">
 ${header(ctx)}
