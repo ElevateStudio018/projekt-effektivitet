@@ -41,7 +41,7 @@ function header(ctx) {
     </nav>
     <div class="header-meta">
       <p>${site.legalName}<br>${site.city}</p>
-      <p><a href="${site.phoneHref}">${site.phone}</a><br><a href="mailto:${site.email}">E-post</a></p>
+      <p><a href="${site.phoneHref}">${site.phone}</a><br><a href="${ctx.link('kontakt/')}">Kontakt</a></p>
     </div>
   </div>
 </header>`;
@@ -77,7 +77,7 @@ function footer(ctx) {
       <address>
         ${site.legalName}<br>${site.city}<br>
         <a href="${site.phoneHref}">${site.phone}</a><br>
-        <a href="mailto:${site.email}">${site.email}</a>
+        <a href="${ctx.link('kontakt/')}">Kontakta oss</a>
       </address>
     </div>
   </div>

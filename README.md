@@ -118,7 +118,13 @@ läsas igenom:
 - **Så börjar ett uppdrag** (fyra steg) på tjänsteöversikten.
 - **Om oss**: bygger bara på uppgifter från sajten. Pers bakgrund saknas – se `TODO(Per)` i
   `src/content/site.mjs`.
-- **Alla sex artiklar** och deras **publiceringsdatum** (datumen är satta för förhandsvisningen).
+- **Alla artiklar** och deras **publiceringsdatum** (datumen är satta för förhandsvisningen).
+- **Artikeln om Elevate Studio** bygger på uppgifter från elevatestudio.nu (skrapat underlag i
+  `scraped/elevatestudio/`). Bilden `pjmp-x-elevate.jpg` är gjord av de båda logotyperna;
+  källfilen ligger i `scraped/elevatestudio/pjmp-x-elevate.source.html`.
+- **Bolagsnamn:** elevatestudio.nu anger bolaget som *PJM Projekteffektivitet AB*, org.nr
+  556969-4358. Nuvarande projekteffektivitet.se skriver *Projekteffektivitet AB*. Om det är samma
+  bolag bör `legalName` i `src/content/site.mjs` uppdateras och org.nr läggas till i sidfoten.
 - **Integritetspolicy**: stämmer för sajten som den är byggd (inga cookies, ingen statistik,
   formuläret skickar inget till någon server). Kontrollera mot hur förfrågningar hanteras i praktiken.
 - På startsidan länkar ”Öka verkningsgraden” nu till Loopingmodellen i stället för till

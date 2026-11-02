@@ -60,13 +60,12 @@ const personCard = (ctx, { heading = false } = {}) => html`
 
 const ctaBlock = (ctx) => html`
 <section class="section cta-section" id="kontakt" aria-labelledby="cta-title">
-  <div class="wrap cta-grid">
+  <div class="wrap cta-grid cta-grid--solo">
     <div class="cta-text">
       <h2 id="cta-title">${home.ctaTitle}</h2>
       <p>${home.ctaText}</p>
       <p class="cta-actions"><a class="button" href="${ctx.link('kontakt/')}">Kontakta oss</a></p>
     </div>
-    ${personCard(ctx)}
   </div>
 </section>`;
 
@@ -311,7 +310,6 @@ ${ctaBlock(ctx)}`;
     url: site.url,
     description: site.metaDescription,
     telephone: site.phone,
-    email: site.email,
     address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'SE' },
     logo: site.url + '/assets/logo/logo.svg',
   };
@@ -404,8 +402,8 @@ ${pageHead(ctx, {
       </div>
       <div class="aside-box aside-contact">
         <h2 class="minor-heading">Prata med oss</h2>
-        <p>Ring eller mejla ${site.person.name} för ett första samtal om ert projekt.</p>
-        <p><a href="${site.phoneHref}">${site.phone}</a><br><a href="mailto:${site.email}">${site.email}</a></p>
+        <p>Ring eller skriv till oss för ett första samtal om ert projekt.</p>
+        <p><a href="${site.phoneHref}">${site.phone}</a></p>
         <p><a class="button" href="${ctx.link('kontakt/', '?amne=' + s.id)}">Kontakta oss</a></p>
       </div>
     </aside>
@@ -578,7 +576,6 @@ export function articlePage(ctx, a) {
         <div class="aside-box">
           <h2 class="minor-heading">Skribent</h2>
           <p><strong>${site.person.name}</strong><br>${site.person.title}</p>
-          <p><a href="mailto:${site.email}">${site.email}</a></p>
         </div>
       </aside>
     </div>
