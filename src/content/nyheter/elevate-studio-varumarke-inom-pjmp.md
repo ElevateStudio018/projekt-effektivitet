@@ -3,8 +3,8 @@ title: Elevate Studio – webbyrån inom PJM Projekteffektivitet AB
 date: 2026-11-02
 category: Nyhet
 lead: Webbyrån Elevate Studio i Uppsala bygger hemsidor som ger förfrågningar. Elevate Studio är ett varumärke som tillhör PJM Projekteffektivitet AB – samma synsätt på effekt, tillämpat på webben.
-image: pjmp-x-elevate.jpg
-imageAlt: Projekteffektivitets logotyp och Elevate Studios logotyp sida vid sida
+image: pjmp-elevate-paraply.jpg
+imageAlt: PJM Projekteffektivitet AB med de två varumärkena Projekteffektivitet och Elevate Studio
 headImage: road_001.jpg
 ---
 Projekteffektivitet handlar om att projekt ska ge effekt i verksamheten, inte bara aktivitet. Elevate Studio arbetar efter samma princip med företagens hemsidor: en hemsida är ett medel, och det som räknas är om den ger kunder. Elevate Studio är ett varumärke som tillhör PJM Projekteffektivitet AB (org.nr 556969-4358).

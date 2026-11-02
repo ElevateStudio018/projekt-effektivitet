@@ -120,8 +120,8 @@ läsas igenom:
   `src/content/site.mjs`.
 - **Alla artiklar** och deras **publiceringsdatum** (datumen är satta för förhandsvisningen).
 - **Artikeln om Elevate Studio** bygger på uppgifter från elevatestudio.nu (skrapat underlag i
-  `scraped/elevatestudio/`). Bilden `pjmp-x-elevate.jpg` är gjord av de båda logotyperna;
-  källfilen ligger i `scraped/elevatestudio/pjmp-x-elevate.source.html`.
+  `scraped/elevatestudio/`). Bilden `pjmp-elevate-paraply.jpg` är förslag 1 av 5 i `forslag/elevate-bild/`
+  (källfiler i `forslag/elevate-bild/kalla/`).
 - **Bolagsnamn:** elevatestudio.nu anger bolaget som *PJM Projekteffektivitet AB*, org.nr
   556969-4358. Nuvarande projekteffektivitet.se skriver *Projekteffektivitet AB*. Om det är samma
   bolag bör `legalName` i `src/content/site.mjs` uppdateras och org.nr läggas till i sidfoten.
