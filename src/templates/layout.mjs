@@ -48,7 +48,7 @@ function header(ctx) {
 }
 
 // Reklamfilmen ovanför sidfoten (stilar med footerFilm). Ersätter kontaktpanelen.
-// Filmen laddas först när besökaren närmar sig den och spelas tyst i loop
+// Filmen laddas först när besökaren närmar sig den och spelas tyst en gång
 // medan den syns (se site.js). Stående version på smal skärm.
 export function filmBlock(ctx) {
   const onContact = ctx.page.path === 'kontakt/';
@@ -56,11 +56,12 @@ export function filmBlock(ctx) {
 <section class="film-section" aria-labelledby="film-title">
   <div class="wrap film-panel">
     <figure class="film-media">
-      <video class="film-video" muted loop playsinline preload="none"
+      <video class="film-video" muted playsinline preload="none"
         poster="${ctx.film('affisch-16x9.jpg')}"
         data-wide="${ctx.film('projekteffektivitet-reklamfilm-16x9.mp4')}" data-wide-poster="${ctx.film('affisch-16x9.jpg')}"
         data-tall="${ctx.film('projekteffektivitet-reklamfilm-9x16.mp4')}" data-tall-poster="${ctx.film('affisch-9x16.jpg')}"
         aria-label="Reklamfilm: ett samtal om ett projekt som har stannat av, projektanalys och ett första samtal"></video>
+      <a class="film-link" href="${ctx.link('kontakt/')}" hidden><span class="film-link-label">Boka ett första samtal</span></a>
       <button class="film-toggle" type="button" aria-label="Spela filmen" hidden>
         <svg class="i-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>
         <svg class="i-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/></svg>

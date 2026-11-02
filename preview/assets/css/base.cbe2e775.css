@@ -415,7 +415,10 @@ a:hover .icon-arrow { transform: translateX(3px); }
 .film-media { position: relative; margin: 0; border-radius: calc(var(--panel-radius, var(--radius)) - 8px); overflow: hidden; background: #0e1821; aspect-ratio: 16 / 9; }
 @media (max-width: 699px) { .film-media { aspect-ratio: 9 / 16; max-height: 82vh; margin-inline: auto; } }
 .film-video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.film-toggle { position: absolute; right: 14px; bottom: 14px; width: 46px; height: 46px; border: 0; border-radius: 50%; background: rgba(14, 24, 33, .72); color: #fff; display: grid; place-items: center; cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.film-link { position: absolute; inset: 0; z-index: 1; cursor: pointer; }
+.film-link-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.film-link:focus-visible { outline-offset: -6px; }
+.film-toggle { z-index: 2;  position: absolute; right: 14px; bottom: 14px; width: 46px; height: 46px; border: 0; border-radius: 50%; background: rgba(14, 24, 33, .72); color: #fff; display: grid; place-items: center; cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .film-toggle:hover { background: rgba(14, 24, 33, .9); }
 .film-toggle .i-pause, .film-toggle.is-playing .i-play { display: none; }
 .film-toggle.is-playing .i-pause { display: block; }

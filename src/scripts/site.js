@@ -61,7 +61,8 @@
   var btn = document.querySelector('.film-toggle');
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var tall = window.matchMedia('(max-width: 699px)');
-  var loaded = false, inView = false, userPaused = reduced;
+  var loaded = false, inView = false, userPaused = reduced, ended = false;
+  var link = document.querySelector('.film-link');
 
   var variant = function () { return tall.matches ? 'tall' : 'wide'; };
   var setPoster = function () { video.poster = video.dataset[variant() + 'Poster']; };
@@ -80,6 +81,9 @@
   btn.hidden = false;
   video.addEventListener('play', sync);
   video.addEventListener('pause', sync);
+  // Slutbilden: knappen i filmen blir klickbar. Filmen stannar på sista bilden tills sidan laddas om.
+  video.addEventListener('timeupdate', function () { if (video.currentTime >= 16.6) link.hidden = false; });
+  video.addEventListener('ended', function () { ended = true; link.hidden = false; btn.hidden = true; });
   btn.addEventListener('click', function () {
     if (video.paused) { userPaused = false; play(); } else { userPaused = true; video.pause(); }
   });
@@ -93,7 +97,7 @@
     new IntersectionObserver(function (e) { if (e[0].isIntersecting && !reduced) load(); }, { rootMargin: '400px' }).observe(video);
     new IntersectionObserver(function (e) {
       inView = e[0].isIntersecting;
-      if (inView && !userPaused) play(); else if (!inView) video.pause();
+      if (inView && !userPaused && !ended) play(); else if (!inView) video.pause();
     }, { threshold: 0.5 }).observe(video);
   }
   sync();
