@@ -13,7 +13,7 @@ const FONT_FILES = {
   Fraunces: 'fraunces.woff2',
   'IBM Plex Sans': 'ibm-plex-sans-400.woff2',
   'IBM Plex Mono': 'ibm-plex-mono-400.woff2',
-  Poppins: ['poppins-400.woff2', 'poppins-500.woff2'],
+  Poppins: ['poppins-400.woff2', 'poppins-500.woff2', 'poppins-600.woff2'],
 };
 
 function header(ctx) {
