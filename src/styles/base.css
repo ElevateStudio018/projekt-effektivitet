@@ -178,8 +178,10 @@ a:hover .icon-arrow { transform: translateX(3px); }
 }
 
 /* Overlay (Landskap): transparent ovanpå sidans foto */
-[data-header="overlay"] .site-header { position: absolute; inset: 0 0 auto 0; background: transparent; --header-rule: rgba(255,255,255,.25); --header-text: #fff; }
+[data-header="overlay"] .site-header { position: fixed; transition: background .3s, box-shadow .3s; inset: 0 0 auto 0; background: transparent; --header-rule: rgba(255,255,255,.25); --header-text: #fff; }
 [data-header="overlay"] .site-header.nav-open { background: rgba(14, 24, 33, .97); }
+[data-header="overlay"] .site-header.is-scrolled { background: rgba(20, 32, 43, .94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 8px 30px rgba(0, 0, 0, .18); }
+.skip-link { z-index: 200; }
 
 /* Sidomeny (Rapport) */
 @media (min-width: 1100px) {

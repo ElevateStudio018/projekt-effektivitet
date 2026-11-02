@@ -1,6 +1,10 @@
 // Mobilmeny och kontaktformulär. Allt fungerar utan JavaScript: menyn
 // visas då alltid och kontaktuppgifterna finns i klartext.
 (function () {
+  // Fast sidhuvud: får bakgrund när man har skrollat.
+  var hdr = document.querySelector('.site-header');
+  var onScroll = function () { if (hdr) hdr.classList.toggle('is-scrolled', window.scrollY > 40); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   var toggle = document.querySelector('.nav-toggle');
   var header = document.querySelector('.site-header');
   if (toggle && header) {

@@ -151,6 +151,24 @@ if (preview) {
       write(path.join(ASSETS, 'film', f), fs.readFileSync(path.join(ROOT, 'film', f)));
     }
   }
+  // Loopia kör Apache: egen 404-sida, https, och lång cache för filer med hash i namnet.
+  write(path.join(OUT, '.htaccess'), `ErrorDocument 404 /404.html
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+# Gamla adresser utan snedstreck
+RewriteRule ^(tjanster|loopingmodellen|kontakt)$ /$1/ [L,R=301]
+<IfModule mod_headers.c>
+  <FilesMatch "\\.[0-9a-f]{8}\\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\\.(woff2|jpg|png|svg|mp4)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+`);
   write(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
 }
 

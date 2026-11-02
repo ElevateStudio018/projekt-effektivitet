@@ -181,3 +181,4 @@
 
 /* Poppins laddas i 300–600: håll fetstil på 600 så webbläsaren inte syntetiserar */
 strong, b, .prose ol li::before, .loop-diagram .ld-node text { font-weight: 600; }
+html { scroll-padding-top: 96px; }
