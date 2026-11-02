@@ -1,0 +1,10 @@
+@font-face{font-family:Hanken;font-weight:600;src:url(hanken-600.woff2)}
+@font-face{font-family:Poppins;font-weight:400;src:url(../../../src/assets/fonts/poppins-400.woff2)}
+@font-face{font-family:Poppins;font-weight:500;src:url(../../../src/assets/fonts/poppins-500.woff2)}
+@font-face{font-family:Poppins;font-weight:600;src:url(../../../src/assets/fonts/poppins-600.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:1000px;overflow:hidden}
+body{font-family:Poppins;position:relative;--navy:#1d2b36;--green:#1d3b2a;--cream:#fdfbf5;--stone:#f4f1ea;--orange:#f37021}
+.el{display:inline-flex;align-items:center;gap:.32em;font-family:Hanken;font-weight:600;letter-spacing:-0.02em;line-height:1;white-space:nowrap}
+.el svg{height:.95em;width:auto}
+.lbl{font-size:20px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
