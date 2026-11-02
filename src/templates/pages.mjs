@@ -9,7 +9,7 @@ import { layout } from './layout.mjs';
 const WIDE = /^road_00[123]\.jpg$/;
 const WEBP = { 'bild_projektanalys2_low.jpg': 800, 'bild_projektspecialist_low.jpg': 800, 'bild_projekteffekt_low.jpg': 800,
   'per_mattsson.jpg': 520, 'pjmp-elevate-paraply.jpg': 1600, 'loopingmodellen_overgripande.jpg': 1000 };
-const img = (ctx, file, alt, attrs = '', sizes = '(min-width: 800px) 400px, 100vw') => {
+const img = (ctx, file, alt, attrs = '', sizes = '(min-width: 800px) 400px, 56vw') => {
   const base = file.replace(/\.jpg$/, '');
   const a = (f) => ctx.asset('img/' + f);
   if (WIDE.test(file)) {
