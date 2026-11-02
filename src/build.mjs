@@ -85,6 +85,8 @@ function makeContext(theme, pagePath, meta = {}) {
     page: { path: pagePath === '404.html' ? '404' : pagePath, ...meta },
     link: (to, query = '') => (relative ? up + to + 'index.html' + query : '/' + to + query),
     asset: (f) => (preview ? up + '../assets/' : single ? up + 'assets/' : '/assets/') + (hashed[f] || f),
+    // Reklamfilmen: förhandsvisningarna länkar till repots film/-mapp, produktionsbygget kopierar in den.
+    film: (f) => (preview ? up + '../../film/' : single ? up + '../film/' : '/assets/film/') + f,
     themeLink: (id) => up + '../' + id + '/' + file,
     galleryLink: up + '../index.html',
   };
@@ -144,6 +146,11 @@ if (preview) {
 } else {
   const urls = pages.filter(([p]) => p !== '404.html').map(([p]) => `  <url><loc>${site.url}/${p}</loc></url>`);
   write(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`);
+  if (themeList.some((t) => t.footerFilm)) {
+    for (const f of fs.readdirSync(path.join(ROOT, 'film')).filter((f) => /^(projekteffektivitet-reklamfilm-.*\.mp4|affisch-.*\.jpg)$/.test(f))) {
+      write(path.join(ASSETS, 'film', f), fs.readFileSync(path.join(ROOT, 'film', f)));
+    }
+  }
   write(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
 }
 

@@ -6,6 +6,7 @@
 //   hero:   photo | editorial | type | split | diagram | cover | banner
 //
 // `chosen: true` markerar den valda stilen (standard för produktionsbygget).
+// `footerFilm: true` visar reklamfilmen ovanför sidfoten i stället för kontaktpanelen.
 
 export const themes = [
   {
@@ -120,7 +121,7 @@ export const themes = [
     id: 'landskap',
     name: 'Landskap',
     chosen: true,
-    heroChat: true,
+    footerFilm: true,
     summary: 'Vägen som berättelse. Helsidesfotografier och transparent sidhuvud, med Nordisks rundade hörn, pillerknappar och mjuka kort. Poppins genomgående.',
     fonts: ['Poppins'],
     palette: ['#F4F1EA', '#1D2B36', '#F37021', '#FBFAF6', '#1F2E39'],

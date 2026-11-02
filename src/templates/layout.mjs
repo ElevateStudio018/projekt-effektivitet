@@ -1,5 +1,5 @@
 import { html, esc } from '../lib/html.mjs';
-import { site, nav, services } from '../content/site.mjs';
+import { site, nav, services, home } from '../content/site.mjs';
 
 const FONT_FILES = {
   Inter: 'inter.woff2',
@@ -45,6 +45,36 @@ function header(ctx) {
     </div>
   </div>
 </header>`;
+}
+
+// Reklamfilmen ovanför sidfoten (stilar med footerFilm). Ersätter kontaktpanelen.
+// Filmen laddas först när besökaren närmar sig den och spelas tyst i loop
+// medan den syns (se site.js). Stående version på smal skärm.
+export function filmBlock(ctx) {
+  const onContact = ctx.page.path === 'kontakt/';
+  return html`
+<section class="film-section" aria-labelledby="film-title">
+  <div class="wrap film-panel">
+    <figure class="film-media">
+      <video class="film-video" muted loop playsinline preload="none"
+        poster="${ctx.film('affisch-16x9.jpg')}"
+        data-wide="${ctx.film('projekteffektivitet-reklamfilm-16x9.mp4')}" data-wide-poster="${ctx.film('affisch-16x9.jpg')}"
+        data-tall="${ctx.film('projekteffektivitet-reklamfilm-9x16.mp4')}" data-tall-poster="${ctx.film('affisch-9x16.jpg')}"
+        aria-label="Reklamfilm: ett samtal om ett projekt som har stannat av, projektanalys och ett första samtal"></video>
+      <button class="film-toggle" type="button" aria-label="Spela filmen" hidden>
+        <svg class="i-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>
+        <svg class="i-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/></svg>
+      </button>
+    </figure>
+    <div class="film-cta">
+      <div>
+        <h2 id="film-title">${home.ctaTitle}</h2>
+        <p>${home.ctaText}</p>
+      </div>
+      ${onContact ? '' : html`<p class="film-actions"><a class="button" href="${ctx.link('kontakt/')}">Kontakta oss</a></p>`}
+    </div>
+  </div>
+</section>`;
 }
 
 function footer(ctx) {
@@ -143,6 +173,7 @@ ${header(ctx)}
 <main id="main">
 ${body}
 </main>
+${ctx.theme.footerFilm && ctx.page.path !== '404' ? filmBlock(ctx) : ''}
 ${footer(ctx)}
 </div>
 ${styleSwitcher(ctx)}

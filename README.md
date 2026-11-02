@@ -92,6 +92,11 @@ npm run screenshots
 chattsamtal, i två format: `projekteffektivitet-reklamfilm-16x9.mp4` (1920×1080) och
 `projekteffektivitet-reklamfilm-9x16.mp4` (1080×1920). Visa dem i `film/index.html`.
 
+På webbplatsen (stilen Landskap) visas filmen ovanför sidfoten på alla sidor utom 404, i stället
+för kontaktpanelen. Den laddas först när besökaren närmar sig, spelas tyst i loop medan den syns,
+har en paus/spela-knapp och visas i stående format på mobil. Styrs av `footerFilm: true` i
+`src/themes.mjs`. Filmen använder vägbilderna road_001 och road_002 – inte startsidans road_003.
+
 Filmen är en HTML-animation (`film/kalla/film.html`) som renderas bildruta för bildruta.
 Ändra texter eller tider där och rendera om med `node film/render.mjs` (kräver Playwright och ffmpeg).
 Öppnad direkt i webbläsaren spelas animationen upp i realtid.
