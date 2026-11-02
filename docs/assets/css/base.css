@@ -150,7 +150,7 @@ a:hover .icon-arrow { transform: translateX(3px); }
   .nav-toggle-icon, .nav-toggle-icon::before { display: block; width: 18px; height: 2px; background: currentColor; position: relative; }
   .nav-toggle-icon::before { content: ''; position: absolute; top: 6px; }
   .nav-toggle-icon { margin-top: -6px; }
-  .header-inner { flex-wrap: wrap; }
+  .header-inner { flex-wrap: wrap; min-height: 0; padding-block: 14px; }
   .no-js .site-nav { width: 100%; padding-bottom: 12px; }
   .js .site-nav { display: none; width: 100%; padding: 8px 0 20px; }
   .js .nav-open .site-nav { display: block; }
@@ -177,9 +177,9 @@ a:hover .icon-arrow { transform: translateX(3px); }
   [data-header="center"] .site-nav ul { justify-content: center; }
 }
 
-/* Overlay (Landskap): transparent ovanpå startsidans bild */
-[data-header="overlay"].page-home .site-header { position: absolute; inset: 0 0 auto 0; background: transparent; --header-rule: rgba(255,255,255,.25); --header-text: #fff; }
-[data-header="overlay"].page-home .site-header.nav-open { background: rgba(14, 24, 33, .97); }
+/* Overlay (Landskap): transparent ovanpå sidans foto */
+[data-header="overlay"] .site-header { position: absolute; inset: 0 0 auto 0; background: transparent; --header-rule: rgba(255,255,255,.25); --header-text: #fff; }
+[data-header="overlay"] .site-header.nav-open { background: rgba(14, 24, 33, .97); }
 
 /* Sidomeny (Rapport) */
 @media (min-width: 1100px) {
@@ -403,6 +403,9 @@ a:hover .icon-arrow { transform: translateX(3px); }
 .person-contact dt { color: var(--muted); min-width: 4.5em; }
 .person-contact dd { margin: 0; overflow-wrap: anywhere; }
 @media (max-width: 479px) { .person-card { grid-template-columns: 1fr; } .person-img { width: 100%; height: auto; aspect-ratio: 3 / 2; } }
+
+/* Element som bara vissa stilar visar */
+.page-head-media, .hero-services { display: none; }
 
 /* --------------------------------------------------------------- Undersidor */
 .page-head { padding-block: clamp(40px, 6vw, 88px) clamp(40px, 5vw, 72px); background: var(--bg-alt); border-bottom: 1px solid var(--rule); }

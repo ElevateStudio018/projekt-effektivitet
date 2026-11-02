@@ -30,6 +30,8 @@ export function galleryPage({ themes, articles, hasShots }) {
   .note strong { display:block; margin-bottom:4px; }
   .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 28px; padding-bottom: 80px; }
   .card { background:#fff; border:1px solid var(--rule); display:flex; flex-direction:column; }
+  .card.is-chosen { border:2px solid var(--orange); box-shadow: 0 10px 30px rgba(20,32,43,.12); }
+  .badge { display:inline-block; background: var(--orange); color:#14202b; font-size:12px; font-weight:700; padding:3px 8px; margin-left:8px; vertical-align: 2px; }
   .shot { display:block; aspect-ratio: 16/10; overflow:hidden; border-bottom:1px solid var(--rule); background:#e9ecef; position:relative; }
   .shot img { width:100%; height:100%; object-fit:cover; object-position: top; display:block; }
   .shot .mob { position:absolute; right:12px; bottom:12px; width:22%; height:auto; aspect-ratio: 9/19; object-fit:cover; object-position:top; border:3px solid #14202b; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,.25); }
@@ -57,6 +59,7 @@ export function galleryPage({ themes, articles, hasShots }) {
   <section class="intro">
     <h1>Tio designstilar för projekteffektivitet.se</h1>
     <p>Varje stil är en komplett webbplats med samma innehåll: startsida, tre tjänstesidor, Loopingmodellen, Om oss, nyheter med ${articles.length} artiklar, kontakt, integritetspolicy och 404-sida.</p>
+    ${(() => { const c = themes.find((t) => t.chosen); return c ? html`<p><strong>Vald stil: ${c.name}.</strong> <a href="${c.id}/index.html">Öppna webbplatsen i ${c.name}</a>.</p>` : ''; })()}
     <p>Byt stil på vilken sida som helst med väljaren nere till vänster – du hamnar på samma sida i den andra stilen.</p>
   </section>
   <div class="notes">
@@ -66,12 +69,12 @@ export function galleryPage({ themes, articles, hasShots }) {
   </div>
   <div class="grid">
     ${themes.map(
-      (t, i) => html`<article class="card">
+      (t, i) => html`<article class="card${t.chosen ? ' is-chosen' : ''}">
       <a class="shot" href="${t.id}/index.html" aria-label="Öppna stilen ${t.name}">
         ${hasShots ? html`<img src="screenshots/${t.id}-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/${t.id}-mobile.jpg" alt="" loading="lazy">` : ''}
       </a>
       <div class="body">
-        <span class="num">Stil ${i + 1} av ${themes.length}</span>
+        <span class="num">Stil ${i + 1} av ${themes.length}${t.chosen ? html`<span class="badge">Vald stil</span>` : ''}</span>
         <h2>${t.name}</h2>
         <p>${esc(t.summary)}</p>
         <p class="meta">Typsnitt: ${t.fonts.join(' + ')}</p>

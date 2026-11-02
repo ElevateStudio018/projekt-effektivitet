@@ -29,8 +29,13 @@ const breadcrumbs = (ctx, trail) => html`
   </ol>
 </nav>`;
 
-const pageHead = (ctx, { trail, title, lead, label, extra = '' }) => html`
-<section class="page-head">
+// Bakgrundsfoto till sidhuvudet. Döljs i base.css och visas av stilar som vill ha det (Landskap).
+const headMedia = (ctx, file) =>
+  file ? html`<figure class="page-head-media" aria-hidden="true">${img(ctx, file, '', 'width="1923" height="600" fetchpriority="high"')}</figure>` : '';
+
+const pageHead = (ctx, { trail, title, lead, label, extra = '', image }) => html`
+<section class="page-head${image ? ' has-media' : ''}">
+  ${headMedia(ctx, image)}
   <div class="wrap page-head-inner">
     ${breadcrumbs(ctx, trail)}
     ${label ? html`<p class="page-label">${label}</p>` : ''}
@@ -68,7 +73,7 @@ const ctaBlock = (ctx) => html`
 export const newsCard = (ctx, a, { headingLevel = 3, withImage = true } = {}) => html`
 <article class="news-card">
   <a class="news-card-link" href="${ctx.link('nyheter/' + a.slug + '/')}">
-    ${withImage && a.image ? html`<figure class="news-card-img">${img(ctx, a.image, '', 'loading="lazy" width="800" height="533"')}</figure>` : ''}
+    ${withImage && (a.cardImage || a.image) ? html`<figure class="news-card-img">${img(ctx, a.cardImage || a.image, '', 'loading="lazy" width="800" height="533"')}</figure>` : ''}
     <div class="news-card-body">
       <p class="news-meta"><span class="news-cat">${a.category}</span> <time datetime="${a.date}">${formatDate(a.date)}</time></p>
       <h${headingLevel} class="news-title">${a.title}</h${headingLevel}>
@@ -95,6 +100,13 @@ const heroes = {
     <p class="hero-lead">${home.heroLead}</p>
     ${heroActions(ctx)}
   </div>
+  <nav class="hero-services" aria-label="Tjänster">
+    <ul class="wrap">
+      ${services.map(
+        (s) => html`<li><a href="${ctx.link('tjanster/' + s.id + '/')}"><span class="hs-num">${s.number}</span> <span class="hs-title">${s.title}</span> <span class="hs-text">${s.summary}</span></a></li>`
+      )}
+    </ul>
+  </nav>
 </section>`,
 
   type: (ctx) => html`
@@ -320,6 +332,7 @@ export function servicesPage(ctx) {
 ${pageHead(ctx, {
   trail: [['Tjänster', 'tjanster/']],
   label: 'Tjänster',
+  image: 'road_001.jpg',
   title: 'Rätt insats när projektet behöver den',
   lead: 'Projektspecialist, projektanalys och projekteffekt – tre sätt att skapa nya perspektiv, handlingskraft och framdrift.',
 })}
@@ -379,6 +392,7 @@ export function servicePage(ctx, s) {
   const body = html`
 ${pageHead(ctx, {
   trail: [['Tjänster', 'tjanster/'], [s.title, 'tjanster/' + s.id + '/']],
+  image: s.headImage,
   label: 'Tjänst ' + s.number,
   title: s.title,
   lead: s.summary,
@@ -442,7 +456,7 @@ ${ctaBlock(ctx)}`;
 export function loopPage(ctx) {
   const article = ctx.articles.find((a) => a.slug === 'loopingmodellen-i-praktiken');
   const body = html`
-${pageHead(ctx, { trail: [[loop.title, 'loopingmodellen/']], label: loop.title, title: loop.heading, lead: loop.lead })}
+${pageHead(ctx, { trail: [[loop.title, 'loopingmodellen/']], label: loop.title, title: loop.heading, lead: loop.lead, image: 'road_002.jpg' })}
 
 <section class="section loop-section loop-section--page">
   <div class="wrap">
@@ -481,7 +495,7 @@ ${ctaBlock(ctx)}`;
 
 export function aboutPage(ctx) {
   const body = html`
-${pageHead(ctx, { trail: [[about.title, 'om-oss/']], label: about.title, title: about.heading, lead: about.lead })}
+${pageHead(ctx, { trail: [[about.title, 'om-oss/']], label: about.title, title: about.heading, lead: about.lead, image: 'road_003.jpg' })}
 
 <section class="section article-section">
   <div class="wrap article-grid">
@@ -531,6 +545,7 @@ export function newsIndexPage(ctx) {
 ${pageHead(ctx, {
   trail: [['Nyheter', 'nyheter/']],
   label: 'Nyheter',
+  image: 'road_003.jpg',
   title: 'Nyheter och insikter',
   lead: 'Erfarenheter och perspektiv på projekt som ger effekt – och på det som får dem att stanna av.',
 })}
@@ -550,7 +565,8 @@ export function articlePage(ctx, a) {
   const more = ctx.articles.filter((o) => o.slug !== a.slug).slice(0, 3);
   const body = html`
 <article class="article">
-  <section class="page-head article-head">
+  <section class="page-head article-head has-media">
+    ${headMedia(ctx, a.headImage)}
     <div class="wrap page-head-inner">
       ${breadcrumbs(ctx, [['Nyheter', 'nyheter/'], [a.title, 'nyheter/' + a.slug + '/']])}
       <p class="news-meta"><span class="news-cat">${a.category}</span> <time datetime="${a.date}">${formatDate(a.date)}</time> <span class="read-time">${a.minutes} min läsning</span></p>
@@ -562,7 +578,7 @@ export function articlePage(ctx, a) {
   <div class="section article-section">
     <div class="wrap article-grid">
       <div class="prose">
-        ${a.image ? html`<figure class="prose-figure">${img(ctx, a.image, a.imageAlt || '', 'width="1200" height="600"')}</figure>` : ''}
+        ${a.image ? html`<figure class="prose-figure${a.image === a.headImage ? ' is-head-image' : ''}">${img(ctx, a.image, a.imageAlt || '', 'width="1200" height="600"')}</figure>` : ''}
         ${a.html(ctx.link)}
       </div>
       <aside class="article-aside">
@@ -601,7 +617,7 @@ export function articlePage(ctx, a) {
 
 export function contactPage(ctx) {
   const body = html`
-${pageHead(ctx, { trail: [['Kontakt', 'kontakt/']], label: 'Kontakta oss', title: contact.heading, lead: contact.lead })}
+${pageHead(ctx, { trail: [['Kontakt', 'kontakt/']], label: 'Kontakta oss', title: contact.heading, lead: contact.lead, image: 'road_003.jpg' })}
 
 <section class="section contact-section">
   <div class="wrap contact-grid">
@@ -642,7 +658,7 @@ ${pageHead(ctx, { trail: [['Kontakt', 'kontakt/']], label: 'Kontakta oss', title
 
 export function privacyPage(ctx) {
   const body = html`
-${pageHead(ctx, { trail: [[privacy.title, 'integritetspolicy/']], title: privacy.heading, lead: privacy.lead })}
+${pageHead(ctx, { trail: [[privacy.title, 'integritetspolicy/']], title: privacy.heading, lead: privacy.lead, image: 'road_001.jpg' })}
 <section class="section article-section">
   <div class="wrap article-grid">
     <div class="prose">
@@ -657,7 +673,8 @@ ${pageHead(ctx, { trail: [[privacy.title, 'integritetspolicy/']], title: privacy
 
 export function notFoundPage(ctx) {
   const body = html`
-<section class="page-head page-head--404">
+<section class="page-head page-head--404 has-media">
+  ${headMedia(ctx, 'road_002.jpg')}
   <div class="wrap page-head-inner">
     <p class="page-label">404</p>
     <h1>Sidan kunde inte hittas</h1>

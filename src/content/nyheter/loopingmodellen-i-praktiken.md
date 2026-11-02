@@ -5,6 +5,8 @@ category: Insikt
 lead: Stora förbättringsprogram tappar ofta riktning innan de hinner leverera. Loopingmodellen delar upp utvecklingen i avgränsade loopar med ett mätbart resultat i varje varv.
 image: loopingmodellen_overgripande.jpg
 imageAlt: Loopingmodellen – återkommande förbättringsloopar längs en linje
+headImage: road_003.jpg
+cardImage: bild_projektspecialist_low.jpg
 ---
 Loopingmodellen bygger på en enkel idé: i stället för ett stort förbättringsarbete utan tydliga avstämningar delas utvecklingen upp i avgränsade loopar. Varje loop får ett business case, ett genomförande och en kontrollerad effekt.
 

@@ -35,8 +35,8 @@
       return;
     }
     error.hidden = true;
-    var topicLabel = select.options[select.selectedIndex].text;
-    var subject = 'Förfrågan: ' + topicLabel + (get('organisation') ? ' – ' + get('organisation') : '');
+    var topicLabel = select.value ? select.options[select.selectedIndex].text : '';
+    var subject = 'Förfrågan' + (topicLabel ? ': ' + topicLabel : '') + (get('organisation') ? ' – ' + get('organisation') : '');
     var lines = [
       get('meddelande'),
       '',

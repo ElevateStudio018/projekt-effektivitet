@@ -2,7 +2,8 @@
 // Bygger webbplatsen.
 //
 //   node src/build.mjs                       Förhandsvisning av alla tio stilar i docs/
-//   node src/build.mjs --theme karna --out dist   Produktionsbygge av en stil
+//   node src/build.mjs --site                Produktionsbygge av vald stil till dist/
+//   node src/build.mjs --theme karna --out dist   Produktionsbygge av valfri stil
 //
 // Förhandsvisningen använder relativa länkar (fungerar från disk och på
 // GitHub Pages), noindex och en stilväljare. Produktionsbygget använder
@@ -26,7 +27,8 @@ const arg = (name) => {
   const i = args.indexOf('--' + name);
   return i >= 0 ? args[i + 1] : undefined;
 };
-const onlyTheme = arg('theme');
+// --site bygger den valda stilen (chosen: true i themes.mjs) om --theme saknas.
+const onlyTheme = arg('theme') || (args.includes('--site') ? themes.find((t) => t.chosen)?.id : undefined);
 const preview = !onlyTheme;
 const OUT = path.resolve(ROOT, arg('out') || (preview ? 'docs' : 'dist'));
 
@@ -44,6 +46,7 @@ const articles = fs
     return {
       ...data,
       slug: f.replace(/\.md$/, ''),
+      headImage: data.headImage || (/^road_/.test(data.image || '') ? data.image : 'road_002.jpg'),
       minutes: readingTime(plainText(body)),
       html: (link) => markdown(body, (p) => link(p)),
     };

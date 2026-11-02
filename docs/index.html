@@ -25,6 +25,8 @@
   .note strong { display:block; margin-bottom:4px; }
   .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 28px; padding-bottom: 80px; }
   .card { background:#fff; border:1px solid var(--rule); display:flex; flex-direction:column; }
+  .card.is-chosen { border:2px solid var(--orange); box-shadow: 0 10px 30px rgba(20,32,43,.12); }
+  .badge { display:inline-block; background: var(--orange); color:#14202b; font-size:12px; font-weight:700; padding:3px 8px; margin-left:8px; vertical-align: 2px; }
   .shot { display:block; aspect-ratio: 16/10; overflow:hidden; border-bottom:1px solid var(--rule); background:#e9ecef; position:relative; }
   .shot img { width:100%; height:100%; object-fit:cover; object-position: top; display:block; }
   .shot .mob { position:absolute; right:12px; bottom:12px; width:22%; height:auto; aspect-ratio: 9/19; object-fit:cover; object-position:top; border:3px solid #14202b; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,.25); }
@@ -52,6 +54,7 @@
   <section class="intro">
     <h1>Tio designstilar för projekteffektivitet.se</h1>
     <p>Varje stil är en komplett webbplats med samma innehåll: startsida, tre tjänstesidor, Loopingmodellen, Om oss, nyheter med 6 artiklar, kontakt, integritetspolicy och 404-sida.</p>
+    <p><strong>Vald stil: Landskap.</strong> <a href="landskap/index.html">Öppna webbplatsen i Landskap</a>.</p>
     <p>Byt stil på vilken sida som helst med väljaren nere till vänster – du hamnar på samma sida i den andra stilen.</p>
   </section>
   <div class="notes">
@@ -204,12 +207,12 @@
           <a href="byra/nyheter/index.html">Nyheter</a>
         </div>
       </div>
-    </article><article class="card">
+    </article><article class="card is-chosen">
       <a class="shot" href="landskap/index.html" aria-label="Öppna stilen Landskap">
         <img src="screenshots/landskap-desktop.jpg" alt="" loading="lazy" width="1440" height="900"><img class="mob" src="screenshots/landskap-mobile.jpg" alt="" loading="lazy">
       </a>
       <div class="body">
-        <span class="num">Stil 10 av 10</span>
+        <span class="num">Stil 10 av 10<span class="badge">Vald stil</span></span>
         <h2>Landskap</h2>
         <p>Vägen som berättelse. Helsidesfotografier, transparent sidhuvud och Fraunces i stora grader.</p>
         <p class="meta">Typsnitt: Fraunces + Inter</p>

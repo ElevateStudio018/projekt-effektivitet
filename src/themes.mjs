@@ -4,6 +4,8 @@
 //
 //   header: bar | masthead | center | side | overlay
 //   hero:   photo | editorial | type | split | diagram | cover | banner
+//
+// `chosen: true` markerar den valda stilen (standard för produktionsbygget).
 
 export const themes = [
   {
@@ -117,6 +119,7 @@ export const themes = [
   {
     id: 'landskap',
     name: 'Landskap',
+    chosen: true,
     summary: 'Vägen som berättelse. Helsidesfotografier, transparent sidhuvud och Fraunces i stora grader.',
     fonts: ['Fraunces', 'Inter'],
     palette: ['#FFFFFF', '#14202B', '#F37021', '#EEF0EE', '#5B6B5A'],

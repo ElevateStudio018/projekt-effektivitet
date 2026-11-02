@@ -37,6 +37,7 @@ export const nav = [
 export const services = [
   {
     id: 'projektspecialist',
+    headImage: 'road_002.jpg',
     number: '01',
     title: 'Projektspecialist',
     summary: 'Erfaret stöd när ett projekt behöver avlastning, nya perspektiv och snabb handlingskraft.',
@@ -60,6 +61,7 @@ export const services = [
   },
   {
     id: 'projektanalys',
+    headImage: 'road_001.jpg',
     number: '02',
     title: 'Projektanalys',
     summary: 'En oberoende genomlysning av läget och det som hindrar projektet från att nå målet.',
@@ -83,6 +85,7 @@ export const services = [
   },
   {
     id: 'projekteffekt',
+    headImage: 'road_003.jpg',
     number: '03',
     title: 'Projekteffekt',
     summary: 'Första hjälpen i kritiska projekt – eller en förebyggande insats innan problemen vuxit sig stora.',
@@ -219,6 +222,7 @@ export const contact = {
     'Välkommen att ringa eller mejla för ett första samtal.',
   ],
   topics: [
+    ['', 'Allmän förfrågan'],
     ['projektspecialist', 'Projektspecialist'],
     ['projektanalys', 'Projektanalys'],
     ['projekteffekt', 'Projekteffekt'],

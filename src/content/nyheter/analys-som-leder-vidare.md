@@ -5,6 +5,7 @@ category: Insikt
 lead: Många organisationer har lådor fulla av utredningar som aldrig blev något. Skillnaden mellan en analys som samlar damm och en som får effekt avgörs redan innan arbetet börjar.
 image: bild_projektanalys2_low.jpg
 imageAlt: Analys av projektdata på en surfplatta
+headImage: road_001.jpg
 ---
 Insikten blir värdefull först när den går att omsätta i tydliga beslut och handling. Det låter självklart, men det är förvånansvärt vanligt att analyser beställs, levereras och sedan inte används.
 

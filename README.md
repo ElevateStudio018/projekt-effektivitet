@@ -3,6 +3,9 @@
 Ny version av [projekteffektivitet.se](https://projekteffektivitet.se) i **tio designstilar**
 med samma innehåll. Statisk HTML och CSS, inga ramverk, inga cookies, inga tredjepartsanrop.
 
+**Vald stil: Landskap.** `npm run build:site` bygger den skarpa sajten i Landskap till `dist/`.
+Övriga nio stilar finns kvar i förhandsvisningen för jämförelse.
+
 **Förhandsvisning:** öppna [`docs/index.html`](docs/index.html) – en översikt över alla tio
 stilar. På varje sida finns en stilväljare nere till vänster som byter stil men stannar på
 samma sida.
@@ -34,7 +37,7 @@ samma sida.
 | 7 | **Rapport** | Fast sidomeny, rapportomslag, kapitelnumrering. | Source Serif 4 + Inter |
 | 8 | **Signal** | Bred grotesk i versaler, stora färgfält. | Archivo |
 | 9 | **Byrå** | Etablerad rådgivningsbyrå, centrerad, Garamond. | EB Garamond + Inter |
-| 10 | **Landskap** | Helsidesfoton, transparent sidhuvud. | Fraunces + Inter |
+| 10 | **Landskap** ✔ vald | Helsidesfoton och transparent sidhuvud på varje sida, genvägar till tjänsterna i startsidans bild. | Fraunces + Inter |
 
 Alla stilar använder logotypens färger (marinblå `#144069`, orange `#F37021`) i någon form.
 Typsnitten är självhostade (SIL Open Font License, se `src/assets/fonts/licenses/`).
@@ -51,11 +54,15 @@ Bygger förhandsvisningen av alla tio stilar till `docs/` (relativa länkar, `no
 stilväljare).
 
 ```bash
-npm run build:site -- karna
+npm run build:site
 ```
 
-Bygger den skarpa sajten i vald stil till `dist/`: absoluta länkar, canonical-URL:er,
-`sitemap.xml` och `robots.txt`, ingen stilväljare. Byt `karna` mot valfri stil.
+Bygger den skarpa sajten i vald stil (Landskap) till `dist/`: absoluta länkar, canonical-URL:er,
+`sitemap.xml` och `robots.txt`, ingen stilväljare. Innehållet i `dist/` laddas upp till
+webbhotellets rotkatalog.
+
+En annan stil byggs med `node src/build.mjs --theme karna --out dist`. Vilken stil som är vald
+styrs av `chosen: true` i `src/themes.mjs`.
 
 Kvalitetskontroll och skärmdumpar kräver Playwright (`npm i -D playwright && npx playwright install chromium`):
 

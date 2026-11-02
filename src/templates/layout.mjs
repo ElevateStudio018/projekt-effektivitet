@@ -17,8 +17,7 @@ const FONT_FILES = {
 
 function header(ctx) {
   const { theme, page } = ctx;
-  const isHome = page.path === '';
-  const logo = theme.header === 'overlay' && isHome ? 'logo-light.svg' : theme.logo;
+  const logo = theme.header === 'overlay' ? 'logo-light.svg' : theme.logo;
   const current = (p) => (page.path === p || (p !== '' && page.path.startsWith(p)) ? ' aria-current="page"' : '');
   return html`
 <header class="site-header" data-variant="${theme.header}">
