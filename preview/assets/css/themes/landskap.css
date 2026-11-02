@@ -23,7 +23,7 @@
   --bg-alt: #ebe6db;
   --surface: #fbfaf6;
   --text: #2c3a45;
-  --muted: #5f6b73;
+  --muted: #56626a;
   --heading: #1d2b36;
   --brand: #144069;
   --link: #144069;
@@ -126,7 +126,7 @@
 /* Loopingmodellen: rundad panel med foto */
 .loop-section { background: transparent; }
 .loop-section > .wrap {
-  background: linear-gradient(rgba(22, 34, 44, .9), rgba(22, 34, 44, .9)), url(../../img/road_001.jpg) center / cover;
+  background: linear-gradient(rgba(22, 34, 44, .9), rgba(22, 34, 44, .9)), url(../../img/road_001-1920.webp) center / cover;
   border-radius: var(--panel-radius); padding-block: clamp(36px, 5vw, 80px);
   width: calc(100% - 2 * var(--gutter));
 }
@@ -154,7 +154,7 @@
 /* Kontakt-CTA: rundad panel med foto */
 .cta-section { background: transparent; }
 .cta-section > .wrap {
-  background: linear-gradient(90deg, rgba(var(--photo-shade), .92) 0%, rgba(var(--photo-shade), .74) 60%, rgba(var(--photo-shade), .55) 100%), url(../../img/road_002.jpg) center / cover;
+  background: linear-gradient(90deg, rgba(var(--photo-shade), .92) 0%, rgba(var(--photo-shade), .74) 60%, rgba(var(--photo-shade), .55) 100%), url(../../img/road_002-1920.webp) center / cover;
   color: #dbe3e8; border-radius: var(--panel-radius); padding-block: clamp(32px, 5vw, 72px);
   width: calc(100% - 2 * var(--gutter));
 }

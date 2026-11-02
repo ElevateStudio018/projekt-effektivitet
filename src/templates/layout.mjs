@@ -57,9 +57,9 @@ export function filmBlock(ctx) {
   <div class="wrap film-panel">
     <figure class="film-media">
       <video class="film-video" muted playsinline preload="none"
-        poster="${ctx.film('affisch-16x9.jpg')}"
-        data-wide="${ctx.film('projekteffektivitet-reklamfilm-16x9.mp4')}" data-wide-poster="${ctx.film('affisch-16x9.jpg')}"
-        data-tall="${ctx.film('projekteffektivitet-reklamfilm-9x16.mp4')}" data-tall-poster="${ctx.film('affisch-9x16.jpg')}"
+        poster="${ctx.film('affisch-16x9.webp')}"
+        data-wide="${ctx.film('projekteffektivitet-reklamfilm-16x9.mp4')}" data-wide-poster="${ctx.film('affisch-16x9.webp')}"
+        data-tall="${ctx.film('projekteffektivitet-reklamfilm-9x16.mp4')}" data-tall-poster="${ctx.film('affisch-9x16.webp')}"
         aria-label="Reklamfilm: ett samtal om ett projekt som har stannat av, projektanalys och ett första samtal"></video>
       <a class="film-link" href="${ctx.link('kontakt/')}" hidden><span class="film-link-label">Boka ett första samtal</span></a>
       <button class="film-toggle" type="button" aria-label="Spela filmen" hidden>
@@ -161,9 +161,11 @@ ${ctx.noindex ? '<meta name="robots" content="noindex">' : html`<link rel="canon
 <meta property="og:image" content="${site.url}/assets/img/${page.ogImage || 'road_002.jpg'}">
 <link rel="icon" type="image/png" href="${ctx.asset('logo/favicon.png')}">
 ${preload.map((f) => html`<link rel="preload" href="${ctx.asset('fonts/' + f)}" as="font" type="font/woff2" crossorigin>`)}
-<link rel="stylesheet" href="${ctx.asset('css/fonts.css')}">
+${page.path === '' && theme.hero === 'photo' ? html`<link rel="preload" as="image" href="${ctx.asset('img/' + theme.heroImage.replace('.jpg', '-mobil.webp'))}" media="(max-width: 699px)" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="${ctx.asset('img/' + theme.heroImage.replace('.jpg', '-1200.webp'))} 1200w, ${ctx.asset('img/' + theme.heroImage.replace('.jpg', '-1920.webp'))} 1920w" imagesizes="100vw" media="(min-width: 700px)" fetchpriority="high">` : ''}
+${ctx.inlineCss ? html`<style>${ctx.inlineCss(theme)}</style>` : html`<link rel="stylesheet" href="${ctx.asset('css/fonts.css')}">
 <link rel="stylesheet" href="${ctx.asset('css/base.css')}">
-<link rel="stylesheet" href="${ctx.asset('css/themes/' + theme.id + '.css')}">
+<link rel="stylesheet" href="${ctx.asset('css/themes/' + theme.id + '.css')}">`}
 <script>document.documentElement.classList.replace('no-js','js')</script>
 ${jsonLd ? html`<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
 </head>

@@ -80,7 +80,8 @@ function makeContext(theme, pagePath, meta = {}) {
     themes,
     preview,
     switcher: preview,
-    noindex: relative,
+    noindex: preview,
+    inlineCss: preview ? null : (t) => inlineCss(t, (f) => (single ? up + 'assets/' : '/assets/') + f),
     articles,
     page: { path: pagePath === '404.html' ? '404' : pagePath, ...meta },
     link: (to, query = '') => (relative ? up + to + 'index.html' + query : '/' + to + query),
@@ -107,6 +108,18 @@ const ASSETS = path.join(OUT, 'assets');
 copyDir(path.join(SRC, 'assets/img'), path.join(ASSETS, 'img'));
 copyDir(path.join(SRC, 'assets/logo'), path.join(ASSETS, 'logo'));
 copyDir(path.join(SRC, 'assets/fonts'), path.join(ASSETS, 'fonts'));
+// I enstil- och produktionsbygget läggs CSS:en direkt i sidan (ingen
+// renderingsblockerande begäran). Bara den aktiva stilens typsnitt tas med.
+const FONTS_FOR = { landskap: ['Poppins'] };
+const inlineCss = (theme, asset) => {
+  const fams = theme.fonts;
+  const fonts = fs.readFileSync(path.join(SRC, 'styles/fonts.css'), 'utf8').split('\n')
+    .filter((l) => l.startsWith('@font-face') && fams.some((f) => l.includes(`'${f}'`))).join('\n');
+  const css = fonts + '\n' + fs.readFileSync(path.join(SRC, 'styles/base.css'), 'utf8') + '\n' + fs.readFileSync(path.join(SRC, 'styles/themes', theme.id + '.css'), 'utf8');
+  return css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '\n')
+    .replace(/url\(\.\.\/fonts\//g, 'url(' + asset('fonts/')).replace(/url\(\.\.\/\.\.\/img\//g, 'url(' + asset('img/'));
+};
+
 // CSS och JS skrivs både med vanligt namn och med innehållshash i filnamnet
 // (t.ex. css/base.3f9a1c2e.css). Sidorna länkar till hash-versionen, så en
 // ändring aldrig serveras från en gammal cache (githack, webbläsare, CDN).
@@ -147,7 +160,7 @@ if (preview) {
   const urls = pages.filter(([p]) => p !== '404.html').map(([p]) => `  <url><loc>${site.url}/${p}</loc></url>`);
   write(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`);
   if (themeList.some((t) => t.footerFilm)) {
-    for (const f of fs.readdirSync(path.join(ROOT, 'film')).filter((f) => /^(projekteffektivitet-reklamfilm-.*\.mp4|affisch-.*\.jpg)$/.test(f))) {
+    for (const f of fs.readdirSync(path.join(ROOT, 'film')).filter((f) => /^(projekteffektivitet-reklamfilm-.*\.mp4|affisch-.*\.(jpg|webp))$/.test(f))) {
       write(path.join(ASSETS, 'film', f), fs.readFileSync(path.join(ROOT, 'film', f)));
     }
   }

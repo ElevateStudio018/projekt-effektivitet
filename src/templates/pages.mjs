@@ -5,8 +5,28 @@ import { layout } from './layout.mjs';
 
 // ------------------------------------------------------------- Partials
 
-const img = (ctx, file, alt, attrs = '') =>
-  `<img src="${ctx.asset('img/' + file)}" alt="${esc(alt)}" ${attrs}>`;
+// Bilder levereras som WebP i flera storlekar (genererade i src/assets/img).
+const WIDE = /^road_00[123]\.jpg$/;
+const WEBP = { 'bild_projektanalys2_low.jpg': 800, 'bild_projektspecialist_low.jpg': 800, 'bild_projekteffekt_low.jpg': 800,
+  'per_mattsson.jpg': 520, 'pjmp-elevate-paraply.jpg': 1600, 'loopingmodellen_overgripande.jpg': 1000 };
+const img = (ctx, file, alt, attrs = '', sizes = '(min-width: 1000px) 600px, 100vw') => {
+  const base = file.replace(/\.jpg$/, '');
+  const a = (f) => ctx.asset('img/' + f);
+  if (WIDE.test(file)) {
+    return `<img src="${a(base + '-1920.webp')}" srcset="${a(base + '-1200.webp')} 1200w, ${a(base + '-1920.webp')} 1920w" sizes="${sizes}" alt="${esc(alt)}" ${attrs}>`;
+  }
+  if (WEBP[file]) {
+    const w = WEBP[file];
+    const set = w > 600 ? `${a(base + '-560.webp')} 560w, ${a(base + '.webp')} ${w}w` : `${a(base + '.webp')} ${w}w`;
+    return `<img src="${a(base + '.webp')}" srcset="${set}" sizes="${sizes}" alt="${esc(alt)}" ${attrs}>`;
+  }
+  return `<img src="${a(file)}" alt="${esc(alt)}" ${attrs}>`;
+};
+// Helbreddsfoto: beskuren stående version på mobil, WebP i två storlekar annars.
+const photo = (ctx, file, attrs = '') => {
+  const base = file.replace(/\.jpg$/, '');
+  return `<picture><source media="(max-width: 699px)" srcset="${ctx.asset('img/' + base + '-mobil.webp')}">${img(ctx, file, '', attrs, '100vw')}</picture>`;
+};
 
 const textLink = (href, label) => html`<a class="text-link" href="${href}">${label}${arrow}</a>`;
 
@@ -31,7 +51,7 @@ const breadcrumbs = (ctx, trail) => html`
 
 // Bakgrundsfoto till sidhuvudet. Döljs i base.css och visas av stilar som vill ha det (Landskap).
 const headMedia = (ctx, file) =>
-  file ? html`<figure class="page-head-media" aria-hidden="true">${img(ctx, file, '', 'width="1923" height="600" fetchpriority="high"')}</figure>` : '';
+  file ? html`<figure class="page-head-media" aria-hidden="true">${photo(ctx, file, 'width="1923" height="600" fetchpriority="high"')}</figure>` : '';
 
 const pageHead = (ctx, { trail, title, lead, label, extra = '', image }) => html`
 <section class="page-head${image ? ' has-media' : ''}">
@@ -93,7 +113,7 @@ const heroActions = (ctx) => html`
 const heroes = {
   photo: (ctx) => html`
 <section class="hero hero--photo">
-  ${img(ctx, ctx.theme.heroImage, '', 'class="hero-media" width="1923" height="600" fetchpriority="high"')}
+  ${photo(ctx, ctx.theme.heroImage, 'class="hero-media" width="1923" height="600" fetchpriority="high"')}
   <div class="wrap hero-inner">
     <p class="hero-kicker">${site.name}</p>
     <h1 class="hero-title">${home.heroTitle}</h1>
