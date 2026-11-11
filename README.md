@@ -152,3 +152,17 @@ ska bli nåbar via länk: aktivera GitHub Pages för repot med källan `docs/`.
 
 Nuvarande sajt ger 404 när man laddar `/tjanster`, `/loopingmodellen` eller `/kontakt` direkt.
 Den nya sajten har en riktig `index.html` per sida och har inte det problemet.
+
+## Automatisk deploy till Loopia
+
+`.github/workflows/deploy-loopia.yml` bygger sajten och laddar upp `dist/` till Loopia via FTPS
+vid varje push till `main` (och manuellt under Actions → *Deploy till Loopia* → *Run workflow*).
+
+Engångsinställning i GitHub → Settings → Secrets and variables → Actions:
+
+- Secret `LOOPIA_FTP_USERNAME` – FTP-användaren från Loopia Kundzon
+- Secret `LOOPIA_FTP_PASSWORD` – FTP-lösenordet
+- Variabel `LOOPIA_FTP_DIR` (valfri) – mapp på servern, standard `projekteffektivitet.se/public_html/`
+
+Första körningen laddar upp allt; därefter bara ändrade filer. Gamla filer från den tidigare sajten
+tas inte bort automatiskt – ta bort dem manuellt i public_html före första deployen.

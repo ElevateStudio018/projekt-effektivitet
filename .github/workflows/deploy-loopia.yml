@@ -1,0 +1,49 @@
+# Bygger den skarpa sajten (vald stil, Landskap) och laddar upp den till Loopia.
+#
+# Körs vid push till main och manuellt (Actions → "Deploy till Loopia" → Run workflow).
+# Kräver tre secrets i GitHub (Settings → Secrets and variables → Actions):
+#   LOOPIA_FTP_USERNAME  – FTP-användaren från Loopia Kundzon
+#   LOOPIA_FTP_PASSWORD  – FTP-lösenordet
+# och valfritt variabeln LOOPIA_FTP_DIR (standard: projekteffektivitet.se/public_html/).
+name: Deploy till Loopia
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-loopia
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Bygg sajten
+        run: npm run build:site
+
+      - name: Kontrollera bygget
+        run: |
+          test -f dist/index.html
+          test -f dist/.htaccess
+          test -f dist/404.html
+          echo "Byggt: $(find dist -name '*.html' | wc -l) sidor"
+
+      - name: Ladda upp till Loopia (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftpcluster.loopia.se
+          username: ${{ secrets.LOOPIA_FTP_USERNAME }}
+          password: ${{ secrets.LOOPIA_FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ${{ vars.LOOPIA_FTP_DIR || 'projekteffektivitet.se/public_html/' }}
+          # Tar bara bort filer som tidigare laddats upp av detta workflow (spåras i .ftp-deploy-sync-state.json).
+          dangerous-clean-slate: false
