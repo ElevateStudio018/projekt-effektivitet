@@ -1,37 +1,27 @@
-// Loopingmodellen som SVG. Inspirerad av originalbilden
-// (loopingmodellen_overgripande.jpg): en väg med en stor loop och två
-// mindre som följer. Färger styrs helt av temats CSS.
+// Loopingmodellen som spiral uppåt: varje loop (besluta, genomföra,
+// kontrollera, slutföra) hamnar ett steg högre – förmågan växer för
+// varje varv. Färger styrs av temats CSS (--diagram-line, --diagram-accent,
+// --diagram-label). Stegen själva visas som text bredvid diagrammet.
 
 let uid = 0;
 
 export function loopDiagram({ steps, compact = false } = {}) {
   const id = `ld-${++uid}`;
-  const cx = 260, cy = 190, r = 140;
-  const nodes = [
-    { x: cx, y: cy - r, lx: cx, ly: 24, anchor: 'middle' },
-    { x: cx + r, y: cy, lx: cx + r + 28, ly: cy + 6, anchor: 'start' },
-    { x: cx, y: cy + r, lx: cx, ly: 376, anchor: 'middle' },
-    { x: cx - r, y: cy, lx: cx - r - 28, ly: cy + 6, anchor: 'end' },
+  const loops = [
+    { x: 175, y: 300, label: 'Loop 1' },
+    { x: 455, y: 215, label: 'Loop 2' },
+    { x: 735, y: 130, label: 'Loop 3' },
   ];
-  const arrows = [45, 135, 225, 315].map((deg) => {
-    const t = (deg * Math.PI) / 180;
-    const x = (cx + r * Math.sin(t)).toFixed(1);
-    const y = (cy - r * Math.cos(t)).toFixed(1);
-    return `<path class="ld-arrow" d="M-8,-7 L8,0 L-8,7 Z" transform="translate(${x} ${y}) rotate(${deg})"/>`;
-  });
-  return `<svg class="loop-diagram${compact ? ' loop-diagram--compact' : ''}" viewBox="0 0 720 400" role="img" aria-labelledby="${id}">
-  <title id="${id}">Loopingmodellen: ${steps.map((s) => s.short).join(', ')} – och vidare till nästa loop</title>
-  <path class="ld-road" d="M8 330 H712"/>
-  <circle class="ld-loop" cx="${cx}" cy="${cy}" r="${r}"/>
-  <circle class="ld-loop ld-loop--next" cx="500" cy="290" r="40"/>
-  <circle class="ld-loop ld-loop--next" cx="640" cy="280" r="50"/>
-  <text class="ld-note" x="640" y="212" text-anchor="middle">Nästa loop</text>
-  ${arrows.join('\n  ')}
-  ${nodes
+  return `<svg class="loop-diagram loop-spiral${compact ? ' loop-diagram--compact' : ''}" viewBox="0 0 1000 440" role="img" aria-labelledby="${id}">
+  <title id="${id}">Loopingmodellen: ${steps.map((s) => s.short).join(', ')} – varje loop börjar ett steg högre</title>
+  <path class="ld-road" d="M30 420 C160 420 250 380 250 300 C250 230 175 205 135 235 C95 265 120 350 230 360 C390 375 530 300 530 215 C530 145 455 120 415 150 C375 180 400 265 510 275 C670 290 810 215 810 130 C810 60 735 35 695 65 C655 95 680 180 790 190 C880 198 930 120 965 60"/>
+  <path class="ld-arrow" d="M-14,-12 L14,0 L-14,12 Z" transform="translate(966 58) rotate(-58)"/>
+  ${loops
     .map(
-      (n, i) => `<g class="ld-node"><circle cx="${n.x}" cy="${n.y}" r="19"/><text x="${n.x}" y="${n.y}" dy="0.36em" text-anchor="middle">${i + 1}</text></g>
-  <text class="ld-label" x="${n.lx}" y="${n.ly}" text-anchor="${n.anchor}">${steps[i].short}</text>`
+      (l, i) => `<g class="ld-node"><circle cx="${l.x}" cy="${l.y}" r="24"/><text x="${l.x}" y="${l.y}" dy="0.36em" text-anchor="middle">${i + 1}</text></g>
+  <text class="ld-label" x="${l.x}" y="${l.y - 118}" text-anchor="middle">${l.label}</text>`
     )
     .join('\n  ')}
+  <text class="ld-note" x="975" y="250" text-anchor="end">Nästa loop</text>
 </svg>`;
 }

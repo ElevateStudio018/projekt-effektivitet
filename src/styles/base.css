@@ -550,3 +550,10 @@ a:hover .icon-arrow { transform: translateX(3px); }
 .ss-label select { background: #22313f; color: #fff; border: 1px solid rgba(255,255,255,.2); border-radius: 5px; padding: 6px 8px; font: inherit; max-width: 140px; }
 .ss-all { padding: 9px 10px; border-left: 1px solid rgba(255,255,255,.18); margin-left: 4px; white-space: nowrap; border-radius: 0 5px 5px 0; }
 @media (max-width: 420px) { .ss-label span, .ss-all { display: none; } }
+
+/* Loopingmodellen som spiral */
+.loop-spiral .ld-road { stroke-width: 8; stroke-linecap: round; }
+.loop-spiral .ld-label { font-size: 30px; }
+.loop-spiral .ld-note { font-size: 26px; }
+.loop-spiral .ld-node circle { r: 26px; }
+.loop-spiral .ld-node text { font-size: 24px; }
