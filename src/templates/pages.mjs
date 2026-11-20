@@ -8,7 +8,7 @@ import { layout } from './layout.mjs';
 // Bilder levereras som WebP i flera storlekar (genererade i src/assets/img).
 const WIDE = /^road_00[123]\.jpg$/;
 const WEBP = { 'bild_projektanalys2_low.jpg': 800, 'bild_projektspecialist_low.jpg': 800, 'bild_projekteffekt_low.jpg': 800,
-  'per_mattsson.jpg': 520, 'pjmp-elevate-paraply.jpg': 1600, 'loopingmodellen_overgripande.jpg': 1000 };
+  'per_mattsson.jpg': 520, 'pjmp-elevate-paraply.jpg': 1600, 'loopingmodellen_overgripande.jpg': 1000, 'per_mattsson_teckning.jpg': 1200 };
 const img = (ctx, file, alt, attrs = '', sizes = '(min-width: 800px) 400px, 56vw') => {
   const base = file.replace(/\.jpg$/, '');
   const a = (f) => ctx.asset('img/' + f);
@@ -76,7 +76,10 @@ const personCard = (ctx, { heading = false } = {}) => html`
       <div><dt>E-post</dt><dd><a href="mailto:${site.email}">${site.email}</a></dd></div>
     </dl>
   </div>
-</div>`;
+</div>
+<figure class="person-drawing">
+  ${img(ctx, 'per_mattsson_teckning.jpg', 'Tecknat porträtt av ' + site.person.name, 'width="1200" height="896" loading="lazy"', '(min-width: 900px) 460px, 92vw')}
+</figure>`;
 
 // Stilar med footerFilm visar filmen (med samma text och knapp) ovanför sidfoten i stället.
 const ctaBlock = (ctx) => ctx.theme.footerFilm && ctx.page.path === '' ? '' : html`

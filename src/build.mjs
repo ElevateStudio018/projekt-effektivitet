@@ -110,7 +110,7 @@ copyDir(path.join(SRC, 'assets/logo'), path.join(ASSETS, 'logo'));
 copyDir(path.join(SRC, 'assets/fonts'), path.join(ASSETS, 'fonts'));
 // I enstil- och produktionsbygget läggs CSS:en direkt i sidan (ingen
 // renderingsblockerande begäran). Bara den aktiva stilens typsnitt tas med.
-const FONTS_FOR = { landskap: ['Poppins'] };
+const FONTS_FOR = { landskap: ['Fraunces', 'Inter'] };
 const inlineCss = (theme, asset) => {
   const fams = theme.fonts;
   const fonts = fs.readFileSync(path.join(SRC, 'styles/fonts.css'), 'utf8').split('\n')
