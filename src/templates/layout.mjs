@@ -14,7 +14,6 @@ const FONT_FILES = {
   'IBM Plex Sans': 'ibm-plex-sans-400.woff2',
   'IBM Plex Mono': 'ibm-plex-mono-400.woff2',
   Poppins: ['poppins-400.woff2', 'poppins-500.woff2', 'poppins-600.woff2'],
-  Nunito: ['nunito-300.woff2', 'nunito-400.woff2', 'nunito-600.woff2'],
 };
 
 function header(ctx) {
@@ -86,7 +85,7 @@ function footer(ctx) {
   <div class="wrap footer-grid">
     <div class="footer-brand">
       <img class="footer-logo" src="${ctx.asset('logo/' + theme.footerLogo)}" alt="${site.name}" width="574" height="206" loading="lazy">
-      <p>${site.description}</p>
+      <p>${site.tagline}</p>
     </div>
     <nav class="footer-col" aria-label="Tjänster">
       <h2>Tjänster</h2>
@@ -115,7 +114,6 @@ function footer(ctx) {
   </div>
   <div class="wrap footer-bottom">
     <span>© ${site.year} ${site.legalName}</span>
-    <span>${site.tagline}</span>
   </div>
 </footer>`;
 }

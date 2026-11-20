@@ -8,7 +8,7 @@ export const site = {
   name: 'Projekteffektivitet',
   legalName: 'Projekteffektivitet AB',
   url: 'https://projekteffektivitet.se',
-  tagline: 'Bättre effekt. Ett projekt i taget.',
+  tagline: 'Bättre projekt. Större effekt.',
   description: 'Struktur, framdrift och verksamhetseffekt i projekt som betyder mycket.',
   metaDescription:
     'Projekteffektivitet hjälper organisationer att öka verkningsgraden, driva strategiska projekt mot mål och få fart på projekt som stannat av.',

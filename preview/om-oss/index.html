@@ -14,12 +14,14 @@
 <meta property="og:description" content="Projekteffektivitet AB är ett konsultföretag i Uppsala som hjälper organisationer att få bättre effekt av sina projekt.">
 <meta property="og:image" content="https://projekteffektivitet.se/assets/img/road_002.jpg">
 <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
-<link rel="preload" href="../assets/fonts/nunito-300.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/nunito-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/nunito-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/poppins-500.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin>
 
-<style>@font-face { font-family: 'Nunito'; font-style: normal; font-weight: 300; font-display: swap; src: url(../assets/fonts/nunito-300.woff2) format('woff2'); }
-@font-face { font-family: 'Nunito'; font-style: normal; font-weight: 400; font-display: swap; src: url(../assets/fonts/nunito-400.woff2) format('woff2'); }
-@font-face { font-family: 'Nunito'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/nunito-600.woff2) format('woff2'); }
-@font-face { font-family: 'Nunito Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Helvetica'); size-adjust: 101.5%; ascent-override: 99.6%; descent-override: 34.8%; line-gap-override: 0%; }
+<style>@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 300; font-display: swap; src: url(../assets/fonts/poppins-300.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 400; font-display: swap; src: url(../assets/fonts/poppins-400.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: italic; font-weight: 400; font-display: swap; src: url(../assets/fonts/poppins-400-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 500; font-display: swap; src: url(../assets/fonts/poppins-500.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/poppins-600.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Helvetica'); size-adjust: 112.16%; ascent-override: 93.62%; descent-override: 31.21%; line-gap-override: 8.92%; }
 :root {
 --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 --font-heading: var(--font-body);
@@ -491,18 +493,18 @@ font: 500 13px/1.2 system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spac
 .loop-spiral .ld-node circle { r: 26px; }
 .loop-spiral .ld-node text { font-size: 24px; }
 :root {
---font-heading: 'Nunito', 'Nunito Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
---font-body: 'Nunito', 'Nunito Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
---heading-weight: 300;
---heading-ls: -0.01em;
+--font-heading: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+--font-body: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+--heading-weight: 500;
+--heading-ls: -0.025em;
 --heading-lh: 1.15;
 --fs-h1: clamp(2.2rem, 1.2rem + 4vw, 4.8rem);
 --fs-h2: clamp(1.8rem, 1.2rem + 2.2vw, 3.1rem);
---fs-body: 1.0625rem;
+--fs-body: 1rem;
 --lh-body: 1.7;
 --label-transform: none;
 --label-ls: 0.01em;
---label-weight: 600;
+--label-weight: 500;
 --fs-label: 0.95rem;
 --bg: #ffffff;
 --bg-alt: #ececec;
@@ -543,7 +545,7 @@ font: 500 13px/1.2 system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spac
 background: linear-gradient(0deg, rgba(var(--photo-shade), .9) 0%, rgba(var(--photo-shade), .5) 45%, rgba(var(--photo-shade), .3) 85%, rgba(var(--photo-shade), .55) 100%);
 }
 .hero--photo .hero-inner { padding-block: calc(var(--header-height) + 64px) clamp(56px, 9vw, 120px); }
-.hero--photo .hero-title { font-weight: 300; letter-spacing: -0.015em; max-width: 13em; font-size: clamp(2.3rem, 1.2rem + 4.4vw, 5.4rem); }
+.hero--photo .hero-title { font-weight: 500; letter-spacing: -0.03em; max-width: 13em; font-size: clamp(2.3rem, 1.2rem + 4.4vw, 5.4rem); }
 .hero--photo .hero-kicker { color: #fff; opacity: .85; }
 .hero--photo .button, .cta-section .button { background: var(--accent); border-color: var(--accent); color: #002a4c; }
 .hero--photo .button:hover, .cta-section .button:hover { background: #ff8a4f; border-color: #ff8a4f; }
@@ -638,7 +640,6 @@ width: calc(100% - 2 * var(--gutter));
 strong, b, .prose ol li::before, .loop-diagram .ld-node text { font-weight: 600; }
 html { scroll-padding-top: 96px; }
 .hero-title em, .page-head h1 em { font-style: normal; color: var(--accent); }
-h3, .situation h3, .service-title, .news-title { font-weight: 600; }
 .services-section, .situations-section { background: var(--bg-alt); }
 .news-card-link, .aside-box, .contact-form, .outcome, .process li, .principle { box-shadow: 0 0 0 1px var(--rule); }
 </style>
@@ -749,7 +750,7 @@ h3, .situation h3, .service-title, .news-title { font-weight: 600; }
   <div class="wrap footer-grid">
     <div class="footer-brand">
       <img class="footer-logo" src="../assets/logo/logo-light.svg" alt="Projekteffektivitet" width="574" height="206" loading="lazy">
-      <p>Struktur, framdrift och verksamhetseffekt i projekt som betyder mycket.</p>
+      <p>Bättre projekt. Större effekt.</p>
     </div>
     <nav class="footer-col" aria-label="Tjänster">
       <h2>Tjänster</h2>
@@ -778,7 +779,6 @@ h3, .situation h3, .service-title, .news-title { font-weight: 600; }
   </div>
   <div class="wrap footer-bottom">
     <span>© 2026 Projekteffektivitet AB</span>
-    <span>Bättre effekt. Ett projekt i taget.</span>
   </div>
 </footer>
 </div>
