@@ -8,7 +8,7 @@ import { layout } from './layout.mjs';
 // Bilder levereras som WebP i flera storlekar (genererade i src/assets/img).
 const WIDE = /^road_00[123]\.jpg$/;
 const WEBP = { 'bild_projektanalys2_low.jpg': 800, 'bild_projektspecialist_low.jpg': 800, 'bild_projekteffekt_low.jpg': 800,
-  'pjmp-elevate-paraply.jpg': 1600, 'loopingmodellen_overgripande.jpg': 1000, 'per_mattsson_teckning.jpg': 1200 };
+  'pjmp-elevate-paraply.jpg': 1600, 'loopingmodellen_overgripande.jpg': 1000, 'per_mattsson_teckning.jpg': 1080 };
 const img = (ctx, file, alt, attrs = '', sizes = '(min-width: 800px) 400px, 56vw') => {
   const base = file.replace(/\.jpg$/, '');
   const a = (f) => ctx.asset('img/' + f);
@@ -67,7 +67,7 @@ const pageHead = (ctx, { trail, title, lead, label, extra = '', image }) => html
 
 const personCard = (ctx, { heading = false } = {}) => html`
 <div class="person-card">
-  ${img(ctx, site.person.image, 'Tecknat porträtt av ' + site.person.name, 'class="person-img" width="1200" height="896" loading="lazy"')}
+  ${img(ctx, site.person.image, 'Tecknat porträtt av ' + site.person.name, 'class="person-img" width="1080" height="930" loading="lazy"')}
   <div class="person-body">
     ${heading ? html`<h2 class="person-name">${site.person.name}</h2>` : html`<p class="person-name">${site.person.name}</p>`}
     <p class="person-title">${site.person.title}</p>

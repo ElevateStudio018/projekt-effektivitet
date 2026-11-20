@@ -180,7 +180,6 @@ ${footer(ctx)}
 </div>
 ${styleSwitcher(ctx)}
 <script src="${ctx.asset('js/site.js')}" defer></script>
-${page.path === '404' ? '' : html`<script src="${ctx.asset('js/chat.js')}" defer data-root="${ctx.link('').replace(/index\.html$/, '')}" data-rel="${ctx.link('').endsWith('index.html') ? '1' : '0'}" data-avatar="${ctx.asset('img/per_mattsson_teckning-400.webp')}"></script>`}
 </body>
 </html>
 `;

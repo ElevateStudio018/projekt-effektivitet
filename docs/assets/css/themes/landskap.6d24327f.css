@@ -186,5 +186,5 @@ html { scroll-padding-top: 96px; }
 
 .services-section, .situations-section { background: var(--bg-alt); }
 .news-card-link, .aside-box, .contact-form, .outcome, .process li, .principle { box-shadow: 0 0 0 1px var(--rule); }
-.person-img { object-position: 50% 22%; }
-.person-section .person-img { aspect-ratio: 1200 / 896; object-position: center; }
+.person-img { object-position: 50% 30%; }
+.person-section .person-img { aspect-ratio: 1080 / 930; object-position: center; }
