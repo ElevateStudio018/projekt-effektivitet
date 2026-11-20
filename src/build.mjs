@@ -15,7 +15,7 @@ import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { themes } from './themes.mjs';
-import { services, site } from './content/site.mjs';
+import { services, site, loop, about } from './content/site.mjs';
 import { parseFrontMatter, markdown, plainText } from './lib/md.mjs';
 import { readingTime } from './lib/html.mjs';
 import * as P from './templates/pages.mjs';
@@ -52,6 +52,7 @@ const articles = fs
       slug: f.replace(/\.md$/, ''),
       headImage: data.headImage || (/^road_/.test(data.image || '') ? data.image : 'road_002.jpg'),
       minutes: readingTime(plainText(body)),
+      raw: body,
       html: (link) => markdown(body, (p) => link(p)),
     };
   })
@@ -132,6 +133,27 @@ const emit = (logical, content) => {
   hashed[logical] = out;
 };
 emit('js/site.js', fs.readFileSync(path.join(SRC, 'scripts/site.js')));
+// Chattassistentens kunskap byggs från sajtens innehåll.
+{
+  const strip = (s) => String(s).replace(/<[^>]+>/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_#>]/g, '');
+  const kb = {
+    endpoint: 'https://formsubmit.co/ajax/' + site.email,
+    email: site.email,
+    phone: site.phone,
+    about: about.lead + ' ' + about.body[0],
+    loop: loop.steps.map((s) => ({ short: s.short, text: s.text })),
+    loopWhy: loop.why.join(' '),
+    services: services.map((s) => ({ id: s.id, title: s.title, summary: s.summary, body: s.body, when: s.when })),
+    news: articles.map((a) => ({ title: a.title, lead: a.lead, path: 'nyheter/' + a.slug + '/' })),
+    docs: [
+      ...articles.map((a) => ({ title: a.title, text: a.lead + ' ' + strip(a.raw).slice(0, 1500), path: 'nyheter/' + a.slug + '/' })),
+      ...services.map((s) => ({ title: s.title, text: s.summary + ' ' + s.body.join(' ') + ' ' + s.when.join(' '), path: 'tjanster/' + s.id + '/' })),
+      { title: loop.title, text: loop.lead + ' ' + loop.principle.join(' ') + ' ' + loop.why.join(' '), path: 'loopingmodellen/' },
+      { title: about.title, text: about.lead + ' ' + about.body.join(' ') + ' ' + about.personBody.join(' '), path: 'om-oss/' },
+    ],
+  };
+  emit('js/chat.js', fs.readFileSync(path.join(SRC, 'scripts/chat.js'), 'utf8').replace('var KB = __KB__', 'var KB = ' + JSON.stringify(kb)));
+}
 for (const f of ['fonts.css', 'base.css']) emit('css/' + f, fs.readFileSync(path.join(SRC, 'styles', f)));
 const themeList = preview ? themes : themes.filter((t) => t.id === onlyTheme);
 for (const t of themeList) {
