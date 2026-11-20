@@ -4,7 +4,7 @@
    mjuka kort och varma stentoner. Typsnitt och färger enligt grafisk profil 2016. */
 
 :root {
-  /* Färger enligt grafisk profil 2016: PMS 2955 #003763, PMS 165 #FF671F,
+  /* Färger enligt grafisk profil 2016: PMS 2955 #144069, PMS 165 #FF671F,
      Cool Gray 1C #ECECEC. Typsnitt Poppins. */
   --font-heading: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-body: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -25,9 +25,9 @@
   --surface: #ffffff;
   --text: #1c3550;
   --muted: #4d5f70;
-  --heading: #003763;
-  --brand: #003763;
-  --link: #003763;
+  --heading: #144069;
+  --brand: #144069;
+  --link: #144069;
   --accent: #ff671f;
   --accent-ink: #c2410c;
   --label-color: #c2410c;
@@ -38,13 +38,13 @@
   --img-radius: 16px;
   --panel-radius: 28px;
   --button-radius: 999px;
-  --button-bg: #003763;
-  --button-bg-hover: #002a4c;
+  --button-bg: #144069;
+  --button-bg-hover: #0f3354;
 
-  --dark-bg: #003763;
+  --dark-bg: #144069;
   --dark-text: #d6e0ea;
 
-  --footer-bg: #002a4c;
+  --footer-bg: #0f3354;
   --footer-text: #b9c7d4;
 
   --photo-shade: 10, 18, 26;
@@ -70,10 +70,10 @@
 .hero--photo .hero-inner { padding-block: calc(var(--header-height) + 64px) clamp(56px, 9vw, 120px); }
 .hero--photo .hero-title { font-weight: 500; letter-spacing: -0.03em; max-width: 13em; font-size: clamp(2.3rem, 1.2rem + 4.4vw, 5.4rem); }
 .hero--photo .hero-kicker { color: #fff; opacity: .85; }
-.hero--photo .button, .cta-section .button { background: var(--accent); border-color: var(--accent); color: #002a4c; }
+.hero--photo .button, .cta-section .button { background: var(--accent); border-color: var(--accent); color: #0f3354; }
 .hero--photo .button:hover, .cta-section .button:hover { background: #ff8a4f; border-color: #ff8a4f; }
 .hero--photo .button--ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .7); }
-.hero--photo .button--ghost:hover { background: #fff; color: #002a4c; }
+.hero--photo .button--ghost:hover { background: #fff; color: #0f3354; }
 
 /* ---------------------------------------------------- Undersidornas sidhuvud */
 .page-head {
@@ -126,7 +126,7 @@
 /* Loopingmodellen: rundad panel med foto */
 .loop-section { background: transparent; }
 .loop-section > .wrap {
-  background: linear-gradient(rgba(0, 42, 76, .9), rgba(0, 42, 76, .9)), url(../../img/road_001-1920.webp) center / cover;
+  background: linear-gradient(rgba(15, 51, 84, .9), rgba(15, 51, 84, .9)), url(../../img/road_001-1920.webp) center / cover;
   border-radius: var(--panel-radius); padding-block: clamp(36px, 5vw, 80px);
   width: calc(100% - 2 * var(--gutter));
 }

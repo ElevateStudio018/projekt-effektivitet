@@ -124,7 +124,7 @@ export const themes = [
     footerFilm: true,
     summary: 'Vägen som berättelse. Helsidesfotografier och transparent sidhuvud, med Nordisks rundade hörn, pillerknappar och mjuka kort. Poppins genomgående.',
     fonts: ['Poppins'],
-    palette: ['#003763', '#FF671F', '#ECECEC', '#FFFFFF', '#002A4C'],
+    palette: ['#144069', '#FF671F', '#ECECEC', '#FFFFFF', '#0F3354'],
     header: 'overlay',
     hero: 'photo',
     heroImage: 'road_003.jpg',
