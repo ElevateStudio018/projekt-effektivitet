@@ -1,54 +1,55 @@
 /* 10. Landskap – vägen som berättelse.
    Helsidesfotografier och transparent sidhuvud över foto på varje sida,
    kombinerat med Nordisks mjuka formspråk: rundade hörn, pillerknappar,
-   mjuka kort och varma stentoner. Poppins genomgående. */
+   mjuka kort och varma stentoner. Typsnitt och färger enligt grafisk profil 2016. */
 
 :root {
-  --font-heading: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-body: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --heading-weight: 500;
-  --heading-ls: -0.025em;
-  --heading-lh: 1.14;
-  --fs-h1: clamp(2.1rem, 1.2rem + 3.8vw, 4.6rem);
-  --fs-h2: clamp(1.7rem, 1.2rem + 2vw, 2.9rem);
-  --fs-body: 1rem;
-  --lh-body: 1.72;
+  /* Grafisk profil 2016: Museo Sans Rounded (100/500) ersätts på webben av
+     Nunito, ett fritt rundat typsnitt med samma karaktär. Färger enligt
+     profilen: PMS 2955 #003763, PMS 165 #FF671F, Cool Gray 1C #ECECEC. */
+  --font-heading: 'Nunito', 'Nunito Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Nunito', 'Nunito Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --heading-weight: 300;
+  --heading-ls: -0.01em;
+  --heading-lh: 1.15;
+  --fs-h1: clamp(2.2rem, 1.2rem + 4vw, 4.8rem);
+  --fs-h2: clamp(1.8rem, 1.2rem + 2.2vw, 3.1rem);
+  --fs-body: 1.0625rem;
+  --lh-body: 1.7;
   --label-transform: none;
   --label-ls: 0.01em;
-  --label-weight: 500;
-  --fs-label: 0.9rem;
+  --label-weight: 600;
+  --fs-label: 0.95rem;
 
-  /* Varma stentoner från Nordisk */
-  --bg: #f4f1ea;
-  --bg-alt: #ebe6db;
-  --surface: #fbfaf6;
-  --text: #2c3a45;
-  --muted: #56626a;
-  --heading: #1d2b36;
-  --brand: #144069;
-  --link: #144069;
-  --accent: #f37021;
-  --accent-ink: #a14a17;
-  --label-color: #a14a17;
-  --rule: #ddd5c6;
-  --rule-strong: #b9ae9b;
+  --bg: #ffffff;
+  --bg-alt: #ececec;
+  --surface: #ffffff;
+  --text: #1c3550;
+  --muted: #4d5f70;
+  --heading: #003763;
+  --brand: #003763;
+  --link: #003763;
+  --accent: #ff671f;
+  --accent-ink: #c2410c;
+  --label-color: #c2410c;
+  --rule: #dcdcdc;
+  --rule-strong: #b5b5b5;
 
-  /* Rundade former */
   --radius: 18px;
   --img-radius: 16px;
   --panel-radius: 28px;
   --button-radius: 999px;
-  --button-bg: #1d2b36;
-  --button-bg-hover: #144069;
+  --button-bg: #003763;
+  --button-bg-hover: #002a4c;
 
-  --dark-bg: #1f2e39;
-  --dark-text: #c8d2d8;
+  --dark-bg: #003763;
+  --dark-text: #d6e0ea;
 
-  --footer-bg: #16222c;
-  --footer-text: #aab6bf;
+  --footer-bg: #002a4c;
+  --footer-text: #b9c7d4;
 
-  --photo-shade: 10, 18, 26;
-  --photo-accent: #ffc29a;
+  --photo-shade: 0, 30, 56;
+  --photo-accent: #ff8a4f;
 }
 
 .section + .section { border-top: 0; }
@@ -68,12 +69,12 @@
   background: linear-gradient(0deg, rgba(var(--photo-shade), .9) 0%, rgba(var(--photo-shade), .5) 45%, rgba(var(--photo-shade), .3) 85%, rgba(var(--photo-shade), .55) 100%);
 }
 .hero--photo .hero-inner { padding-block: calc(var(--header-height) + 64px) clamp(56px, 9vw, 120px); }
-.hero--photo .hero-title { font-weight: 500; letter-spacing: -0.03em; max-width: 13em; font-size: clamp(2.3rem, 1.2rem + 4.4vw, 5.4rem); }
+.hero--photo .hero-title { font-weight: 300; letter-spacing: -0.015em; max-width: 13em; font-size: clamp(2.3rem, 1.2rem + 4.4vw, 5.4rem); }
 .hero--photo .hero-kicker { color: #fff; opacity: .85; }
-.hero--photo .button, .cta-section .button { background: var(--accent); border-color: var(--accent); color: #1d2b36; }
-.hero--photo .button:hover, .cta-section .button:hover { background: #ff8a45; border-color: #ff8a45; }
+.hero--photo .button, .cta-section .button { background: var(--accent); border-color: var(--accent); color: #002a4c; }
+.hero--photo .button:hover, .cta-section .button:hover { background: #ff8a4f; border-color: #ff8a4f; }
 .hero--photo .button--ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .7); }
-.hero--photo .button--ghost:hover { background: #fff; color: #1d2b36; }
+.hero--photo .button--ghost:hover { background: #fff; color: #002a4c; }
 
 /* ---------------------------------------------------- Undersidornas sidhuvud */
 .page-head {
@@ -126,7 +127,7 @@
 /* Loopingmodellen: rundad panel med foto */
 .loop-section { background: transparent; }
 .loop-section > .wrap {
-  background: linear-gradient(rgba(22, 34, 44, .9), rgba(22, 34, 44, .9)), url(../../img/road_001-1920.webp) center / cover;
+  background: linear-gradient(rgba(0, 42, 76, .9), rgba(0, 42, 76, .9)), url(../../img/road_001-1920.webp) center / cover;
   border-radius: var(--panel-radius); padding-block: clamp(36px, 5vw, 80px);
   width: calc(100% - 2 * var(--gutter));
 }
@@ -179,6 +180,12 @@
 .prose { font-size: 1.0625rem; line-height: 1.75; }
 .prose > p:first-of-type { font-size: 1.15em; color: var(--heading); }
 
-/* Poppins laddas i 300–600: håll fetstil på 600 så webbläsaren inte syntetiserar */
+/* Nunito laddas i 300, 400 och 600 */
 strong, b, .prose ol li::before, .loop-diagram .ld-node text { font-weight: 600; }
 html { scroll-padding-top: 96px; }
+
+/* Nyckelord i orange, som i profilens presentationsexempel */
+.hero-title em, .page-head h1 em { font-style: normal; color: var(--accent); }
+h3, .situation h3, .service-title, .news-title { font-weight: 600; }
+.services-section, .situations-section { background: var(--bg-alt); }
+.news-card-link, .aside-box, .contact-form, .outcome, .process li, .principle { box-shadow: 0 0 0 1px var(--rule); }

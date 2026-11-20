@@ -113,7 +113,7 @@ export const services = [
 // ------------------------------------------------------------- Startsidan
 export const home = {
   title: 'Projekteffektivitet – bättre effekt i projekt',
-  heroTitle: 'Vi skapar bättre effekt i projekt.',
+  heroTitle: 'Vi skapar bättre <em>effekt</em> i <em>projekt</em>.',
   heroLead:
     'Vi hjälper organisationer att öka verkningsgraden, få fart på projekt som har stannat av och driva strategiskt viktiga initiativ säkert mot mål.',
   situationsTitle: 'Vad behöver ert projekt just nu?',

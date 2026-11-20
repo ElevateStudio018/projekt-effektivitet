@@ -30,3 +30,7 @@
 @font-face { font-family: 'Poppins'; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/poppins-600.woff2) format('woff2'); }
 /* Reservtypsnitt med Poppins mått (samma bredd och radhöjd) så att texten inte hoppar när Poppins laddas. */
 @font-face { font-family: 'Poppins Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Helvetica'); size-adjust: 112.16%; ascent-override: 93.62%; descent-override: 31.21%; line-gap-override: 8.92%; }
+@font-face { font-family: 'Nunito'; font-style: normal; font-weight: 300; font-display: swap; src: url(../fonts/nunito-300.woff2) format('woff2'); }
+@font-face { font-family: 'Nunito'; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/nunito-400.woff2) format('woff2'); }
+@font-face { font-family: 'Nunito'; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/nunito-600.woff2) format('woff2'); }
+@font-face { font-family: 'Nunito Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Helvetica'); size-adjust: 101.5%; ascent-override: 99.6%; descent-override: 34.8%; line-gap-override: 0%; }

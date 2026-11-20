@@ -14,6 +14,7 @@ const FONT_FILES = {
   'IBM Plex Sans': 'ibm-plex-sans-400.woff2',
   'IBM Plex Mono': 'ibm-plex-mono-400.woff2',
   Poppins: ['poppins-400.woff2', 'poppins-500.woff2', 'poppins-600.woff2'],
+  Nunito: ['nunito-300.woff2', 'nunito-400.woff2', 'nunito-600.woff2'],
 };
 
 function header(ctx) {
