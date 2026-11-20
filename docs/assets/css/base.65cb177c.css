@@ -558,3 +558,8 @@ a:hover .icon-arrow { transform: translateX(3px); }
 .loop-spiral .ld-node circle { r: 26px; }
 .loop-spiral .ld-node text { font-size: 24px; }
 
+
+/* Byggd av Elevate Studio – sist i sidfoten, ärver sidfotens textfärg */
+.elevate-credit { display: flex; width: max-content; max-width: calc(100% - 2 * var(--gutter)); margin: 0 auto; padding-bottom: 24px; align-items: center; gap: 8px; font-size: 12px; line-height: 1; color: currentColor; text-decoration: none; opacity: .6; transition: opacity .2s; }
+.elevate-credit:hover, .elevate-credit:focus-visible { opacity: 1; }
+.elevate-credit svg { height: 12px; width: auto; flex: none; }

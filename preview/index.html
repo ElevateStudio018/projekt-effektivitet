@@ -493,6 +493,9 @@ font: 500 13px/1.2 system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spac
 .loop-spiral .ld-note { font-size: 26px; }
 .loop-spiral .ld-node circle { r: 26px; }
 .loop-spiral .ld-node text { font-size: 24px; }
+.elevate-credit { display: flex; width: max-content; max-width: calc(100% - 2 * var(--gutter)); margin: 0 auto; padding-bottom: 24px; align-items: center; gap: 8px; font-size: 12px; line-height: 1; color: currentColor; text-decoration: none; opacity: .6; transition: opacity .2s; }
+.elevate-credit:hover, .elevate-credit:focus-visible { opacity: 1; }
+.elevate-credit svg { height: 12px; width: auto; flex: none; }
 :root {
 --font-heading: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
 --font-body: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -909,6 +912,10 @@ html { scroll-padding-top: 96px; }
   <div class="wrap footer-bottom">
     <span>© 2026 Projekteffektivitet AB</span>
   </div>
+  <a class="elevate-credit" href="https://elevatestudio.nu/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 1884.3 1353.9" aria-hidden="true"><path d="M0 1353.9 1218.7 0v329.1L479.7 1136.4 786.7 1132.4 1215.5 687.4 1884.3 1349.9H1590.1L1218.6 994.7 865.4 1349.9Z" fill="currentColor"/></svg>
+    Byggd av Elevate Studio
+  </a>
 </footer>
 </div>
 

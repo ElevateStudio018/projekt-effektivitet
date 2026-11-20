@@ -115,6 +115,10 @@ function footer(ctx) {
   <div class="wrap footer-bottom">
     <span>© ${site.year} ${site.legalName}</span>
   </div>
+  <a class="elevate-credit" href="https://elevatestudio.nu/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 1884.3 1353.9" aria-hidden="true"><path d="M0 1353.9 1218.7 0v329.1L479.7 1136.4 786.7 1132.4 1215.5 687.4 1884.3 1349.9H1590.1L1218.6 994.7 865.4 1349.9Z" fill="currentColor"/></svg>
+    Byggd av Elevate Studio
+  </a>
 </footer>`;
 }
 
