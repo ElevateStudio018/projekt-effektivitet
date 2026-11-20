@@ -20,7 +20,7 @@ export const site = {
   person: {
     name: 'Per Mattsson',
     title: 'PMP, Projektledningskonsult',
-    image: 'per_mattsson.jpg',
+    image: 'per_mattsson_teckning.jpg',
   },
   year: 2026,
 };

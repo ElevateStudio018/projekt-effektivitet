@@ -64,7 +64,6 @@ installerat får systemets sans-serif. Ordmärket i logotypen är konverterat ti
 | `bild_projektanalys2_low.jpg` | 800×533 | Tjänst / startsida |
 | `bild_projekteffekt_low.jpg` | 800×533 | Tjänst |
 | `loopingmodellen_overgripande.jpg` | 1000×290 | Loopingmodellen |
-| `per_mattsson.jpg` | 520×357 | Kontakt (ligger i mappen `nyheter/` på servern) |
 
 ## Fel på nuvarande sajt
 
