@@ -5,20 +5,20 @@
 
 :root {
   /* Färger enligt grafisk profil 2016: PMS 2955 #003763, PMS 165 #FF671F,
-     Cool Gray 1C #ECECEC. Typsnitt Fraunces (rubriker) och Inter (brödtext). */
-  --font-heading: 'Fraunces', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --heading-weight: 420;
-  --heading-ls: -0.02em;
-  --heading-lh: 1.06;
-  --fs-h1: clamp(2.6rem, 1.4rem + 4.8vw, 6rem);
-  --fs-h2: clamp(2rem, 1.3rem + 2.6vw, 3.6rem);
-  --fs-body: 1.0625rem;
-  --lh-body: 1.7;
+     Cool Gray 1C #ECECEC. Typsnitt Poppins. */
+  --font-heading: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Poppins', 'Poppins Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --heading-weight: 500;
+  --heading-ls: -0.025em;
+  --heading-lh: 1.14;
+  --fs-h1: clamp(2.1rem, 1.2rem + 3.8vw, 4.6rem);
+  --fs-h2: clamp(1.7rem, 1.2rem + 2vw, 2.9rem);
+  --fs-body: 1rem;
+  --lh-body: 1.72;
   --label-transform: none;
   --label-ls: 0.01em;
   --label-weight: 500;
-  --fs-label: 0.95rem;
+  --fs-label: 0.9rem;
 
   --bg: #ffffff;
   --bg-alt: #ececec;
@@ -68,7 +68,7 @@
   background: linear-gradient(0deg, rgba(var(--photo-shade), .9) 0%, rgba(var(--photo-shade), .5) 45%, rgba(var(--photo-shade), .3) 85%, rgba(var(--photo-shade), .55) 100%);
 }
 .hero--photo .hero-inner { padding-block: calc(var(--header-height) + 64px) clamp(56px, 9vw, 120px); }
-.hero--photo .hero-title { font-weight: 360; letter-spacing: -0.02em; max-width: 12em; font-size: clamp(2.8rem, 1.4rem + 5.6vw, 7rem); }
+.hero--photo .hero-title { font-weight: 500; letter-spacing: -0.03em; max-width: 13em; font-size: clamp(2.3rem, 1.2rem + 4.4vw, 5.4rem); }
 .hero--photo .hero-kicker { color: #fff; opacity: .85; }
 .hero--photo .button, .cta-section .button { background: var(--accent); border-color: var(--accent); color: #002a4c; }
 .hero--photo .button:hover, .cta-section .button:hover { background: #ff8a4f; border-color: #ff8a4f; }
@@ -179,7 +179,7 @@
 .prose { font-size: 1.0625rem; line-height: 1.75; }
 .prose > p:first-of-type { font-size: 1.15em; color: var(--heading); }
 
-/* Fetstil */
+/* Poppins laddas i 300–600: håll fetstil på 600 */
 strong, b, .prose ol li::before, .loop-diagram .ld-node text { font-weight: 600; }
 html { scroll-padding-top: 96px; }
 
