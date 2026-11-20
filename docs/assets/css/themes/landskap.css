@@ -47,8 +47,8 @@
   --footer-bg: #002a4c;
   --footer-text: #b9c7d4;
 
-  --photo-shade: 0, 30, 56;
-  --photo-accent: #ff8a4f;
+  --photo-shade: 10, 18, 26;
+  --photo-accent: #ffc29a;
 }
 
 .section + .section { border-top: 0; }
@@ -183,8 +183,6 @@
 strong, b, .prose ol li::before, .loop-diagram .ld-node text { font-weight: 600; }
 html { scroll-padding-top: 96px; }
 
-/* Nyckelord i orange, som i profilens presentationsexempel */
-.hero-title em, .page-head h1 em { font-style: normal; color: var(--accent); }
 
 .services-section, .situations-section { background: var(--bg-alt); }
 .news-card-link, .aside-box, .contact-form, .outcome, .process li, .principle { box-shadow: 0 0 0 1px var(--rule); }
