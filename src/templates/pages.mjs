@@ -414,7 +414,6 @@ ${ctaBlock(ctx)}`;
 // ---------------------------------------------------------- Loopingmodellen
 
 export function loopPage(ctx) {
-  const article = ctx.articles.find((a) => a.slug === 'loopingmodellen-i-praktiken');
   const body = html`
 ${pageHead(ctx, { trail: [[loop.title, 'loopingmodellen/']], label: loop.title, title: loop.heading, lead: loop.lead, image: 'road_002.jpg' })}
 
@@ -442,7 +441,6 @@ ${pageHead(ctx, { trail: [[loop.title, 'loopingmodellen/']], label: loop.title, 
       ${loop.why.map((p) => html`<p>${p}</p>`)}
     </div>
     <aside class="article-aside">
-      ${article ? html`<div class="aside-box"><h2 class="minor-heading">Läs vidare</h2>${newsCard(ctx, article, { withImage: false })}</div>` : ''}
     </aside>
   </div>
 </section>

@@ -44,7 +44,7 @@ for (const t of themes.filter((t) => !only || t.id === only)) {
     await shoot(home, path.join(DOCS, 'screenshots', `${t.id}-mobile.jpg`), { width: 390, height: 820 });
   } else {
     fs.mkdirSync(fullDir, { recursive: true });
-    const pages = ['', 'tjanster/', 'tjanster/projektanalys/', 'loopingmodellen/', 'om-oss/', 'nyheter/', 'nyheter/tecken-pa-att-projektet-tappat-fart/', 'kontakt/'];
+    const pages = ['', 'tjanster/', 'tjanster/projektanalys/', 'loopingmodellen/', 'om-oss/', 'nyheter/', 'nyheter/mellanskog-viol3/', 'kontakt/'];
     for (const p of pages) {
       const slug = (p.replace(/\/$/, '').replace(/\//g, '_') || 'home');
       await shoot(path.join(DOCS, t.id, p, 'index.html'), path.join(fullDir, `${t.id}-${slug}-desktop.jpg`), { width: 1440, height: 900, full: true });

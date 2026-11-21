@@ -23,7 +23,7 @@ samma sida.
 | Projektspecialist, Projektanalys, Projekteffekt | `/tjanster/<tjänst>/` |
 | Loopingmodellen | `/loopingmodellen/` |
 | Om oss | `/om-oss/` |
-| Nyheter (lista) + 6 artiklar | `/nyheter/`, `/nyheter/<artikel>/` |
+| Nyheter (lista) + 4 artiklar | `/nyheter/`, `/nyheter/<artikel>/` |
 | Kontakt (med formulär, stödjer `?amne=`) | `/kontakt/` |
 | Integritetspolicy | `/integritetspolicy/` |
 | 404 | `/404.html` |
@@ -133,7 +133,7 @@ läsas igenom:
 - **Så börjar ett uppdrag** (fyra steg) på tjänsteöversikten.
 - **Om oss**: bygger bara på uppgifter från sajten. Pers bakgrund saknas – se `TODO(Per)` i
   `src/content/site.mjs`.
-- **Alla artiklar** och deras **publiceringsdatum** (datumen är satta för förhandsvisningen).
+- **Nyheterna** om Mellanskog, Olink och UNHCR är hämtade från gamla sajten (Internet Archive). Deras **publiceringsdatum** är uppskattade.
 - **Artikeln om Elevate Studio** bygger på uppgifter från elevatestudio.nu (skrapat underlag i
   `scraped/elevatestudio/`). Bilden `pjmp-elevate-paraply.jpg` är förslag 1 av 5 i `forslag/elevate-bild/`
   (källfiler i `forslag/elevate-bild/kalla/`).
