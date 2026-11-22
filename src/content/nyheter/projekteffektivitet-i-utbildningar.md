@@ -1,10 +1,11 @@
 ---
+headImage: road_003.jpg
 title: Projekteffektivitet i utbildningar
 date: 2017-05-06
 category: Nyhet
 lead: IHM Business School har en av de bästa och mest omfattande vidareutbildningarna för projektledare. Utbildningen har ett termingslångt upplägg med 17 utbildningstillfällen som ger utrymme att lära sig projektledning på riktigt.
-image: road_001.jpg
-imageAlt: Väg genom landskap
+image: nyhet-projekteffektivitet-i-utbildningar.jpg
+imageAlt: Konferensrum med deltagare
 ---
 IHM Business School har en av de bästa och mest omfattande vidareutbildningarna för projektledare. Utbildningen har ett termingslångt upplägg med 17 utbildningstillfällen som ger utrymme att lära sig projektledning på riktigt.
 

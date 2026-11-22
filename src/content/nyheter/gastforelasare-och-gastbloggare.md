@@ -1,10 +1,11 @@
 ---
+headImage: road_002.jpg
 title: Gästföreläsare och gästbloggare
 date: 2016-11-08
 category: Nyhet
 lead: Projekteffektivitets Per Mattsson har varit gästföreläsare på Projektträffen och gästbloggare hos Donald Davies & Partners på temat trender för virtuella projekt och distansarbete.
-image: road_002.jpg
-imageAlt: Väg genom landskap
+image: nyhet-gastforelasare-och-gastbloggare.jpg
+imageAlt: Person i ett videomöte
 ---
 Projekteffektivitets Per Mattsson har varit gästföreläsare på Projektträffen och gästbloggare hos Donald Davies & Partners på temat trender för virtuella projekt och distansarbete.
 

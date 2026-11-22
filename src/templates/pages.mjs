@@ -8,7 +8,8 @@ import { layout } from './layout.mjs';
 // Bilder levereras som WebP i flera storlekar (genererade i src/assets/img).
 const WIDE = /^road_00[123]\.jpg$/;
 const WEBP = { 'bild_projektanalys2_low.jpg': 800, 'bild_projektspecialist_low.jpg': 800, 'bild_projekteffekt_low.jpg': 800,
-  'pjmp-elevate-paraply.jpg': 1600, 'loopingmodellen_overgripande.jpg': 1000, 'per_mattsson_teckning.jpg': 1080 };
+  'pjmp-elevate-paraply.jpg': 1600, 'loopingmodellen_overgripande.jpg': 1000, 'per_mattsson_teckning.jpg': 1080,
+  'nyhet-med-varen-kommer-viol3.jpg': 1600, 'nyhet-utbildning-hos-mellanskog.jpg': 1600, 'nyhet-projekt-vs-produkt.jpg': 1600, 'nyhet-hjalp-till-ukraina.jpg': 1600, 'nyhet-framtidens-kundtjanst.jpg': 1600, 'nyhet-mer-professionell-agarstyrning.jpg': 1600, 'nyhet-sos-barnbyar-i-ar-igen.jpg': 1600, 'nyhet-polisens-projekt.jpg': 1600, 'nyhet-projekt-hos-circle-k.jpg': 1600, 'nyhet-god-jul-sos-barnbyar.jpg': 1600, 'nyhet-mer-projekteffektivitet-i-utbildningar.jpg': 1600, 'nyhet-professionell-agarstyrning.jpg': 1600, 'nyhet-grattis-radda-barnen.jpg': 1600, 'nyhet-nya-utgavor-av-pmbok-guide-och-ikm.jpg': 1600, 'nyhet-projekteffektivitet-i-utbildningar.jpg': 1600, 'nyhet-passion-for-projects.jpg': 1600, 'nyhet-gastforelasare-och-gastbloggare.jpg': 1600, 'nyhet-mer-projekteffektivitet.jpg': 1600 };
 const img = (ctx, file, alt, attrs = '', sizes = '(min-width: 800px) 400px, 56vw') => {
   const base = file.replace(/\.jpg$/, '');
   const a = (f) => ctx.asset('img/' + f);
